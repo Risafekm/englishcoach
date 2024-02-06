@@ -1,4 +1,4 @@
-import 'package:englishcoach/presentation/dashboard/dashboard.dart';
+import 'package:englishcoach/presentation/login/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +11,8 @@ class RootScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: DashBoardPage(),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
     );
   }
 }
