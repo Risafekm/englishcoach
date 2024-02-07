@@ -1,8 +1,17 @@
+import 'package:englishcoach/application/provider/userprovider.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test/preliminary_test_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const RootScreen());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: const RootScreen(),
+    ),
+  );
 }
 
 class RootScreen extends StatelessWidget {

@@ -1,3 +1,4 @@
+import 'package:englishcoach/presentation/drawer/preliminary_test/test2/test2.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test/widgets/button_test.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,10 @@ class PriliminaryTest extends StatelessWidget {
           const SizedBox(height: 20),
           Center(
             child: ButtonTest(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const Test2()));
+              },
               color: const Color.fromARGB(255, 95, 214, 101),
               test: 'Launch Test 2',
               icon: false,
