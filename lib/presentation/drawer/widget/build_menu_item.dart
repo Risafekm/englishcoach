@@ -1,11 +1,10 @@
 import 'package:englishcoach/presentation/dashboard/screens/audio_chat_room.dart';
-
 import 'package:englishcoach/presentation/dashboard/screens/my_teacher.dart';
 import 'package:englishcoach/presentation/dashboard/screens/preliminary_test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../dashboard/screens/ielts_training.dart';
+import '../../dashboard/screens/PreliminaryTest2.dart';
 
 class BuildMenuItem extends StatelessWidget {
   const BuildMenuItem({super.key});
@@ -23,7 +22,7 @@ class BuildMenuItem extends StatelessWidget {
               color: Colors.white
             ),
             title: Text(
-              'Preliminary Test ',
+              'Preliminary Test 1',
               style: GoogleFonts.lato(
                   textStyle: const TextStyle(
                 color: Colors.white,
@@ -43,7 +42,7 @@ class BuildMenuItem extends StatelessWidget {
               color: Colors.white,
             ),
             title: Text(
-              'IELTS Training',
+              'Preliminary Test 2',
               style: GoogleFonts.lato(
                   textStyle: const TextStyle(
                 color: Colors.white,
@@ -54,7 +53,7 @@ class BuildMenuItem extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const IELTSTraining()));
+                      builder: (context) => const PreliminaryTest2()));
             },
           ),
            ListTile(
@@ -109,9 +108,7 @@ class BuildMenuItem extends StatelessWidget {
                 color: Colors.white
               )),
             ),
-            onTap: () {
-             
-            },
+            onTap: () {},
           ),
         ],
       ),

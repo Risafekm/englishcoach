@@ -12,12 +12,12 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.greenAccent,
+      color: const Color.fromARGB(255, 152, 184, 238),
       child: Container(
         width: 400,
         height: 150,
         decoration: BoxDecoration(
-            color: Colors.greenAccent, borderRadius: BorderRadius.circular(20)),
+            color: const Color.fromARGB(255, 152, 184, 238), borderRadius: BorderRadius.circular(20)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

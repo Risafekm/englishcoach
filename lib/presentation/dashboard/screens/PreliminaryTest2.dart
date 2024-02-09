@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../dashboard.dart';
 
-class IELTSTraining extends StatelessWidget {
-  const IELTSTraining({super.key});
+class PreliminaryTest2 extends StatelessWidget {
+  const PreliminaryTest2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class IELTSTraining extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text('IELTS Training'),
+        child: const Text('Preliminary Test 2'),
       ),
     );
   }
