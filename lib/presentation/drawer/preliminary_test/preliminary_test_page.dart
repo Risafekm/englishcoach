@@ -43,7 +43,7 @@ class PriliminaryTest extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const Test2()));
               },
               color: const Color.fromARGB(255, 95, 214, 101),
-              test: 'Launch Test 2',
+              test: 'Test 2',
               icon: false,
             ),
           ),

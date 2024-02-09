@@ -1,7 +1,11 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, avoid_print
 
 import 'package:englishcoach/application/provider/userprovider.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/edit/editpage.dart';
+import 'package:englishcoach/domain/model/quizmodel.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test/edit/edit_text2_page.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test/widgets/buttonsmall.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test/widgets/textarea.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,10 +25,23 @@ class _Test2State extends State<Test2> {
     super.initState();
   }
 
+  TextEditingController quesTest2Controller = TextEditingController();
+  TextEditingController ansText2Controller = TextEditingController();
+  final formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     var controller = Provider.of<UserProvider>(context);
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      appBar: AppBar(
+        backgroundColor: Colors.blue.shade200,
+        elevation: 3,
+        title: Text(
+          'Test 2 Questions & Answers',
+          style: GoogleFonts.lora(fontWeight: FontWeight.w600),
+        ),
+      ),
       body: Consumer<UserProvider>(builder: (context, value, child) {
         if (value.isLoding) {
           return const CircularProgressIndicator();
@@ -34,32 +51,231 @@ class _Test2State extends State<Test2> {
           itemCount: posts.length,
           itemBuilder: (context, index) {
             var user = posts[index];
-            return Card(
-                child: ListTile(
-              onTap: () async {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const EditPage()));
-              },
-              leading: Text(posts[index].prelimTransQuesNum.toString()),
-              tileColor: Colors.blue.withOpacity(0.2),
-              title: Text(
-                'Question ${posts[index].prelimTransQuesNum}: ${posts[index].prelimTransQuestion}',
-                style: const TextStyle(fontWeight: FontWeight.w500),
+            return Container(
+              decoration: BoxDecoration(
+                color: Colors.blue.shade200,
               ),
-              subtitle: Column(
-                children: [
-                  Text('Answer : ${posts[index].prelimTransAnswer}'),
-                ],
+              child: Card(
+                child: Container(
+                  height: 80,
+                  width: MediaQuery.of(context).size.width * 6,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const SizedBox(width: 10),
+                      CircleAvatar(
+                        child: Text(posts[index].prelimTransQuesNum.toString()),
+                      ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Question : ${posts[index].prelimTransQuestion}',
+                              overflow: TextOverflow.ellipsis,
+                              style:
+                                  GoogleFonts.lora(fontWeight: FontWeight.w600),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              'Answer : ${posts[index].prelimTransAnswer}',
+                              overflow: TextOverflow.ellipsis,
+                              style:
+                                  GoogleFonts.lora(fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      IconButton(
+                        onPressed: () {
+                          controller.editQuesController.text =
+                              posts[index].prelimTransQuestion.toString();
+                          controller.editAnsController.text =
+                              posts[index].prelimTransAnswer.toString();
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  EditText2Page(user: posts[index])));
+                        },
+                        icon: const Icon(
+                          Icons.edit,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      IconButton(
+                        onPressed: () {
+                          deleteAlertBox(
+                              context, posts, index, controller, user);
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                    ],
+                  ),
+                ),
               ),
-              trailing: GestureDetector(
-                  onTap: () async {
-                    print('clicked');
-                  },
-                  child: const Icon(Icons.delete, color: Colors.red)),
-            ));
+            );
           },
         );
       }),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue.shade200,
+        onPressed: () {
+          modelSheet(context);
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+
+  Future<dynamic> deleteAlertBox(BuildContext context, List<Quiz> posts,
+      int index, UserProvider controller, Quiz user) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(
+              'Delete Question ${posts[index].prelimTransQuesNum}',
+              style:
+                  GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
+            ),
+            content: Text(
+              'Are you sure?',
+              style:
+                  GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 16),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'Cancel',
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                ),
+              ),
+              const SizedBox(width: 10),
+              TextButton(
+                onPressed: () {
+                  controller.deleteData(
+                      user.prelimTransQuesNum.toString(), context);
+                  Navigator.pop(context);
+                },
+                child: const Text(
+                  'yes',
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                ),
+              ),
+            ],
+          );
+        });
+  }
+
+  Future<dynamic> modelSheet(BuildContext context) {
+    return showModalBottomSheet(
+        context: context,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
+        ),
+        builder: (BuildContext context) {
+          return Container(
+              height: 450.0,
+              color: Colors.transparent,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
+                  ),
+                ),
+                child: Form(
+                  key: formkey,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 30),
+                      Text(
+                        'Add new question & answer',
+                        style: GoogleFonts.lora(
+                            fontSize: 22,
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(height: 50),
+                      questionTextArea(),
+                      const SizedBox(height: 20),
+                      answerTextArea(),
+                      const SizedBox(height: 20),
+                      CustomButton(
+                        text: 'Post',
+                        ontap: () {
+                          if (formkey.currentState!.validate()) {
+                            Provider.of<UserProvider>(context, listen: false)
+                                .addData(context);
+
+                            Navigator.pop(context);
+                          }
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ));
+        });
+  }
+
+  TextArea questionTextArea() {
+    var controller = Provider.of<UserProvider>(context, listen: false);
+    return TextArea(
+      keyboardType: TextInputType.text,
+      name: 'Question',
+      controller: controller.quesController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'please enter question';
+        } else {
+          return null;
+        }
+      },
+      suffixIcon: const Icon(
+        Icons.abc,
+        color: Colors.transparent,
+      ),
+      obscureText: false,
+      prefixIcon: const Icon(Icons.question_mark),
+    );
+  }
+
+  TextArea answerTextArea() {
+    var controller = Provider.of<UserProvider>(context, listen: false);
+    return TextArea(
+      keyboardType: TextInputType.text,
+      name: 'Answer',
+      controller: controller.ansController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'please enter answer';
+        } else {
+          return null;
+        }
+      },
+      suffixIcon: const Icon(
+        Icons.abc,
+        color: Colors.transparent,
+      ),
+      obscureText: false,
+      prefixIcon: const Icon(Icons.question_answer),
     );
   }
 }

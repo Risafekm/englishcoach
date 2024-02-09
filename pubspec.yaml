@@ -33,7 +33,8 @@ dependencies:
     sdk: flutter
   http: ^1.2.0
   provider: ^6.1.1
-
+  google_fonts:
+  glass_kit: ^3.0.0
 dev_dependencies:
 
   # The "flutter_lints" package below contains a set of recommended lints to

@@ -1,5 +1,6 @@
 import 'package:englishcoach/application/provider/userprovider.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test/preliminary_test_page.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test/test2/test2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,8 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PriliminaryTest(),
+      // home: PriliminaryTest(),
+      home: Test2(),
     );
   }
 }
