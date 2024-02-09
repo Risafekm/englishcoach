@@ -1,5 +1,7 @@
-import 'package:englishcoach/presentation/dashboard/dashboard.dart';
+import 'package:englishcoach/test1/api/provider.dart';
+import 'package:englishcoach/test1/Test1.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const RootScreen());
@@ -10,8 +12,19 @@ class RootScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: DashBoardPage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const Test1(),
+      ),
     );
   }
 }
