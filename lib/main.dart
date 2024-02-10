@@ -22,6 +22,11 @@ class RootScreen extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Test2Home(),
+<<<<<<< HEAD
+      // home: Test2Home(),
+=======
+      home: DashBoardPage(),
+>>>>>>> rusafida
     );
   }
 }
