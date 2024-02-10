@@ -29,17 +29,16 @@ class RootScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-      // home: Test2Home(),
-=======
-      // home: DashBoardPage(),
->>>>>>> rusafida
-=======
-      home: SplashScreen(),
->>>>>>> shalima
+
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: SplashScreen(),
+>>>>>>> sana
     );
   }
 }
