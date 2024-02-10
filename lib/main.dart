@@ -1,6 +1,5 @@
-import 'package:englishcoach/application/provider/userprovider.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/preliminary_test_page.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/test2/test2.dart';
+import 'package:englishcoach/application/provider/userprovider_test2.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/test2_home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +7,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => UserProviderTest2()),
       ],
       child: const RootScreen(),
     ),
@@ -22,8 +21,7 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      // home: PriliminaryTest(),
-      home: Test2(),
+      home: Test2Home(),
     );
   }
 }

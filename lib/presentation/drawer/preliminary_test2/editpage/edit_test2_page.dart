@@ -1,9 +1,9 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:englishcoach/application/provider/userprovider.dart';
-import 'package:englishcoach/domain/model/quizmodel.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/widgets/buttonsmall.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/widgets/textarea.dart';
+import 'package:englishcoach/application/provider/userprovider_test2.dart';
+import 'package:englishcoach/domain/model/quizTest2model.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,11 +11,11 @@ import 'package:provider/provider.dart';
 class EditText2Page extends StatelessWidget {
   EditText2Page({super.key, required this.user});
 
-  Quiz user;
+  QuizTest2 user;
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserProvider>(context);
+    var controller = Provider.of<UserProviderTest2>(context);
 
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
@@ -70,7 +70,7 @@ class EditText2Page extends StatelessWidget {
             CustomButton(
               text: 'Update',
               ontap: () {
-                Provider.of<UserProvider>(context, listen: false)
+                Provider.of<UserProviderTest2>(context, listen: false)
                     .updateData(user.prelimTransQuesNum, context);
                 Navigator.pop(context);
               },

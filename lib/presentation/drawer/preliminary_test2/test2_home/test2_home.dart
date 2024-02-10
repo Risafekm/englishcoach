@@ -1,26 +1,26 @@
 // ignore_for_file: unused_local_variable, avoid_print
 
-import 'package:englishcoach/application/provider/userprovider.dart';
-import 'package:englishcoach/domain/model/quizmodel.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/edit/edit_text2_page.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/widgets/buttonsmall.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test/widgets/textarea.dart';
+import 'package:englishcoach/application/provider/userprovider_test2.dart';
+import 'package:englishcoach/domain/model/quizTest2model.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/editpage/edit_test2_page.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Test2 extends StatefulWidget {
-  const Test2({super.key});
+class Test2Home extends StatefulWidget {
+  const Test2Home({super.key});
 
   @override
-  State<Test2> createState() => _Test2State();
+  State<Test2Home> createState() => _Test2HomeState();
 }
 
-class _Test2State extends State<Test2> {
+class _Test2HomeState extends State<Test2Home> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<UserProvider>(context, listen: false).getData();
+      Provider.of<UserProviderTest2>(context, listen: false).getData();
     });
     super.initState();
   }
@@ -31,7 +31,7 @@ class _Test2State extends State<Test2> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserProvider>(context);
+    var controller = Provider.of<UserProviderTest2>(context);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
@@ -42,7 +42,7 @@ class _Test2State extends State<Test2> {
           style: GoogleFonts.lora(fontWeight: FontWeight.w600),
         ),
       ),
-      body: Consumer<UserProvider>(builder: (context, value, child) {
+      body: Consumer<UserProviderTest2>(builder: (context, value, child) {
         if (value.isLoding) {
           return const CircularProgressIndicator();
         }
@@ -138,8 +138,8 @@ class _Test2State extends State<Test2> {
     );
   }
 
-  Future<dynamic> deleteAlertBox(BuildContext context, List<Quiz> posts,
-      int index, UserProvider controller, Quiz user) {
+  Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest2> posts,
+      int index, UserProviderTest2 controller, QuizTest2 user) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -221,7 +221,8 @@ class _Test2State extends State<Test2> {
                         text: 'Post',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
-                            Provider.of<UserProvider>(context, listen: false)
+                            Provider.of<UserProviderTest2>(context,
+                                    listen: false)
                                 .addData(context);
 
                             Navigator.pop(context);
@@ -236,7 +237,7 @@ class _Test2State extends State<Test2> {
   }
 
   TextArea questionTextArea() {
-    var controller = Provider.of<UserProvider>(context, listen: false);
+    var controller = Provider.of<UserProviderTest2>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Question',
@@ -258,7 +259,7 @@ class _Test2State extends State<Test2> {
   }
 
   TextArea answerTextArea() {
-    var controller = Provider.of<UserProvider>(context, listen: false);
+    var controller = Provider.of<UserProviderTest2>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Answer',

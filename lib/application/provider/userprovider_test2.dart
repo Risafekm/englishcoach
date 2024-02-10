@@ -1,14 +1,14 @@
 // ignore_for_file: unnecessary_null_comparison, unused_local_variable
 
 import 'dart:convert';
-import 'package:englishcoach/domain/model/quizmodel.dart';
+import 'package:englishcoach/domain/model/quizTest2model.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 
-class UserProvider extends ChangeNotifier {
-  List<Quiz> _posts = [];
-  List<Quiz> get posts => _posts;
+class UserProviderTest2 extends ChangeNotifier {
+  List<QuizTest2> _posts = [];
+  List<QuizTest2> get posts => _posts;
   bool isLoding = false;
 
   // post controller
@@ -24,7 +24,7 @@ class UserProvider extends ChangeNotifier {
 
   addData(context) async {
     String apiUrl = 'http://localhost/englishcoach/createtest2.php';
-    var userdata = Quiz(
+    var userdata = QuizTest2(
       prelimTransQuestion: quesController.text.trim(),
       prelimTransQuesNum: '',
       prelimTransAnswer: ansController.text.trim(),
@@ -59,8 +59,9 @@ class UserProvider extends ChangeNotifier {
     try {
       var response = await http.get(Uri.parse(getUrl));
       if (response.statusCode == 200) {
-        var data = List<Quiz>.from(
-            jsonDecode(response.body).map((e) => Quiz.fromJson(e))).toList();
+        var data = List<QuizTest2>.from(
+                jsonDecode(response.body).map((e) => QuizTest2.fromJson(e)))
+            .toList();
         if (data != null) {
           _posts = data;
           isLoding = false;
@@ -77,7 +78,7 @@ class UserProvider extends ChangeNotifier {
   updateData(String i, context) async {
     Uri updateUrl = Uri.parse(
         'http://localhost/englishcoach/updatetest2.php?prelim_trans_ques_num=$i');
-    var data = Quiz(
+    var data = QuizTest2(
       prelimTransQuestion: editQuesController.text.trim(),
       prelimTransQuesNum: '',
       prelimTransAnswer: editAnsController.text.trim(),
