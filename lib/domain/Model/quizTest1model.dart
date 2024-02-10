@@ -1,23 +1,23 @@
 import 'dart:convert';
 
-List<Quiz> quizFromJson(String str) =>
-    List<Quiz>.from(json.decode(str).map((x) => Quiz.fromJson(x)));
+List<QuizTest1> quizFromJson(String str) =>
+    List<QuizTest1>.from(json.decode(str).map((x) => QuizTest1.fromJson(x)));
 
-String quizToJson(List<Quiz> data) =>
+String quizToJson(List<QuizTest1> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Quiz {
+class QuizTest1 {
   int topic_que_num;
   String topic_que_question;
   String topic_ans_answer;
 
-  Quiz({
+  QuizTest1({
     required this.topic_que_num,
     required this.topic_que_question,
     required this.topic_ans_answer,
   });
 
-  factory Quiz.fromJson(Map<String, dynamic> json) => Quiz(
+  factory QuizTest1.fromJson(Map<String, dynamic> json) => QuizTest1(
         topic_que_num: int.parse(json["topic_que_num"]),
         topic_que_question: json["topic_que_question"],
         topic_ans_answer: json["topic_ans_answer"],

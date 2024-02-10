@@ -2,14 +2,14 @@
 
 import 'dart:convert';
 
-import 'package:englishcoach/test1/api/topic_json.dart';
+import 'package:englishcoach/domain/Model/quizTest1model.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
 
-class UserProvider extends ChangeNotifier {
-  List<Quiz> _posts = [];
-  List<Quiz> get posts => _posts;
+class userprovidertest1 extends ChangeNotifier {
+  List<QuizTest1> _posts = [];
+  List<QuizTest1> get posts => _posts;
   bool isLoding = false;
 // post controller
   TextEditingController questionController = TextEditingController();
@@ -24,7 +24,7 @@ class UserProvider extends ChangeNotifier {
   addData(context) async {
     String apiUrl =
         'http://localhost/php_practice/englishCoach%20-%20Copy/answer/answer_insert.php';
-    var userdata = Quiz(
+    var userdata = QuizTest1(
       topic_que_num: 0,
       topic_que_question: questionController.text,
       topic_ans_answer: answersController.text,
@@ -60,8 +60,9 @@ class UserProvider extends ChangeNotifier {
     try {
       var response = await http.get(Uri.parse(getUrl));
       if (response.statusCode == 200) {
-        var data = List<Quiz>.from(
-            jsonDecode(response.body).map((e) => Quiz.fromJson(e))).toList();
+        var data = List<QuizTest1>.from(
+                jsonDecode(response.body).map((e) => QuizTest1.fromJson(e)))
+            .toList();
         if (data != null) {
           _posts = data;
           isLoding = false;
@@ -78,7 +79,7 @@ class UserProvider extends ChangeNotifier {
   updateData(int i, context) async {
     Uri updateUrl = Uri.parse(
         'http://localhost/php_practice/englishCoach%20-%20Copy/answer/answer_update.php?topic_que_num=$i');
-    var data = Quiz(
+    var data = QuizTest1(
       topic_que_num: i,
       topic_que_question: updatequestionController.text,
       topic_ans_answer: updateanswersController.text,

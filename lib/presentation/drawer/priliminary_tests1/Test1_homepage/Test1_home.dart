@@ -1,7 +1,7 @@
-import 'package:englishcoach/test1/api/topic_json.dart';
-import 'package:englishcoach/test1/ui/insert.dart';
-import 'package:englishcoach/test1/api/provider.dart';
-import 'package:englishcoach/test1/ui/update.dart';
+import 'package:englishcoach/domain/Model/quizTest1model.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_test1/insertpage/insert_test1_page.dart';
+import 'package:englishcoach/Application/Provider/userprovider_test1.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_test1/updatepage/edit_test1_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,14 +17,14 @@ class _Test1State extends State<Test1> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<UserProvider>(context, listen: false).getData();
+      Provider.of<userprovidertest1>(context, listen: false).getData();
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserProvider>(context);
+    var controller = Provider.of<userprovidertest1>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue.shade200,
@@ -34,7 +34,7 @@ class _Test1State extends State<Test1> {
         ),
         elevation: 3,
       ),
-      body: Consumer<UserProvider>(builder: (context, value, child) {
+      body: Consumer<userprovidertest1>(builder: (context, value, child) {
         if (value.isLoding) {
           return const CircularProgressIndicator();
         }
@@ -121,6 +121,7 @@ class _Test1State extends State<Test1> {
         );
       }),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue.shade200,
         onPressed: () {
           showModalBottomSheet(
             context: context,
@@ -135,8 +136,8 @@ class _Test1State extends State<Test1> {
     );
   }
 
-  Future<dynamic> deleteAlertBox(BuildContext context, List<Quiz> posts,
-      int index, UserProvider controller, Quiz user) {
+  Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest1> posts,
+      int index, userprovidertest1 controller, QuizTest1 user) {
     return showDialog(
         context: context,
         builder: (context) {

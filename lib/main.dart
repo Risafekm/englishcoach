@@ -1,5 +1,5 @@
-import 'package:englishcoach/test1/api/provider.dart';
-import 'package:englishcoach/test1/Test1.dart';
+import 'package:englishcoach/Application/Provider/userprovider_test1.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_tests1/Test1_homepage/Test1_home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +14,7 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => UserProvider()),
+        ChangeNotifierProvider(create: (context) => userprovidertest1()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
