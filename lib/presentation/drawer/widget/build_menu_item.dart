@@ -1,10 +1,9 @@
 import 'package:englishcoach/presentation/dashboard/screens/audio_chat_room.dart';
 import 'package:englishcoach/presentation/dashboard/screens/my_teacher.dart';
-import 'package:englishcoach/presentation/dashboard/screens/preliminary_test.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/test2_home.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_tests1/Test1_homepage/Test1_home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../../dashboard/screens/PreliminaryTest2.dart';
 
 class BuildMenuItem extends StatelessWidget {
   const BuildMenuItem({super.key});
@@ -17,10 +16,7 @@ class BuildMenuItem extends StatelessWidget {
         runSpacing: 10,
         children: [
           ListTile(
-            trailing: const Icon(
-              Icons.assignment,
-              color: Colors.white
-            ),
+            trailing: const Icon(Icons.assignment, color: Colors.white),
             title: Text(
               'Preliminary Test 1',
               style: GoogleFonts.lato(
@@ -29,16 +25,14 @@ class BuildMenuItem extends StatelessWidget {
               )),
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PreliminaryTest()));
+              // Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Test1()));
             },
           ),
           ListTile(
             trailing: const Icon(
-              Icons.lock,
+              Icons.assignment,
               color: Colors.white,
             ),
             title: Text(
@@ -49,14 +43,12 @@ class BuildMenuItem extends StatelessWidget {
               )),
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PreliminaryTest2()));
+              // Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Test2Home()));
             },
           ),
-           ListTile(
+          ListTile(
             trailing: const Icon(
               Icons.mic_none,
               color: Colors.white,
@@ -69,14 +61,14 @@ class BuildMenuItem extends StatelessWidget {
               )),
             ),
             onTap: () {
-              Navigator.pop(context);
+              // Navigator.pop(context);
               Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const AudioChatRoom()));
             },
           ),
-           ListTile(
+          ListTile(
             trailing: const Icon(
               Icons.chat,
               color: Colors.white,
@@ -84,19 +76,15 @@ class BuildMenuItem extends StatelessWidget {
             title: Text(
               'My Teacher',
               style: GoogleFonts.lato(
-                  textStyle: const TextStyle(
-                color: Colors.white
-              )),
+                  textStyle: const TextStyle(color: Colors.white)),
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const MyTeacher()));
+              // Navigator.pop(context);
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyTeacher()));
             },
           ),
-           ListTile(
+          ListTile(
             trailing: const Icon(
               Icons.power_settings_new_rounded,
               color: Colors.white,
@@ -104,9 +92,7 @@ class BuildMenuItem extends StatelessWidget {
             title: Text(
               'Logout',
               style: GoogleFonts.lato(
-                  textStyle: const TextStyle(
-                color: Colors.white
-              )),
+                  textStyle: const TextStyle(color: Colors.white)),
             ),
             onTap: () {},
           ),

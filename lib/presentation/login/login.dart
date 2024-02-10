@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print
+
+import 'package:englishcoach/presentation/dashboard/dashboard.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -38,12 +41,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: Colors.black,
                     fontWeight: FontWeight.w400),
               ),
-              // Image.asset(
-              //   "asset/images/logo.png",
-              //   fit: BoxFit.fitWidth,
-              //   width: 400,
-              //   height: 400,
-              // ),
               const SizedBox(
                 height: 60,
               ),
@@ -67,35 +64,6 @@ TextEditingController phoneController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 String errorMessage = '';
-// String? validateEmail(String? formEmail) {
-//   if (formEmail == null || formEmail.isEmpty) {
-//     return 'E-mail address is required.';
-//   }
-
-//   String pattern = r'\w+@\w+\.\w+';
-//   RegExp regex = RegExp(pattern);
-//   if (!regex.hasMatch(formEmail)) return 'Please enter correct Email';
-
-//   return null;
-// }
-
-String? validatePassword(String? formPassword) {
-  if (formPassword == null || formPassword.isEmpty) {
-    return 'Password is required.';
-  }
-
-  String pattern =
-      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
-  RegExp regex = RegExp(pattern);
-  if (!regex.hasMatch(formPassword)) {
-    return '''
-      Wrong password, Please enter correct Password
-      
-      ''';
-  }
-
-  return null;
-}
 
 class _TextFormFieldSectionState extends State<TextFormFieldSection> {
   @override
@@ -104,51 +72,47 @@ class _TextFormFieldSectionState extends State<TextFormFieldSection> {
       key: formKey,
       child: Column(
         children: [
-          IntlPhoneField(
-            keyboardType: TextInputType.phone,
-            // focusNode: (),
-            dropdownTextStyle: const TextStyle(fontSize: 18),
-            style: const TextStyle(fontSize: 18),
-            dropdownIcon: const Icon(
-              Icons.arrow_drop_down,
-              size: 28,
-            ),
-            decoration: InputDecoration(
-              labelText: 'Your Mobile',
-              labelStyle: GoogleFonts.poppins(
-                color: Colors.black,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: const BorderSide(),
-              ),
-            ),
-            initialCountryCode: 'IN',
-            onChanged: (phone) {
-              print(phone.completeNumber);
+          TextArea(
+            keyboardType: TextInputType.number,
+            name: 'Ph no',
+            controller: phoneController,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'please enter number';
+              } else {
+                return null;
+              }
             },
+            suffixIcon: const Icon(
+              Icons.abc,
+              color: Colors.transparent,
+            ),
+            obscureText: false,
+            prefixIcon: const Icon(
+              Icons.phone,
+              color: Colors.green,
+            ),
           ),
           const SizedBox(height: 20),
-          TextFormField(
+          TextArea(
+            keyboardType: TextInputType.number,
+            name: 'Password',
             controller: passwordController,
-            validator: validatePassword,
-            obscureText: true,
-            cursorColor: Colors.black,
-            decoration: InputDecoration(
-              prefixIcon: const Icon(
-                Icons.lock_outline,
-                color: Colors.black,
-              ),
-              labelText: "Enter Password",
-              labelStyle: GoogleFonts.poppins(
-                color: Colors.black,
-              ),
-              // filled: true,
-              // fillColor: Colors.white.withOpacity(0.3),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: const BorderSide(),
-              ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'please enter password';
+              } else {
+                return null;
+              }
+            },
+            suffixIcon: const Icon(
+              Icons.abc,
+              color: Colors.transparent,
+            ),
+            obscureText: false,
+            prefixIcon: const Icon(
+              Icons.lock,
+              color: Colors.red,
             ),
           ),
           const SizedBox(height: 20),
@@ -159,19 +123,19 @@ class _TextFormFieldSectionState extends State<TextFormFieldSection> {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
             child: ElevatedButton(
               onPressed: () {
-                // Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) => const Home(),
-                //       ),
-                //     );
+                if (formKey.currentState!.validate()) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DashBoardPage()));
+                }
               },
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.resolveWith((states) {
                   if (states.contains(MaterialState.pressed)) {
-                    return Color.fromARGB(255, 32, 81, 127);
+                    return const Color.fromARGB(255, 32, 81, 127);
                   }
-                  return Color.fromARGB(255, 39, 130, 95);
+                  return const Color.fromARGB(255, 39, 130, 95);
                 }),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(

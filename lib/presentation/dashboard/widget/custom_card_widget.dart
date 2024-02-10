@@ -14,10 +14,11 @@ class CustomCard extends StatelessWidget {
     return Card(
       color: const Color.fromARGB(255, 152, 184, 238),
       child: Container(
-        width: 400,
+        width: MediaQuery.of(context).size.width * .9,
         height: 150,
         decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 152, 184, 238), borderRadius: BorderRadius.circular(20)),
+            color: const Color.fromARGB(255, 152, 184, 238),
+            borderRadius: BorderRadius.circular(20)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [

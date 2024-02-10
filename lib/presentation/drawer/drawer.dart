@@ -7,8 +7,8 @@ class DrawerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Drawer(
-      backgroundColor:   Color.fromARGB(255, 48, 80, 136),
+    return const Drawer(
+      backgroundColor: Color.fromARGB(255, 48, 80, 136),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -21,4 +21,3 @@ class DrawerPage extends StatelessWidget {
     );
   }
 }
-

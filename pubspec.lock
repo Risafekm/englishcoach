@@ -99,23 +99,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  glass_kit:
-    dependency: "direct main"
-    description:
-      name: glass_kit
-      sha256: "5cbf3c979089ebac808856a0f8e6161f0d302b71dfc18766fa40c25b87dfc304"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
-=======
->>>>>>> rusafida
-=======
->>>>>>> shalima
-=======
->>>>>>> sana
   google_fonts:
     dependency: "direct main"
     description:
@@ -125,19 +108,7 @@ packages:
     source: hosted
     version: "6.1.0"
   http:
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     dependency: "direct main"
-=======
-    dependency: transitive
->>>>>>> rusafida
-=======
-    dependency: transitive
->>>>>>> shalima
-=======
-    dependency: "direct main"
->>>>>>> sana
     description:
       name: http
       sha256: a2bbf9d017fcced29139daa8ed2bba4ece450ab222871df93ca9eec6f80c34ba
@@ -152,9 +123,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   intl_phone_field:
     dependency: "direct main"
     description:
@@ -163,9 +131,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
->>>>>>> shalima
-=======
->>>>>>> sana
   lints:
     dependency: transitive
     description:
@@ -198,10 +163,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> sana
   nested:
     dependency: transitive
     description:
@@ -210,8 +171,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-<<<<<<< HEAD
-=======
   page_transition:
     dependency: transitive
     description:
@@ -220,9 +179,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
->>>>>>> shalima
-=======
->>>>>>> sana
   path:
     dependency: transitive
     description:
@@ -295,11 +251,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> sana
   provider:
     dependency: "direct main"
     description:
@@ -308,13 +259,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
-<<<<<<< HEAD
-=======
->>>>>>> rusafida
-=======
->>>>>>> shalima
-=======
->>>>>>> sana
   sky_engine:
     dependency: transitive
     description: flutter

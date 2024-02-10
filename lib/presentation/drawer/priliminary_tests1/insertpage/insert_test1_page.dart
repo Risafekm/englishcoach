@@ -1,6 +1,6 @@
 import 'package:englishcoach/Application/Provider/userprovider_test1.dart';
-import 'package:englishcoach/presentation/drawer/priliminary_test1/test1_home/widgets/custom_button.dart';
-import 'package:englishcoach/presentation/drawer/priliminary_test1/test1_home/widgets/textArea.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
