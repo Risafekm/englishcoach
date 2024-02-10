@@ -91,6 +91,7 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
   glass_kit:
     dependency: "direct main"
     description:
@@ -99,6 +100,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+=======
+>>>>>>> rusafida
   google_fonts:
     dependency: "direct main"
     description:
@@ -108,7 +111,11 @@ packages:
     source: hosted
     version: "6.1.0"
   http:
+<<<<<<< HEAD
     dependency: "direct main"
+=======
+    dependency: transitive
+>>>>>>> rusafida
     description:
       name: http
       sha256: a2bbf9d017fcced29139daa8ed2bba4ece450ab222871df93ca9eec6f80c34ba
@@ -235,6 +242,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+<<<<<<< HEAD
   provider:
     dependency: "direct main"
     description:
@@ -243,6 +251,8 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.1"
+=======
+>>>>>>> rusafida
   sky_engine:
     dependency: transitive
     description: flutter

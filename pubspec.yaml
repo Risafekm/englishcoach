@@ -35,6 +35,15 @@ dependencies:
   provider: ^6.1.1
   google_fonts:
   glass_kit: ^3.0.0
+=======
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
+
+>>>>>>> rusafida
 dev_dependencies:
 
   # The "flutter_lints" package below contains a set of recommended lints to
