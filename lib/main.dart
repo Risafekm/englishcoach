@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import 'package:englishcoach/application/provider/userprovider_test2.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/test2_home.dart';
+=======
+import 'package:englishcoach/presentation/login/splash_screen.dart';
+>>>>>>> shalima
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,10 +26,14 @@ class RootScreen extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
       // home: Test2Home(),
 =======
-      home: DashBoardPage(),
+      // home: DashBoardPage(),
 >>>>>>> rusafida
+=======
+      home: SplashScreen(),
+>>>>>>> shalima
     );
   }
 }
