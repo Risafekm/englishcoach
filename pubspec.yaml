@@ -43,12 +43,18 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 <<<<<<< HEAD
+<<<<<<< HEAD
   google_fonts: ^6.1.0
 =======
   animated_splash_screen: ^1.3.0
   google_fonts: ^6.1.0
   intl_phone_field: ^3.2.0
 >>>>>>> shalima
+=======
+  provider: ^6.1.1
+  http: ^1.2.0
+  google_fonts: ^6.1.0
+>>>>>>> sana
 
 >>>>>>> rusafida
 dev_dependencies:
