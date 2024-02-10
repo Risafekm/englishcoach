@@ -21,7 +21,6 @@ class RootScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Test2Home(),
 <<<<<<< HEAD
       // home: Test2Home(),
 =======
