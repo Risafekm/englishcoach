@@ -1,7 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:englishcoach/domain/Model/quizTest1model.dart';
-import 'package:englishcoach/presentation/drawer/priliminary_test1/insertpage/insert_test1_page.dart';
 import 'package:englishcoach/Application/Provider/userprovider_test1.dart';
-import 'package:englishcoach/presentation/drawer/priliminary_test1/updatepage/edit_test1_page.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_tests1/insertpage/insert_test1_page.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_tests1/update_page/edit_test1_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,7 +38,7 @@ class _Test1State extends State<Test1> {
       ),
       body: Consumer<userprovidertest1>(builder: (context, value, child) {
         if (value.isLoding) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
         final posts = value.posts;
         return ListView.builder(
@@ -105,8 +107,6 @@ class _Test1State extends State<Test1> {
                           onPressed: () {
                             deleteAlertBox(
                                 context, posts, index, controller, user);
-                            controller.deleteData(user.topic_que_num, context);
-                            print('Delete button tapped');
                           },
                           icon: const Icon(
                             Icons.delete,
