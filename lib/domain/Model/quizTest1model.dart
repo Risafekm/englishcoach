@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:convert';
 
 List<QuizTest1> quizFromJson(String str) =>

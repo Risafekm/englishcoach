@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               const SizedBox(
-                height: 60,
+                height: 120,
               ),
               Text(
                 "englishcoach",
@@ -72,6 +72,7 @@ class _TextFormFieldSectionState extends State<TextFormFieldSection> {
       key: formKey,
       child: Column(
         children: [
+          const SizedBox(height: 50),
           TextArea(
             keyboardType: TextInputType.number,
             name: 'Ph no',

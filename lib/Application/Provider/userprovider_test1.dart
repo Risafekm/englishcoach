@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable
+// ignore_for_file: unnecessary_null_comparison, unused_local_variable, camel_case_types
 
 import 'dart:convert';
 
@@ -22,8 +22,7 @@ class userprovidertest1 extends ChangeNotifier {
 // post
 
   addData(context) async {
-    String apiUrl =
-        'http://localhost/php_practice/englishCoach%20-%20Copy/answer/answer_insert.php';
+    String apiUrl = 'http://localhost/englishcoach/test1/createtest1.php';
     var userdata = QuizTest1(
       topic_que_num: 0,
       topic_que_question: questionController.text,
@@ -54,8 +53,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   getData() async {
     isLoding = true;
-    String getUrl =
-        'http://localhost/php_practice/englishCoach%20-%20Copy/answer/answer_select.php';
+    String getUrl = 'http://localhost/englishcoach/test1/readtest1.php';
 
     try {
       var response = await http.get(Uri.parse(getUrl));
@@ -78,7 +76,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   updateData(int i, context) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/php_practice/englishCoach%20-%20Copy/answer/answer_update.php?topic_que_num=$i');
+        'http://localhost/englishcoach/test1/updatetest1.php?topic_que_num=$i');
     var data = QuizTest1(
       topic_que_num: i,
       topic_que_question: updatequestionController.text,
@@ -105,7 +103,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   deleteData(int i, context) async {
     Uri deleteUrl = Uri.parse(
-        'http://localhost/php_practice/englishCoach%20-%20Copy/answer/answer_delete.php?topic_que_num=$i');
+        'http://localhost/englishcoach/test1/deletetest1.php?topic_que_num=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
