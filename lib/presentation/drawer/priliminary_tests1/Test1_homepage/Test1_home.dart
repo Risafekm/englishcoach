@@ -30,6 +30,10 @@ class _Test1State extends State<Test1> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue.shade200,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
         title: Text(
           'Test 1 Questions & Answers',
           style: GoogleFonts.lora(fontWeight: FontWeight.w600),

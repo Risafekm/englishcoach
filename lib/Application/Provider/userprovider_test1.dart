@@ -22,7 +22,7 @@ class userprovidertest1 extends ChangeNotifier {
 // post
 
   addData(context) async {
-    String apiUrl = 'http://localhost/englishcoach/test1/createtest1.php';
+    String apiUrl = 'http://localhost/english_coach_php/test1/createtest1.php';
     var userdata = QuizTest1(
       topic_que_num: 0,
       topic_que_question: questionController.text,
@@ -53,7 +53,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   getData() async {
     isLoding = true;
-    String getUrl = 'http://localhost/englishcoach/test1/readtest1.php';
+    String getUrl = 'http://localhost/english_coach_php/test1/readtest1.php';
 
     try {
       var response = await http.get(Uri.parse(getUrl));
@@ -76,7 +76,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   updateData(int i, context) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/englishcoach/test1/updatetest1.php?topic_que_num=$i');
+        'http://localhost/english_coach_php/test1/updatetest1.php?topic_que_num=$i');
     var data = QuizTest1(
       topic_que_num: i,
       topic_que_question: updatequestionController.text,
@@ -103,7 +103,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   deleteData(int i, context) async {
     Uri deleteUrl = Uri.parse(
-        'http://localhost/englishcoach/test1/deletetest1.php?topic_que_num=$i');
+        'http://localhost/english_coach_php/test1/deletetest1.php?topic_que_num=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {

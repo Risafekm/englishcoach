@@ -1,5 +1,5 @@
-import 'package:englishcoach/presentation/dashboard/screens/audio_chat_room.dart';
-import 'package:englishcoach/presentation/dashboard/screens/my_teacher.dart';
+import 'package:englishcoach/presentation/drawer/modules_exercises_page/exercises_page.dart';
+import 'package:englishcoach/presentation/drawer/modules_page/modules_page.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/test2_home.dart';
 import 'package:englishcoach/presentation/drawer/priliminary_tests1/Test1_homepage/Test1_home.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,6 @@ class BuildMenuItem extends StatelessWidget {
               )),
             ),
             onTap: () {
-              // Navigator.pop(context);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const Test1()));
             },
@@ -43,45 +42,42 @@ class BuildMenuItem extends StatelessWidget {
               )),
             ),
             onTap: () {
-              // Navigator.pop(context);
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => const Test2Home()));
             },
           ),
           ListTile(
             trailing: const Icon(
-              Icons.mic_none,
+              Icons.view_module_sharp,
               color: Colors.white,
             ),
             title: Text(
-              'Audio Chat Room',
+              'Modules page',
               style: GoogleFonts.lato(
                   textStyle: const TextStyle(
                 color: Colors.white,
               )),
             ),
             onTap: () {
-              // Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AudioChatRoom()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ModulesPage()));
             },
           ),
           ListTile(
             trailing: const Icon(
-              Icons.chat,
+              Icons.home_work_outlined,
               color: Colors.white,
             ),
             title: Text(
-              'My Teacher',
+              'Modules Exercises',
               style: GoogleFonts.lato(
                   textStyle: const TextStyle(color: Colors.white)),
             ),
             onTap: () {
-              // Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const MyTeacher()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ExercisesPage()));
             },
           ),
           ListTile(

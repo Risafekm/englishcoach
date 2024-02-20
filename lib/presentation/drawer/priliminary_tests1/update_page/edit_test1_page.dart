@@ -86,7 +86,7 @@ class EditPage extends StatelessWidget {
             ontap: () {
               if (formkey.currentState!.validate()) {
                 Provider.of<userprovidertest1>(context, listen: false)
-                    .addData(context);
+                    .updateData(user.topic_que_num, context);
 
                 Navigator.pop(context);
               }

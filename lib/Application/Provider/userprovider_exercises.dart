@@ -1,33 +1,38 @@
 // ignore_for_file: unnecessary_null_comparison, unused_local_variable
 
 import 'dart:convert';
-import 'package:englishcoach/domain/model/quizTest2model.dart';
+import 'package:englishcoach/domain/model/exercisesmodel.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:flutter/material.dart';
 
-class UserProviderTest2 extends ChangeNotifier {
-  List<QuizTest2> _posts = [];
-  List<QuizTest2> get posts => _posts;
+class UserProviderExercises extends ChangeNotifier {
+  List<Exercises> _posts = [];
+  List<Exercises> get posts => _posts;
   bool isLoding = false;
 
   // post controller
+  TextEditingController modnumController = TextEditingController();
   TextEditingController quesController = TextEditingController();
   TextEditingController ansController = TextEditingController();
 
   //update Controller
 
+  TextEditingController editExeNumController = TextEditingController();
+  TextEditingController editModnumController = TextEditingController();
   TextEditingController editQuesController = TextEditingController();
   TextEditingController editAnsController = TextEditingController();
 
   //post Data
 
   addData(context) async {
-    String apiUrl = 'http://localhost/english_coach_php/test2/createtest2.php';
-    var userdata = QuizTest2(
-      prelimTransQuestion: quesController.text.trim(),
-      prelimTransQuesNum: '',
-      prelimTransAnswer: ansController.text.trim(),
+    String apiUrl =
+        'http://localhost/english_coach_php/module_Exercises/create_exercises.php';
+    var userdata = Exercises(
+      exeNum: '',
+      modNum: modnumController.text,
+      exeQuestion: quesController.text,
+      exeAnswer: ansController.text,
+      exeSentenceRule: '',
     );
     try {
       var bodyy = jsonEncode(userdata);
@@ -55,12 +60,13 @@ class UserProviderTest2 extends ChangeNotifier {
 
   getData() async {
     isLoding = true;
-    String getUrl = 'http://localhost/english_coach_php/test2/readtest2.php';
+    String getUrl =
+        'http://localhost/english_coach_php/module_Exercises/read_exercises.php';
     try {
       var response = await http.get(Uri.parse(getUrl));
       if (response.statusCode == 200) {
-        var data = List<QuizTest2>.from(
-                jsonDecode(response.body).map((e) => QuizTest2.fromJson(e)))
+        var data = List<Exercises>.from(
+                jsonDecode(response.body).map((e) => Exercises.fromJson(e)))
             .toList();
         if (data != null) {
           _posts = data;
@@ -77,11 +83,13 @@ class UserProviderTest2 extends ChangeNotifier {
 
   updateData(String i, context) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/english_coach_php/test2/updatetest2.php?prelim_trans_ques_num=$i');
-    var data = QuizTest2(
-      prelimTransQuestion: editQuesController.text.trim(),
-      prelimTransQuesNum: '',
-      prelimTransAnswer: editAnsController.text.trim(),
+        'http://localhost/english_coach_php/module_Exercises/update_exercises.php?exe_num=$i');
+    var data = Exercises(
+      exeNum: editExeNumController.text,
+      modNum: editModnumController.text,
+      exeQuestion: editQuesController.text,
+      exeAnswer: editAnsController.text,
+      exeSentenceRule: '',
     );
 
     try {
@@ -106,7 +114,7 @@ class UserProviderTest2 extends ChangeNotifier {
 
   deleteData(String i, context) async {
     Uri deleteUrl = Uri.parse(
-        'http://localhost/english_coach_php/test2/deletetest2.php?prelim_trans_ques_num=$i');
+        'http://localhost/english_coach_php/module_Exercises/delete_exercises.php?exe_num=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {

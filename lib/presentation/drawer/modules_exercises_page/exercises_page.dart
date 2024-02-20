@@ -1,54 +1,53 @@
-// ignore_for_file: unused_local_variable, avoid_print
-
-import 'package:englishcoach/application/provider/userprovider_test2.dart';
-import 'package:englishcoach/domain/model/quizTest2model.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test2/editpage/edit_test2_page.dart';
+import 'package:englishcoach/application/provider/userprovider_exercises.dart';
+import 'package:englishcoach/domain/model/exercisesmodel.dart';
+import 'package:englishcoach/presentation/drawer/modules_exercises_page/editpage/edit_exercises.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class Test2Home extends StatefulWidget {
-  const Test2Home({super.key});
+class ExercisesPage extends StatefulWidget {
+  const ExercisesPage({super.key});
 
   @override
-  State<Test2Home> createState() => _Test2HomeState();
+  State<ExercisesPage> createState() => _ExercisesPageState();
 }
 
-class _Test2HomeState extends State<Test2Home> {
+class _ExercisesPageState extends State<ExercisesPage> {
+  final formkey = GlobalKey<FormState>();
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<UserProviderTest2>(context, listen: false).getData();
+      Provider.of<UserProviderExercises>(context, listen: false).getData();
     });
     super.initState();
   }
 
-  TextEditingController quesTest2Controller = TextEditingController();
-  TextEditingController ansText2Controller = TextEditingController();
-  final formkey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserProviderTest2>(context);
+    var controller = Provider.of<UserProviderExercises>(context);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         backgroundColor: Colors.blue.shade200,
+        centerTitle: true,
         elevation: 3,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back_ios),
         ),
         title: Text(
-          'Test 2 Questions & Answers',
+          'Exercises',
           style: GoogleFonts.lora(fontWeight: FontWeight.w600),
         ),
       ),
-      body: Consumer<UserProviderTest2>(builder: (context, value, child) {
+      body: Consumer<UserProviderExercises>(builder: (context, value, child) {
         if (value.isLoding) {
-          return const CircularProgressIndicator();
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
         final posts = value.posts;
         return ListView.builder(
@@ -72,7 +71,7 @@ class _Test2HomeState extends State<Test2Home> {
                     children: [
                       const SizedBox(width: 10),
                       CircleAvatar(
-                        child: Text(posts[index].prelimTransQuesNum.toString()),
+                        child: Text(user.exeNum.toString()),
                       ),
                       const SizedBox(width: 20),
                       Expanded(
@@ -81,14 +80,14 @@ class _Test2HomeState extends State<Test2Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Question : ${posts[index].prelimTransQuestion}',
+                              'Question :${user.exeQuestion}'.toString(),
                               overflow: TextOverflow.ellipsis,
                               style:
                                   GoogleFonts.lora(fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              'Answer : ${posts[index].prelimTransAnswer}',
+                              'Answer :${user.exeAnswer}',
                               overflow: TextOverflow.ellipsis,
                               style:
                                   GoogleFonts.lora(fontWeight: FontWeight.w500),
@@ -99,13 +98,17 @@ class _Test2HomeState extends State<Test2Home> {
                       const SizedBox(width: 10),
                       IconButton(
                         onPressed: () {
+                          controller.editExeNumController.text =
+                              posts[index].exeNum;
+                          controller.editModnumController.text =
+                              posts[index].modNum;
                           controller.editQuesController.text =
-                              posts[index].prelimTransQuestion.toString();
+                              posts[index].exeQuestion.toString();
                           controller.editAnsController.text =
-                              posts[index].prelimTransAnswer.toString();
+                              posts[index].exeAnswer.toString();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
-                                  EditText2Page(user: posts[index])));
+                                  EditExercises(user: posts[index])));
                         },
                         icon: const Icon(
                           Icons.edit,
@@ -142,14 +145,14 @@ class _Test2HomeState extends State<Test2Home> {
     );
   }
 
-  Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest2> posts,
-      int index, UserProviderTest2 controller, QuizTest2 user) {
+  Future<dynamic> deleteAlertBox(BuildContext context, List<Exercises> posts,
+      int index, UserProviderExercises controller, Exercises user) {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
             title: Text(
-              'Delete Question ${posts[index].prelimTransQuesNum}',
+              'Delete Question ${posts[index].exeNum}',
               style:
                   GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
             ),
@@ -171,8 +174,7 @@ class _Test2HomeState extends State<Test2Home> {
               const SizedBox(width: 10),
               TextButton(
                 onPressed: () {
-                  controller.deleteData(
-                      user.prelimTransQuesNum.toString(), context);
+                  controller.deleteData(user.exeNum.toString(), context);
                   Navigator.pop(context);
                 },
                 child: const Text(
@@ -185,8 +187,6 @@ class _Test2HomeState extends State<Test2Home> {
         });
   }
 
-//floating action button function
-
   Future<dynamic> modelSheet(BuildContext context) {
     return showModalBottomSheet(
         context: context,
@@ -196,54 +196,80 @@ class _Test2HomeState extends State<Test2Home> {
         ),
         builder: (BuildContext context) {
           return Container(
-              height: 450.0,
-              color: Colors.transparent,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade200,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                  ),
+            height: 450.0,
+            color: Colors.transparent,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.blue.shade200,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30.0),
+                  topRight: Radius.circular(30.0),
                 ),
-                child: Form(
-                  key: formkey,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 30),
-                      Text(
-                        'Add new question & answer',
-                        style: GoogleFonts.lora(
-                            fontSize: 22,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(height: 50),
-                      questionTextArea(),
-                      const SizedBox(height: 20),
-                      answerTextArea(),
-                      const SizedBox(height: 20),
-                      CustomButton(
-                        text: 'Post',
-                        ontap: () {
-                          if (formkey.currentState!.validate()) {
-                            Provider.of<UserProviderTest2>(context,
-                                    listen: false)
-                                .addData(context);
+              ),
+              child: Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    Text(
+                      'Add new question & answer',
+                      style: GoogleFonts.lora(
+                          fontSize: 22,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    const SizedBox(height: 50),
+                    modnumTextArea(),
+                    const SizedBox(height: 20),
+                    questionTextArea(),
+                    const SizedBox(height: 20),
+                    answerTextArea(),
+                    const SizedBox(height: 20),
+                    CustomButton(
+                      text: 'Post',
+                      ontap: () {
+                        if (formkey.currentState!.validate()) {
+                          Provider.of<UserProviderExercises>(context,
+                                  listen: false)
+                              .addData(context);
 
-                            Navigator.pop(context);
-                          }
-                        },
-                      ),
-                    ],
-                  ),
+                          Navigator.pop(context);
+                        }
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                  ],
                 ),
-              ));
+              ),
+            ),
+          );
         });
   }
 
+  TextArea modnumTextArea() {
+    var controller = Provider.of<UserProviderExercises>(context, listen: false);
+    return TextArea(
+      keyboardType: TextInputType.text,
+      name: 'Modnum',
+      controller: controller.modnumController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'please enter modnum';
+        } else {
+          return null;
+        }
+      },
+      suffixIcon: const Icon(
+        Icons.abc,
+        color: Colors.transparent,
+      ),
+      obscureText: false,
+      prefixIcon: const Icon(Icons.comment),
+    );
+  }
+
   TextArea questionTextArea() {
-    var controller = Provider.of<UserProviderTest2>(context, listen: false);
+    var controller = Provider.of<UserProviderExercises>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Question',
@@ -265,7 +291,7 @@ class _Test2HomeState extends State<Test2Home> {
   }
 
   TextArea answerTextArea() {
-    var controller = Provider.of<UserProviderTest2>(context, listen: false);
+    var controller = Provider.of<UserProviderExercises>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Answer',
