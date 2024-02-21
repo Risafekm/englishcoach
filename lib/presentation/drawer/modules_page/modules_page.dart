@@ -102,117 +102,117 @@ class _ModulesPageState extends State<ModulesPage> {
       }
       final posts = value.posts;
 
-      return ListView.builder(
-          itemCount: posts.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            DescriptionPage(data: posts[index])));
-              },
-              onLongPress: () {
-                deleteAlertBox(context, posts, index, controller, posts[index]);
-              },
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 5.0, right: 5.0, top: 8.0, bottom: 8.0),
-                    child: Container(
-                      height: 160,
-                      width: 130,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Colors.green.shade600,
-                            Colors.blue.shade300,
-                          ],
-                        ),
-                      ),
-                      child: Center(
-                        child: Text(
-                          posts[index].modName,
-                          style: GoogleFonts.lora(
-                              fontSize: 18, color: Colors.white),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: -5,
-                    bottom: -12,
-                    child: Text(
-                      posts[index].modOrder,
-                      style: TextStyle(
-                          fontSize: 70,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange.shade400),
-                    ),
-                  ),
-                  Positioned(
-                    top: 10,
-                    right: 10,
-                    child: GestureDetector(
-                      onTap: () {
-                        controller.editmodnameController.text =
-                            posts[index].modName;
-                        controller.editmoddescriptionController.text =
-                            posts[index].modDescription;
-                        controller.editmodcontentController.text =
-                            posts[index].modContent;
-                        controller.editmodorderController.text =
-                            posts[index].modOrder;
-                        controller.editmodspecialnoteController.text =
-                            posts[index].modSpecialnote;
-                        controller.edittnumController.text = posts[index].tNum;
+      return ReorderableListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: posts.length,
+        onReorder: (oldIndex, newIndex) {
+          setState(() {
+            if (oldIndex < newIndex) {
+              newIndex -= 1;
+            }
 
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    EditModules(user: posts[index])));
-                      },
-                      child: const CircleAvatar(
-                        backgroundColor: Colors.white,
-                        radius: 12,
-                        child: Icon(
-                          Icons.edit,
-                          size: 13,
-                          color: Colors.black87,
-                        ),
+            // Perform the reordering directly on the posts list
+            controller.posts
+                .insert(newIndex, controller.posts.removeAt(oldIndex));
+          });
+
+          // namma new set aakkiya function vilikkanam
+          setState(() {});
+        },
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            key: ValueKey(posts[index]),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DescriptionPage(data: posts[index]),
+                ),
+              );
+            },
+            onLongPress: () {
+              deleteAlertBox(context, posts, index, controller, posts[index]);
+            },
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 5.0, right: 5.0, top: 8.0, bottom: 8.0),
+                  child: Container(
+                    height: 160,
+                    width: 130,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          Colors.green.shade600,
+                          Colors.blue.shade300,
+                        ],
+                      ),
+                    ),
+                    child: Center(
+                      child: Text(
+                        posts[index].modName,
+                        style:
+                            GoogleFonts.lora(fontSize: 18, color: Colors.white),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
-                  // Positioned(
-                  //   top: 10,
-                  //   right: 5,
-                  //   child: GestureDetector(
-                  //     onTap: () {
-                  //     },
-                  //     child: const CircleAvatar(
-                  //       backgroundColor: Colors.white,
-                  //       radius: 12,
-                  //       child: Icon(
-                  //         Icons.cancel,
-                  //         size: 13,
-                  //         color: Colors.red,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              ),
-            );
-          });
+                ),
+                Positioned(
+                  left: -5,
+                  bottom: -12,
+                  child: Text(
+                    posts[index].modOrder,
+                    style: TextStyle(
+                        fontSize: 70,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange.shade400),
+                  ),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: GestureDetector(
+                    onTap: () {
+                      controller.editmodnameController.text =
+                          posts[index].modName;
+                      controller.editmoddescriptionController.text =
+                          posts[index].modDescription;
+                      controller.editmodcontentController.text =
+                          posts[index].modContent;
+                      controller.editmodorderController.text =
+                          posts[index].modOrder;
+                      controller.editmodspecialnoteController.text =
+                          posts[index].modSpecialnote;
+                      controller.edittnumController.text = posts[index].tNum;
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  EditModules(user: posts[index])));
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 12,
+                      child: Icon(
+                        Icons.edit,
+                        size: 13,
+                        color: Colors.black87,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
     }));
   }
 

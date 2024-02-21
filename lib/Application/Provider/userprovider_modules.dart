@@ -9,6 +9,17 @@ class UserproviderModules extends ChangeNotifier {
   List<Modules> _posts = [];
   List<Modules> get posts => _posts;
   bool isLoding = false;
+
+  // void reorderPosts(int oldIndex, int newIndex) {
+  //   if (oldIndex < newIndex) {
+  //     newIndex -= 1;
+  //   }
+
+  //   final postToReorder = posts.removeAt(oldIndex);
+  //   posts.insert(newIndex, postToReorder);
+  //   notifyListeners();
+  // }
+
 // post controller
   TextEditingController modorderController = TextEditingController();
   TextEditingController tnumController = TextEditingController();

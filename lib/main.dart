@@ -1,6 +1,7 @@
 import 'package:englishcoach/application/provider/userprovider_exercises.dart';
 import 'package:englishcoach/application/provider/userprovider_modules.dart';
 import 'package:englishcoach/application/provider/userprovider_test2.dart';
+import 'package:englishcoach/presentation/drawer/modules_page/modules_page.dart';
 import 'package:englishcoach/presentation/login/splash_screen.dart';
 import 'package:englishcoach/Application/Provider/userprovider_test1.dart';
 import 'package:flutter/material.dart';
@@ -34,9 +35,9 @@ class RootScreen extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: ModulesPage(),
+      home: ModulesPage(),
       // home: ExercisesPage(),
-      home: const SplashScreen(),
+      // home: const SplashScreen(),
     );
   }
 }
