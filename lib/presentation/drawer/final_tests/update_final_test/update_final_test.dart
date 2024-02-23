@@ -1,21 +1,21 @@
 // ignore_for_file: must_be_immutable, unused_local_variable
 
-import 'package:englishcoach/application/provider/userprovider_test1.dart';
-import 'package:englishcoach/domain/Model/quizTest1model.dart';
+import 'package:englishcoach/application/provider/user_provider_final_test.dart';
+import 'package:englishcoach/domain/model/final_test_model.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class EditPageTest1 extends StatelessWidget {
-  EditPageTest1({super.key, required this.user});
+class UpdateFinalTest extends StatelessWidget {
+  UpdateFinalTest({super.key, required this.user});
 
-  QuizTest1 user;
+  FinalTest user;
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<userprovidertest1>(context);
+    var controller = Provider.of<UserproviderFinalTest>(context);
 
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
@@ -23,7 +23,7 @@ class EditPageTest1 extends StatelessWidget {
         backgroundColor: Colors.blue.shade200,
         elevation: 3,
         title: Text(
-          'Edit Test 2 Questions',
+          'Edit Final Test',
           style: GoogleFonts.lora(fontWeight: FontWeight.w600),
         ),
       ),
@@ -32,7 +32,7 @@ class EditPageTest1 extends StatelessWidget {
           children: [
             const SizedBox(height: 40),
             Text(
-              'Question No ${user.topic_que_num}',
+              'Question No ${user.finalQuesNumber}',
               style:
                   GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 22),
             ),
@@ -70,8 +70,8 @@ class EditPageTest1 extends StatelessWidget {
             CustomButton(
               text: 'Update',
               ontap: () {
-                Provider.of<userprovidertest1>(context, listen: false)
-                    .updateData(user.topic_que_num, context);
+                Provider.of<UserproviderFinalTest>(context, listen: false)
+                    .updateData(user.finalQuesNumber, context);
                 Navigator.pop(context);
               },
             ),

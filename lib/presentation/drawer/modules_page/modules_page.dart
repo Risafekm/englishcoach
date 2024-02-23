@@ -106,18 +106,11 @@ class _ModulesPageState extends State<ModulesPage> {
         scrollDirection: Axis.horizontal,
         itemCount: posts.length,
         onReorder: (oldIndex, newIndex) {
-          setState(() {
-            if (oldIndex < newIndex) {
-              newIndex -= 1;
-            }
+          // Update the order of the posts in the local list
+          controller.reorderPosts(oldIndex, newIndex);
 
-            // Perform the reordering directly on the posts list
-            controller.posts
-                .insert(newIndex, controller.posts.removeAt(oldIndex));
-          });
-
-          // namma new set aakkiya function vilikkanam
-          setState(() {});
+          // Send the updated order to the server
+          controller.updateDatabase(controller.posts);
         },
         itemBuilder: (context, index) {
           return GestureDetector(

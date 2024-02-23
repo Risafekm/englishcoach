@@ -1,26 +1,26 @@
 // ignore_for_file: avoid_print
 
-import 'package:englishcoach/application/provider/userprovider_test1.dart';
-import 'package:englishcoach/domain/Model/quizTest1model.dart';
+import 'package:englishcoach/application/provider/user_provider_final_test.dart';
+import 'package:englishcoach/domain/model/final_test_model.dart';
+import 'package:englishcoach/presentation/drawer/final_tests/update_final_test/update_final_test.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
-import 'package:englishcoach/presentation/drawer/priliminary_tests1/update_page/edit_test1_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Test1 extends StatefulWidget {
-  const Test1({super.key});
+class FinalTests extends StatefulWidget {
+  const FinalTests({super.key});
 
   @override
-  State<Test1> createState() => _Test1State();
+  State<FinalTests> createState() => _FinalTestsState();
 }
 
-class _Test1State extends State<Test1> {
+class _FinalTestsState extends State<FinalTests> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<userprovidertest1>(context, listen: false).getData();
+      Provider.of<UserproviderFinalTest>(context, listen: false).getData();
     });
     super.initState();
   }
@@ -29,22 +29,22 @@ class _Test1State extends State<Test1> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<userprovidertest1>(context);
+    var controller = Provider.of<UserproviderFinalTest>(context);
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.blue.shade200,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back_ios),
         ),
         title: Text(
-          'Test 1 Questions & Answers',
+          'Final Tests',
           style: GoogleFonts.lora(fontWeight: FontWeight.w600),
         ),
         elevation: 3,
       ),
-      body: Consumer<userprovidertest1>(builder: (context, value, child) {
+      body: Consumer<UserproviderFinalTest>(builder: (context, value, child) {
         if (value.isLoding) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -70,7 +70,7 @@ class _Test1State extends State<Test1> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].topic_que_num.toString()),
+                          child: Text(posts[index].finalQuesNumber.toString()),
                         ),
                         const SizedBox(width: 20),
                         Expanded(
@@ -79,14 +79,14 @@ class _Test1State extends State<Test1> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Question : ${posts[index].topic_que_question}',
+                                'Question : ${posts[index].finalQuestions}',
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.lora(
                                     fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                'Answer : ${posts[index].topic_ans_answer}',
+                                'Answer : ${posts[index].finalAnswers}',
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.lora(
                                     fontWeight: FontWeight.w600),
@@ -97,13 +97,13 @@ class _Test1State extends State<Test1> {
                         IconButton(
                           onPressed: () async {
                             controller.updatequestionController.text =
-                                user.topic_que_question;
+                                user.finalQuestions;
                             controller.updateanswersController.text =
-                                user.topic_ans_answer;
+                                user.finalAnswers;
 
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
-                                    EditPageTest1(user: user)));
+                                    UpdateFinalTest(user: user)));
 
                             print('Edit button tapped');
                           },
@@ -116,8 +116,6 @@ class _Test1State extends State<Test1> {
                           onPressed: () {
                             deleteAlertBox(
                                 context, posts, index, controller, user);
-                            controller.deleteData(user.topic_que_num, context);
-                            print('Delete button tapped');
                           },
                           icon: const Icon(
                             Icons.delete,
@@ -138,17 +136,18 @@ class _Test1State extends State<Test1> {
         },
         child: const Icon(Icons.add),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest1> posts,
-      int index, userprovidertest1 controller, QuizTest1 user) {
+  Future<dynamic> deleteAlertBox(BuildContext context, List<FinalTest> posts,
+      int index, UserproviderFinalTest controller, FinalTest user) {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
             title: Text(
-              'Delete Question ${posts[index].topic_que_num}',
+              'Delete Question ${posts[index].finalQuesNumber}',
               style:
                   GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
             ),
@@ -170,7 +169,7 @@ class _Test1State extends State<Test1> {
               const SizedBox(width: 10),
               TextButton(
                 onPressed: () {
-                  controller.deleteData(user.topic_que_num, context);
+                  controller.deleteData(user.finalQuesNumber, context);
                   Navigator.pop(context);
                 },
                 child: const Text(
@@ -182,6 +181,7 @@ class _Test1State extends State<Test1> {
           );
         });
   }
+
 //floating action button function
 
   Future<dynamic> modelSheet(BuildContext context) {
@@ -224,7 +224,7 @@ class _Test1State extends State<Test1> {
                         text: 'Post',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
-                            Provider.of<userprovidertest1>(context,
+                            Provider.of<UserproviderFinalTest>(context,
                                     listen: false)
                                 .addData(context);
 
@@ -240,7 +240,7 @@ class _Test1State extends State<Test1> {
   }
 
   TextArea questionTextArea() {
-    var controller = Provider.of<userprovidertest1>(context, listen: false);
+    var controller = Provider.of<UserproviderFinalTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Question',
@@ -262,7 +262,7 @@ class _Test1State extends State<Test1> {
   }
 
   TextArea answerTextArea() {
-    var controller = Provider.of<userprovidertest1>(context, listen: false);
+    var controller = Provider.of<UserproviderFinalTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Answer',

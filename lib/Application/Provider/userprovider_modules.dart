@@ -9,16 +9,43 @@ class UserproviderModules extends ChangeNotifier {
   List<Modules> _posts = [];
   List<Modules> get posts => _posts;
   bool isLoding = false;
+  // Function to handle reordering
+  void reorderPosts(int oldIndex, int newIndex) {
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
 
-  // void reorderPosts(int oldIndex, int newIndex) {
-  //   if (oldIndex < newIndex) {
-  //     newIndex -= 1;
-  //   }
+    final postToReorder = posts.removeAt(oldIndex);
+    posts.insert(newIndex, postToReorder);
+    notifyListeners();
 
-  //   final postToReorder = posts.removeAt(oldIndex);
-  //   posts.insert(newIndex, postToReorder);
-  //   notifyListeners();
-  // }
+    // Update the database via HTTP request to the PHP script
+    updateDatabase(posts);
+    notifyListeners();
+  }
+
+  // Function to update the database with the new order
+  updateDatabase(List<Modules> updatedPosts) async {
+    String updateUrl =
+        'http://localhost/english_coach_php/modules/update_order.php';
+
+    try {
+      var response = await http.put(
+        Uri.parse(updateUrl),
+        body: jsonEncode(updatedPosts.map((post) => post.toJson()).toList()),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        print('Database updated successfully');
+      } else {
+        print('Failed to update database. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error updating database: $e');
+    }
+    notifyListeners();
+  }
 
 // post controller
   TextEditingController modorderController = TextEditingController();

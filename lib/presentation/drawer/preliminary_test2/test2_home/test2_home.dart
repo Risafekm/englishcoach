@@ -25,8 +25,6 @@ class _Test2HomeState extends State<Test2Home> {
     super.initState();
   }
 
-  TextEditingController quesTest2Controller = TextEditingController();
-  TextEditingController ansText2Controller = TextEditingController();
   final formkey = GlobalKey<FormState>();
 
   @override
