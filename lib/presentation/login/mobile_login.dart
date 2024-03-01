@@ -1,18 +1,18 @@
 // ignore_for_file: avoid_print
 
-import 'package:englishcoach/presentation/dashboard/dashboard.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
+import 'package:englishcoach/presentation/dashboard/responsive_dash/responsive_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class MobileViewLogin extends StatefulWidget {
+  const MobileViewLogin({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<MobileViewLogin> createState() => _MobileViewLoginState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _MobileViewLoginState extends State<MobileViewLogin> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -74,8 +74,8 @@ class _TextFormFieldSectionState extends State<TextFormFieldSection> {
         children: [
           const SizedBox(height: 50),
           TextArea(
-            keyboardType: TextInputType.number,
-            name: 'Ph no',
+            keyboardType: TextInputType.text,
+            name: 'Username',
             controller: phoneController,
             validator: (value) {
               if (value!.isEmpty) {
@@ -90,7 +90,7 @@ class _TextFormFieldSectionState extends State<TextFormFieldSection> {
             ),
             obscureText: false,
             prefixIcon: const Icon(
-              Icons.phone,
+              Icons.person,
               color: Colors.green,
             ),
           ),
@@ -128,7 +128,7 @@ class _TextFormFieldSectionState extends State<TextFormFieldSection> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DashBoardPage()));
+                          builder: (context) => const ResponsiveDashBoard()));
                 }
               },
               style: ButtonStyle(

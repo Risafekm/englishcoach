@@ -14,13 +14,11 @@ class UserproviderModules extends ChangeNotifier {
     if (oldIndex < newIndex) {
       newIndex -= 1;
     }
-
     final postToReorder = posts.removeAt(oldIndex);
     posts.insert(newIndex, postToReorder);
-    notifyListeners();
-
     // Update the database via HTTP request to the PHP script
     updateDatabase(posts);
+    // reorderModules(posts);
     notifyListeners();
   }
 
@@ -32,7 +30,7 @@ class UserproviderModules extends ChangeNotifier {
     try {
       var response = await http.put(
         Uri.parse(updateUrl),
-        body: jsonEncode(updatedPosts.map((post) => post.toJson()).toList()),
+        body: {'modules': updatedPosts},
         headers: {'Content-Type': 'application/json'},
       );
 
@@ -46,6 +44,29 @@ class UserproviderModules extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  // Future<void> reorderModules(List<Modules> updatedModules) async {
+  //   final Uri uri = Uri.parse(
+  //       'http://localhost/english_coach_php/modules/update_order.php');
+  //   try {
+  //     final response = await http.put(
+  //       uri,
+  //       body: {'modules': updatedModules},
+  //       headers: {'Content-Type': 'application/json'},
+  //     );
+  //     if (response.statusCode == 200) {
+  //       print('Modules reordered successfully');
+  //       // You can add any additional logic here based on the response
+  //     } else {
+  //       print('Failed to reorder modules. Status code: ${response.statusCode}');
+  //       // You can handle error scenarios here
+  //     }
+  //   } catch (e) {
+  //     print('Error: $e');
+  //     // Handle network errors or exceptions here
+  //   }
+  //   notifyListeners();
+  // }
 
 // post controller
   TextEditingController modorderController = TextEditingController();
@@ -197,3 +218,5 @@ class UserproviderModules extends ChangeNotifier {
     );
   }
 }
+
+// https://chat.openai.com/share/24bd9288-0e10-471f-ad7c-fec3f57d9d90

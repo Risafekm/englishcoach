@@ -36,7 +36,7 @@ class TextArea extends StatelessWidget {
         obscureText: obscureText,
         style: const TextStyle(color: Colors.black, fontSize: 16),
         decoration: InputDecoration(
-          fillColor: Colors.white.withOpacity(.4),
+          fillColor: Color.fromARGB(135, 235, 232, 232),
           filled: true,
           label: Text(
             name.toString(),
@@ -45,7 +45,7 @@ class TextArea extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: Colors.white.withOpacity(.5),
+              color: Colors.white.withOpacity(.8),
               width: 2,
             ),
           ),
@@ -57,14 +57,14 @@ class TextArea extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: Colors.white.withOpacity(.5),
+              color: Colors.white.withOpacity(.2),
               width: 2,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(
-              color: Colors.white.withOpacity(.5),
+              color: Colors.white.withOpacity(.2),
               width: 2,
             ),
           ),

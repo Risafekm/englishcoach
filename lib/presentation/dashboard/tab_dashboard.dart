@@ -3,13 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import '../drawer/drawer.dart';
 import 'widget/custom_card_widget.dart';
 
-class DashBoardPage extends StatelessWidget {
-  const DashBoardPage({super.key});
+class TabViewDashBoard extends StatelessWidget {
+  const TabViewDashBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: const Color.fromARGB(255, 198, 206, 212),
         drawer: const DrawerPage(),
         appBar: AppBar(
           centerTitle: true,

@@ -4,7 +4,7 @@ import 'package:englishcoach/application/provider/userprovider_exercises.dart';
 import 'package:englishcoach/application/provider/userprovider_modules.dart';
 import 'package:englishcoach/application/provider/userprovider_test1.dart';
 import 'package:englishcoach/application/provider/userprovider_test2.dart';
-import 'package:englishcoach/presentation/login/splash_screen.dart';
+import 'package:englishcoach/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
@@ -41,6 +41,7 @@ class RootScreen extends StatelessWidget {
       // home: TopicTests(),
       // home: ExercisesPage(),
       home: const SplashScreen(),
+      // home: DesktopViewDashBoard(),
     );
   }
 }

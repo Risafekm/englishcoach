@@ -10,14 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class ModulesPage extends StatefulWidget {
-  const ModulesPage({super.key});
+class DesktopModulesPage extends StatefulWidget {
+  const DesktopModulesPage({super.key});
 
   @override
-  State<ModulesPage> createState() => _ModulesPageState();
+  State<DesktopModulesPage> createState() => _DesktopModulesPageState();
 }
 
-class _ModulesPageState extends State<ModulesPage> {
+class _DesktopModulesPageState extends State<DesktopModulesPage> {
   final formkey = GlobalKey<FormState>();
   @override
   void initState() {
@@ -31,31 +31,30 @@ class _ModulesPageState extends State<ModulesPage> {
   Widget build(BuildContext context) {
     var controller = Provider.of<UserproviderModules>(context);
     return Scaffold(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.black38,
+          backgroundColor: Colors.grey,
           elevation: 0,
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-          ),
           title: Text(
             'Modules',
             style: GoogleFonts.lora(
-                fontWeight: FontWeight.w600, color: Colors.white),
+                fontWeight: FontWeight.w600, color: Colors.black),
           ),
           actions: [
-            GestureDetector(
-              onTap: () {
-                modelSheet(context);
-              },
-              child: const CircleAvatar(
-                radius: 15,
-                child: Icon(
-                  Icons.add,
-                  color: Colors.black,
-                  size: 22,
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: GestureDetector(
+                onTap: () {
+                  modelSheet(context);
+                },
+                child: const CircleAvatar(
+                  // radius: 15,
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.black,
+                    size: 22,
+                  ),
                 ),
               ),
             )
@@ -248,48 +247,6 @@ class _ModulesPageState extends State<ModulesPage> {
           );
         });
   }
-
-  // Future<dynamic> deleteMethod(BuildContext context, List<Modules> posts,
-  //     int index, UserproviderModules controller, Modules user) {
-  //   return showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return AlertDialog(
-  //           title: Text(
-  //             'Delete Module ${posts[index].modNum}',
-  //             style:
-  //                 GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
-  //           ),
-  //           content: Text(
-  //             'Are you sure?',
-  //             style:
-  //                 GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 16),
-  //           ),
-  //           actions: [
-  //             TextButton(
-  //               onPressed: () {
-  //                 Navigator.pop(context);
-  //               },
-  //               child: const Text(
-  //                 'Cancel',
-  //                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-  //               ),
-  //             ),
-  //             const SizedBox(width: 10),
-  //             TextButton(
-  //               onPressed: () {
-  //                 controller.deleteData(user.modNum.toString(), context);
-  //                 Navigator.pop(context);
-  //               },
-  //               child: const Text(
-  //                 'yes',
-  //                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-  //               ),
-  //             ),
-  //           ],
-  //         );
-  //       });
-  // }
 
   Future<dynamic> modelSheet(BuildContext context) {
     var controller = Provider.of<UserproviderModules>(context, listen: false);
