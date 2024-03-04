@@ -26,8 +26,8 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
     const DesktopTest2Home(),
     const DesktopModulesPage(),
     const DesktopExercisesPage(),
-    const DesktopFinalTests(),
     const DesktopTopicTests(),
+    const DesktopFinalTests(),
     const Center(child: Text('Logout')),
   ];
 

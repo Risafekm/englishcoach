@@ -133,124 +133,128 @@ class DesktopViewLogin extends StatelessWidget {
                       ),
                       // const SizedBox(height: 10),
                       Center(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height * .45,
-                          width: MediaQuery.of(context).size.width * .35,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(20),
-                            boxShadow: [
-                              BoxShadow(
-                                  offset: const Offset(3, 3),
-                                  spreadRadius: 1,
-                                  blurRadius: 8,
-                                  color: Colors.grey.shade400),
-                            ],
-                          ),
-                          child: SingleChildScrollView(
-                            child: Form(
-                              key: formkey,
-                              child: Column(
-                                children: [
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    'SignIn',
-                                    style: GoogleFonts.lora(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.blue),
-                                  ),
-                                  const SizedBox(height: 30),
-                                  Center(
-                                    child: TextArea(
-                                      keyboardType: TextInputType.emailAddress,
-                                      controller: nameController,
-                                      obscureText: false,
-                                      name: 'Username',
-                                      prefixIcon: const Icon(Icons.person),
-                                      suffixIcon: const Icon(
-                                        Icons.abc,
-                                        color: Colors.transparent,
+                        child: Expanded(
+                          child: Container(
+                            height: MediaQuery.of(context).size.height * .45,
+                            width: MediaQuery.of(context).size.width * .35,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                    offset: const Offset(3, 3),
+                                    spreadRadius: 1,
+                                    blurRadius: 8,
+                                    color: Colors.grey.shade400),
+                              ],
+                            ),
+                            child: SingleChildScrollView(
+                              child: Form(
+                                key: formkey,
+                                child: Column(
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    Text(
+                                      'SignIn',
+                                      style: GoogleFonts.lora(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.blue),
+                                    ),
+                                    const SizedBox(height: 30),
+                                    Center(
+                                      child: TextArea(
+                                        keyboardType:
+                                            TextInputType.emailAddress,
+                                        controller: nameController,
+                                        obscureText: false,
+                                        name: 'Username',
+                                        prefixIcon: const Icon(Icons.person),
+                                        suffixIcon: const Icon(
+                                          Icons.abc,
+                                          color: Colors.transparent,
+                                        ),
+                                        validator: (value) {
+                                          if (value!.isEmpty) {
+                                            return 'please enter number';
+                                          } else {
+                                            return null;
+                                          }
+                                        },
                                       ),
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'please enter number';
-                                        } else {
-                                          return null;
+                                    ),
+                                    const SizedBox(height: 10),
+                                    ListenableBuilder(
+                                        listenable: isVisibile,
+                                        builder: (BuildContext context, value) {
+                                          return Center(
+                                            child: TextArea(
+                                              keyboardType: TextInputType.text,
+                                              obscureText: isVisibile.value,
+                                              controller: passController,
+                                              name: 'Password',
+                                              prefixIcon: const Icon(Icons.key),
+                                              suffixIcon: GestureDetector(
+                                                onTap: () {
+                                                  isVisibile.value =
+                                                      !isVisibile.value;
+                                                },
+                                                child: isVisibile.value
+                                                    ? const Icon(
+                                                        Icons.visibility,
+                                                        color: Colors.black,
+                                                      )
+                                                    : const Icon(
+                                                        Icons.visibility_off,
+                                                        color: Colors.black,
+                                                      ),
+                                              ),
+                                              validator: (value) {
+                                                if (value!.isEmpty) {
+                                                  return 'please enter password';
+                                                } else if (value.length < 6) {
+                                                  return "should be more than 6 characters";
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                            ),
+                                          );
+                                        }),
+                                    const SizedBox(height: 5),
+                                    Row(
+                                      children: [
+                                        const Spacer(),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              right: 40.0),
+                                          child: Text(
+                                            'New password',
+                                            style: GoogleFonts.acme(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w300,
+                                                color: Colors.black54),
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 20),
+                                    ButtonDesktop(
+                                      text: 'Login',
+                                      onpressed: () {
+                                        if (formkey.currentState!.validate()) {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const ResponsiveDashBoard()));
                                         }
                                       },
                                     ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  ListenableBuilder(
-                                      listenable: isVisibile,
-                                      builder: (BuildContext context, value) {
-                                        return Center(
-                                          child: TextArea(
-                                            keyboardType: TextInputType.text,
-                                            obscureText: isVisibile.value,
-                                            controller: passController,
-                                            name: 'Password',
-                                            prefixIcon: const Icon(Icons.key),
-                                            suffixIcon: GestureDetector(
-                                              onTap: () {
-                                                isVisibile.value =
-                                                    !isVisibile.value;
-                                              },
-                                              child: isVisibile.value
-                                                  ? const Icon(
-                                                      Icons.visibility,
-                                                      color: Colors.black,
-                                                    )
-                                                  : const Icon(
-                                                      Icons.visibility_off,
-                                                      color: Colors.black,
-                                                    ),
-                                            ),
-                                            validator: (value) {
-                                              if (value!.isEmpty) {
-                                                return 'please enter password';
-                                              } else if (value.length < 6) {
-                                                return "should be more than 6 characters";
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                          ),
-                                        );
-                                      }),
-                                  const SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      const Spacer(),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 40.0),
-                                        child: Text(
-                                          'Forgot password?',
-                                          style: GoogleFonts.acme(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w300,
-                                              color: Colors.black54),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 20),
-                                  ButtonDesktop(
-                                    text: 'Login',
-                                    onpressed: () {
-                                      if (formkey.currentState!.validate()) {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const ResponsiveDashBoard()));
-                                      }
-                                    },
-                                  ),
-                                  const SizedBox(height: 30),
-                                ],
+                                    const SizedBox(height: 30),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
