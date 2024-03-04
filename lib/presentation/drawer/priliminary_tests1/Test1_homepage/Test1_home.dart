@@ -1,7 +1,5 @@
-// ignore_for_file: avoid_print
-
-import 'package:englishcoach/application/provider/userprovider_test1.dart';
 import 'package:englishcoach/domain/Model/quizTest1model.dart';
+import 'package:englishcoach/Application/Provider/userprovider_test1.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:englishcoach/presentation/drawer/priliminary_tests1/update_page/edit_test1_page.dart';
@@ -116,8 +114,6 @@ class _Test1State extends State<Test1> {
                           onPressed: () {
                             deleteAlertBox(
                                 context, posts, index, controller, user);
-                            controller.deleteData(user.topic_que_num, context);
-                            print('Delete button tapped');
                           },
                           icon: const Icon(
                             Icons.delete,
