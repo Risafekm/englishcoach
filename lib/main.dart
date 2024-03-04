@@ -1,4 +1,5 @@
 import 'package:englishcoach/application/provider/user_provider_final_test.dart';
+import 'package:englishcoach/application/provider/user_provider_password_update.dart';
 import 'package:englishcoach/application/provider/user_provider_topic_test.dart';
 import 'package:englishcoach/application/provider/userprovider_exercises.dart';
 import 'package:englishcoach/application/provider/userprovider_modules.dart';
@@ -19,6 +20,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => UserProviderExercises()),
         ChangeNotifierProvider(create: (context) => UserproviderFinalTest()),
         ChangeNotifierProvider(create: (context) => UserproviderTopicTest()),
+        ChangeNotifierProvider(create: (context) => UserproviderPassword()),
       ],
       child: const RootScreen(),
     ),

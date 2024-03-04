@@ -21,7 +21,7 @@ class UserproviderPassword extends ChangeNotifier {
 
   updateData(String i, context, String j) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/php_practice/english_coach_php/edu_user/update_admin_password.php?user_email=$i&user_pswd=$j');
+        'http://localhost/english_coach_php/auth/update_admin_password.php?user_email=$i&user_pswd=$j');
     var data = User(
       userEmail: i,
       userPassword: j,
@@ -57,7 +57,7 @@ class UserproviderPassword extends ChangeNotifier {
     }
 
     final apiUrl = Uri.parse(
-        'http://localhost/php_practice/english_coach_php/edu_user/user_authentication.php?user_email=$email&user_pswd=$password');
+        'http://localhost/english_coach_php/auth/user_authentication.php?user_email=$email&user_pswd=$password');
     final userData = Auth(
       userEmail: email,
       userPassword: password,
