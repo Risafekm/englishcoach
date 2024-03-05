@@ -40,10 +40,7 @@ class RootScreen extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      // home: TopicTests(),
-      // home: ExercisesPage(),
       home: const SplashScreen(),
-      // home: DesktopViewDashBoard(),
     );
   }
 }

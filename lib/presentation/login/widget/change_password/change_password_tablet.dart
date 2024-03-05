@@ -1,12 +1,3 @@
-// ignore_for_file: avoid_print
-
-import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
-import 'package:englishcoach/domain/Model/mod_user_authentication.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
-import 'package:englishcoach/presentation/dashboard/responsive_dash/responsive_dashboard.dart';
-import 'package:englishcoach/presentation/login/desktop_login.dart';
-import 'package:englishcoach/presentation/login/tab_login.dart';
-import 'package:englishcoach/presentation/login/widget/button/desktop_button.dart';
 import 'package:englishcoach/presentation/login/widget/change_password/widget/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
