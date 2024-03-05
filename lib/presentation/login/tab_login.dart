@@ -2,6 +2,8 @@
 
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:englishcoach/presentation/dashboard/responsive_dash/responsive_dashboard.dart';
+import 'package:englishcoach/presentation/login/mobile_login.dart';
+import 'package:englishcoach/presentation/login/widget/change_password/change_password_tablet.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -17,35 +19,38 @@ class _TabViewLoginState extends State<TabViewLogin> {
   Widget build(BuildContext context) {
     return Material(
       color: const Color.fromARGB(255, 184, 205, 221),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 120,
-              ),
-              Text(
-                "englishcoach",
-                style: GoogleFonts.poppins(
-                    fontSize: 30,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "Your Personal English Coach",
-                style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
-              const SizedBox(
-                height: 60,
-              ),
-              const TextFormFieldSection(),
-            ],
+      child: Scaffold(
+        backgroundColor: const Color.fromARGB(255, 184, 205, 221),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 120,
+                ),
+                Text(
+                  "englishcoach",
+                  style: GoogleFonts.poppins(
+                      fontSize: 30,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Your Personal English Coach",
+                  style: GoogleFonts.poppins(
+                      fontSize: 13,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                const TextFormFieldSection(),
+              ],
+            ),
           ),
         ),
       ),
@@ -60,7 +65,7 @@ class TextFormFieldSection extends StatefulWidget {
   State<TextFormFieldSection> createState() => _TextFormFieldSectionState();
 }
 
-TextEditingController phoneController = TextEditingController();
+TextEditingController nameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 String errorMessage = '';
@@ -115,6 +120,32 @@ class _TextFormFieldSectionState extends State<TextFormFieldSection> {
               Icons.lock,
               color: Colors.red,
             ),
+          ),
+          const SizedBox(height: 5),
+          Row(
+            children: [
+              const Spacer(),
+              InkWell(
+                onDoubleTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TabChangePassword(),
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 40.0),
+                  child: Text(
+                    'Forgot password?',
+                    style: GoogleFonts.acme(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black54),
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 20),
           Container(
