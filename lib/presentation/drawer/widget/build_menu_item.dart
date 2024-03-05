@@ -1,10 +1,12 @@
-import 'package:englishcoach/presentation/dashboard/screens/audio_chat_room.dart';
-import 'package:englishcoach/presentation/dashboard/screens/my_teacher.dart';
-import 'package:englishcoach/presentation/dashboard/screens/preliminary_test.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
+import 'package:englishcoach/presentation/drawer/final_tests/final_test.dart';
+import 'package:englishcoach/presentation/drawer/modules_exercises_page/exercises_page.dart';
+import 'package:englishcoach/presentation/drawer/modules_page/modules_page.dart';
+import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/test2_home.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_tests1/Test1_homepage/Test1_home.dart';
+import 'package:englishcoach/presentation/drawer/topic_tests/topic_tests.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../../dashboard/screens/PreliminaryTest2.dart';
 
 class BuildMenuItem extends StatelessWidget {
   const BuildMenuItem({super.key});
@@ -18,95 +20,98 @@ class BuildMenuItem extends StatelessWidget {
         children: [
           ListTile(
             trailing: const Icon(
-              Icons.assignment,
-              color: Colors.white
+              Icons.home,
+              color: AppColors.secondaryColor,
             ),
             title: Text(
               'Preliminary Test 1',
-              style: GoogleFonts.lato(
-                  textStyle: const TextStyle(
-                color: Colors.white,
-              )),
+              style: AppStyles.drawerText,
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PreliminaryTest()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Test1()));
             },
           ),
           ListTile(
             trailing: const Icon(
-              Icons.lock,
-              color: Colors.white,
+              Icons.person,
+              color: AppColors.secondaryColor,
             ),
             title: Text(
               'Preliminary Test 2',
-              style: GoogleFonts.lato(
-                  textStyle: const TextStyle(
-                color: Colors.white,
-              )),
+              style: AppStyles.drawerText,
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const PreliminaryTest2()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Test2Home()));
             },
           ),
-           ListTile(
+          ListTile(
             trailing: const Icon(
-              Icons.mic_none,
-              color: Colors.white,
+              Icons.settings,
+              color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Audio Chat Room',
-              style: GoogleFonts.lato(
-                  textStyle: const TextStyle(
-                color: Colors.white,
-              )),
+              'Modules Page',
+              style: AppStyles.drawerText,
             ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const AudioChatRoom()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const ModulesPage()));
             },
           ),
-           ListTile(
+          ListTile(
             trailing: const Icon(
-              Icons.chat,
-              color: Colors.white,
+              Icons.sports_gymnastics,
+               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'My Teacher',
-              style: GoogleFonts.lato(
-                  textStyle: const TextStyle(
-                color: Colors.white
-              )),
+              'Modules Exercises',
+              style: AppStyles.drawerText,
             ),
             onTap: () {
-              Navigator.pop(context);
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const MyTeacher()));
+                      builder: (context) => const ExercisesPage()));
             },
           ),
-           ListTile(
+          ListTile(
+            trailing: const Icon(
+              Icons.history,
+               color: AppColors.secondaryColor,
+            ),
+            title: Text(
+              'Topic Tests',
+              style: AppStyles.drawerText,
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const TopicTests()));
+            },
+          ),
+          ListTile(
+            trailing: const Icon(
+              Icons.assignment,
+              color: AppColors.secondaryColor,
+            ),
+            title: Text(
+              'Final Tests',
+              style: AppStyles.drawerText,
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const FinalTests()));
+            },
+          ),
+          ListTile(
             trailing: const Icon(
               Icons.power_settings_new_rounded,
-              color: Colors.white,
+               color: AppColors.secondaryColor,
             ),
             title: Text(
               'Logout',
-              style: GoogleFonts.lato(
-                  textStyle: const TextStyle(
-                color: Colors.white
-              )),
+              style: AppStyles.drawerText,
             ),
             onTap: () {},
           ),

@@ -1,5 +1,6 @@
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard(
@@ -12,34 +13,31 @@ class CustomCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: const Color.fromARGB(255, 152, 184, 238),
+      color: AppColors.accentColor2,
       child: Container(
-        width: 400,
+        width: MediaQuery.of(context).size.width * .9,
         height: 150,
         decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 152, 184, 238), borderRadius: BorderRadius.circular(20)),
+            color: AppColors.accentColor2,
+            borderRadius: BorderRadius.circular(20)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage('assets/images/profile_image.jpg'),
+              backgroundImage: NetworkImage(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPFJC-r3YeVbBL0ydVAMARkzcEliCloXfLw&usqp=CAU'),
             ),
             Text(
               text,
-              style: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                    color: Colors.white,
-                    letterSpacing: .5,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
+              style:AppStyles.dashboardText,
               ),
-            ),
+            
             GestureDetector(
                 onTap: ontap,
                 child: Icon(
                   icon,
-                  color: Colors.white,
+                  color: AppColors.secondaryColor,
                 ))
           ],
         ),

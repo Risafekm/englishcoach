@@ -1,3 +1,4 @@
+import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:flutter/material.dart';
 import 'widget/build_header.dart';
 import 'widget/build_menu_item.dart';
@@ -7,8 +8,8 @@ class DrawerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const Drawer(
-      backgroundColor:   Color.fromARGB(255, 48, 80, 136),
+    return const Drawer(
+      backgroundColor: AppColors.accentColor1,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -21,4 +22,3 @@ class DrawerPage extends StatelessWidget {
     );
   }
 }
-
