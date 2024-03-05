@@ -1,14 +1,8 @@
 // ignore_for_file: sized_box_for_whitespace, must_be_immutable
 
-import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
-import 'package:englishcoach/domain/Model/mod_user_authentication.dart';
-import 'package:englishcoach/presentation/dashboard/desktop_dashboard.dart';
-import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
-import 'package:englishcoach/presentation/login/widget/button/desktop_button.dart';
-import 'package:englishcoach/presentation/login/widget/change_password/change_password_desktop.dart';
+import 'package:englishcoach/presentation/login/widget/button/FormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 ValueNotifier<bool> isVisibile = ValueNotifier<bool>(true);
 
@@ -18,6 +12,7 @@ class DesktopViewLogin extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController passController = TextEditingController();
   final formkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> desktopFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +130,6 @@ class DesktopViewLogin extends StatelessWidget {
                       const SizedBox(
                         height: 100,
                       ),
-                      // const SizedBox(height: 10),
                       Center(
                         child: Container(
                           height: MediaQuery.of(context).size.height * .45,
@@ -152,151 +146,7 @@ class DesktopViewLogin extends StatelessWidget {
                             ],
                           ),
                           child: SingleChildScrollView(
-                            child: Form(
-                              key: formkey,
-                              child: Column(
-                                children: [
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    'SignIn',
-                                    style: GoogleFonts.lora(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.blue),
-                                  ),
-                                  const SizedBox(height: 30),
-                                  Center(
-                                    child: TextArea(
-                                      keyboardType: TextInputType.emailAddress,
-                                      controller: nameController,
-                                      obscureText: false,
-                                      name: 'Username',
-                                      prefixIcon: const Icon(Icons.person),
-                                      suffixIcon: const Icon(
-                                        Icons.abc,
-                                        color: Colors.transparent,
-                                      ),
-                                      validator: (value) {
-                                        if (value!.isEmpty) {
-                                          return 'please enter number';
-                                        } else {
-                                          return null;
-                                        }
-                                      },
-                                    ),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  ListenableBuilder(
-                                      listenable: isVisibile,
-                                      builder: (BuildContext context, value) {
-                                        return Center(
-                                          child: TextArea(
-                                            keyboardType: TextInputType.text,
-                                            obscureText: isVisibile.value,
-                                            controller: passController,
-                                            name: 'Password',
-                                            prefixIcon: const Icon(Icons.key),
-                                            suffixIcon: GestureDetector(
-                                              onTap: () {
-                                                isVisibile.value =
-                                                    !isVisibile.value;
-                                              },
-                                              child: isVisibile.value
-                                                  ? const Icon(
-                                                      Icons.visibility,
-                                                      color: Colors.black,
-                                                    )
-                                                  : const Icon(
-                                                      Icons.visibility_off,
-                                                      color: Colors.black,
-                                                    ),
-                                            ),
-                                            validator: (value) {
-                                              if (value!.isEmpty) {
-                                                return 'please enter password';
-                                              } else if (value.length < 6) {
-                                                return "should be more than 6 characters";
-                                              } else {
-                                                return null;
-                                              }
-                                            },
-                                          ),
-                                        );
-                                      }),
-                                  const SizedBox(height: 5),
-                                  Row(
-                                    children: [
-                                      const Spacer(),
-                                      InkWell(
-                                        onDoubleTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ChangePassword(),
-                                            ),
-                                          );
-                                        },
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 40.0),
-                                          child: Text(
-                                            'Forgot password?',
-                                            style: GoogleFonts.acme(
-                                                fontSize: 14,
-                                                fontWeight: FontWeight.w300,
-                                                color: Colors.black54),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 20),
-                                  ButtonDesktop(
-                                    text: 'Login',
-                                    onpressed: () async {
-                                      // Create an Auth object with user input
-                                      Auth user = Auth(
-                                        userEmail: nameController.text,
-                                        userPassword: passController.text,
-                                      );
-
-                                      // Call the addData method to authenticate the user
-                                      await Provider.of<UserproviderPassword>(
-                                        context,
-                                        listen: false,
-                                      ).addData(user.userEmail,
-                                          user.userPassword, context);
-
-                                      // Check if authentication was successful
-                                      if (Provider.of<UserproviderPassword>(
-                                        context,
-                                        listen: false,
-                                      ).isAuthenticated) {
-                                        // Navigate to the Dashboard page
-                                        Navigator.pushReplacement(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const DesktopViewDashBoard(),
-                                          ),
-                                        );
-                                      } else {
-                                        // Show error message for incorrect credentials
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                                'Incorrect username or password'),
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
-                                  const SizedBox(height: 30),
-                                ],
-                              ),
-                            ),
+                            child: LoginForm(),
                           ),
                         ),
                       ),
