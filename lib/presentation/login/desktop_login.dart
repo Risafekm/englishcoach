@@ -3,6 +3,8 @@
 import 'package:englishcoach/presentation/login/widget/button/FormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
 
 ValueNotifier<bool> isVisibile = ValueNotifier<bool>(true);
 
@@ -117,7 +119,11 @@ class DesktopViewLogin extends StatelessWidget {
                             ],
                           ),
                           child: SingleChildScrollView(
-                            child: LoginForm(),
+                            child: ChangeNotifierProvider<UserproviderPassword>(
+                              create: (context) => UserproviderPassword(),
+                              child: LoginForm(),
+                            ),
+                            // child: LoginForm(),
                           ),
                         ),
                       ),

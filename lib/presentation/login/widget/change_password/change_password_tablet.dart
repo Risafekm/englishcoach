@@ -1,8 +1,10 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
 import 'package:englishcoach/presentation/login/widget/change_password/widget/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TabChangePassword extends StatefulWidget {
   const TabChangePassword({Key? key});
@@ -49,11 +51,16 @@ class _TabChangePasswordState extends State<TabChangePassword> {
                 const SizedBox(
                   height: 50,
                 ),
-                CustomTextFormField(
-                    // desktopFormKey: desktopFormKey,
-                    nameController: nameController,
-                    passController: passController,
-                    newpassController: newpassController),
+                ChangeNotifierProvider<UserproviderPassword>(
+                  create: (context) => UserproviderPassword(),
+                  builder: (context, child) {
+                    return CustomTextFormField(
+                        // desktopFormKey: desktopFormKey,
+                        nameController: nameController,
+                        passController: passController,
+                        newpassController: newpassController);
+                  },
+                ),
               ],
             ),
           ),

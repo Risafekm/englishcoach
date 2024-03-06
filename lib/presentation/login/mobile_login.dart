@@ -1,7 +1,9 @@
 // ignore_for_file: avoid_print
+import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
 import 'package:englishcoach/presentation/login/widget/button/FormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class MobileViewLogin extends StatefulWidget {
   const MobileViewLogin({super.key});
@@ -65,6 +67,11 @@ class MobileTextFormFieldSection extends StatefulWidget {
 class _TextFormFieldSectionState extends State<MobileTextFormFieldSection> {
   @override
   Widget build(BuildContext context) {
-    return LoginForm();
+    return ChangeNotifierProvider<UserproviderPassword>(
+      create: (context) => UserproviderPassword(),
+      builder: (context, child) {
+        return LoginForm();
+      },
+    );
   }
 }

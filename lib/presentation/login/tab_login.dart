@@ -1,8 +1,10 @@
 // ignore_for_file: avoid_print
 
+import 'package:englishcoach/application/provider/user_provider_password_update.dart';
 import 'package:englishcoach/presentation/login/widget/button/FormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class TabViewLogin extends StatefulWidget {
   const TabViewLogin({super.key});
@@ -70,6 +72,11 @@ String errorMessage = '';
 class _TextFormFieldSectionState extends State<TextFormFieldSection> {
   @override
   Widget build(BuildContext context) {
-    return LoginForm();
+    return ChangeNotifierProvider<UserproviderPassword>(
+      create: (context) => UserproviderPassword(),
+      builder: (context, child) {
+        return LoginForm();
+      },
+    );
   }
 }
