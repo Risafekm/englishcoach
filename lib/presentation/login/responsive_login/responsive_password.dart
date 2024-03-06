@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 import 'package:englishcoach/domain/const/const_screen.dart';
 import 'package:englishcoach/presentation/login/widget/change_password/change_password_desktop.dart';
@@ -16,15 +18,15 @@ class ResponsivePassword extends StatelessWidget {
       builder: (BuildContext context, BoxConstraints constraints) {
         // Mobile
         if (constraints.maxWidth < mobile_width) {
-          return MobileChangePassword();
+          return const MobileChangePassword();
         }
         // Tablet
         else if (constraints.maxWidth < tab_width) {
-          return TabChangePassword();
+          return const TabChangePassword();
         }
         // Desktop
         else {
-          return ChangePassword();
+          return DesktopChangePassword();
         }
       },
     );

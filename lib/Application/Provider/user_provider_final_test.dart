@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 import 'package:englishcoach/domain/model/final_test_model.dart';
 import 'package:http/http.dart' as http;

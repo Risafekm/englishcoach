@@ -39,7 +39,7 @@ class _textformfieldState extends State<CustomTextFormField> {
               style: GoogleFonts.lora(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Colors.blue),
+                  color: Colors.green),
             ),
             const SizedBox(height: 30),
             Center(

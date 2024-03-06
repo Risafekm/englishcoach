@@ -47,16 +47,6 @@ class _MobileChangePasswordState extends State<MobileChangePassword> {
                 const SizedBox(
                   height: 50,
                 ),
-                Text(
-                  "Change Password",
-                  style: GoogleFonts.poppins(
-                      fontSize: 20,
-                      color: Colors.black87,
-                      fontWeight: FontWeight.w400),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
                 CustomTextFormField(
                     // desktopFormKey: desktopFormKey,
                     nameController: nameController,

@@ -74,7 +74,7 @@ class LoginForm extends StatelessWidget {
             children: [
               const Spacer(),
               InkWell(
-                onDoubleTap: () {
+                onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -85,7 +85,7 @@ class LoginForm extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40.0),
                   child: Text(
-                    'Forgot password?',
+                    'new password?',
                     style: GoogleFonts.acme(
                         fontSize: 14,
                         fontWeight: FontWeight.w300,

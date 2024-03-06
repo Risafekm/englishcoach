@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:englishcoach/application/provider/user_provider_final_test.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';

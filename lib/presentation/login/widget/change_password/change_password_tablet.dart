@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:englishcoach/presentation/login/widget/change_password/widget/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,16 +48,6 @@ class _TabChangePasswordState extends State<TabChangePassword> {
                 ),
                 const SizedBox(
                   height: 50,
-                ),
-                Text(
-                  "Change Password",
-                  style: GoogleFonts.poppins(
-                      fontSize: 20,
-                      color: Colors.black87,
-                      fontWeight: FontWeight.w400),
-                ),
-                const SizedBox(
-                  height: 10,
                 ),
                 CustomTextFormField(
                     // desktopFormKey: desktopFormKey,

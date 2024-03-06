@@ -9,14 +9,14 @@ import 'package:provider/provider.dart';
 
 ValueNotifier<bool> isVisibile = ValueNotifier<bool>(true);
 
-class ChangePassword extends StatefulWidget {
-  ChangePassword({Key? key});
+class DesktopChangePassword extends StatefulWidget {
+  DesktopChangePassword({Key? key});
 
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<DesktopChangePassword> createState() => _DesktopChangePasswordState();
 }
 
-class _ChangePasswordState extends State<ChangePassword> {
+class _DesktopChangePasswordState extends State<DesktopChangePassword> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passController = TextEditingController();
   TextEditingController newpassController = TextEditingController();
@@ -70,7 +70,6 @@ class _ChangePasswordState extends State<ChangePassword> {
                   const SizedBox(
                     height: 100,
                   ),
-                  // const SizedBox(height: 10),
                   Center(
                     child: Container(
                       height: MediaQuery.of(context).size.height * .45,
@@ -97,7 +96,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                 style: GoogleFonts.lora(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.blue),
+                                    color: Colors.green),
                               ),
                               const SizedBox(height: 30),
                               Center(

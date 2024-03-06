@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/model/exercisesmodel.dart';

@@ -53,36 +53,6 @@ class DesktopViewLogin extends StatelessWidget {
                           color: Colors.black87),
                     ),
                   ),
-                  const Positioned(
-                    bottom: 290,
-                    left: 150,
-                    child: Text(
-                      'To keep connected with us please\n    login with your personal info',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black54),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 210,
-                    left: 200,
-                    child: OutlinedButton(
-                        onPressed: () {},
-                        child: Container(
-                          height: 40,
-                          width: 140,
-                          child: Center(
-                            child: Text(
-                              'SignUp',
-                              style: GoogleFonts.lora(
-                                  color: Colors.black87,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )),
-                  )
                 ],
               ),
             ),
@@ -132,6 +102,7 @@ class DesktopViewLogin extends StatelessWidget {
                       ),
                       Center(
                         child: Container(
+                          padding: EdgeInsets.only(left: 20, right: 20),
                           height: MediaQuery.of(context).size.height * .45,
                           width: MediaQuery.of(context).size.width * .35,
                           decoration: BoxDecoration(

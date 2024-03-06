@@ -18,7 +18,7 @@ class ButtonDesktop extends StatelessWidget {
     return Center(
       child: Container(
         height: 45,
-        width: MediaQuery.of(context).size.width * .17,
+        width: MediaQuery.of(context).size.width * .7,
         decoration: BoxDecoration(
             color: AppColors.actionColor1,
             borderRadius: BorderRadius.circular(20)),
