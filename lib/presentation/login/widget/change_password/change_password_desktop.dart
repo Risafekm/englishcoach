@@ -72,12 +72,18 @@ class _ChangePasswordState extends State<ChangePassword> {
                           color: Colors.grey.shade400),
                     ],
                   ),
-                  child: CustomTextFormField(
+                  child:  ChangeNotifierProvider<UserproviderPassword>(
+                  create: (context) => UserproviderPassword(),
+                  builder: (context, child) {
+                    return CustomTextFormField(
                       // desktopFormKey: desktopFormKey,
                       nameController: nameController,
                       passController: passController,
-                      newpassController: newpassController),
+                      newpassController: newpassController);
+                    
                 ),
+                  },
+                    ),
               ),
             ],
           ),
