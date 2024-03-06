@@ -1,17 +1,19 @@
+import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
 import 'package:englishcoach/presentation/login/widget/change_password/widget/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 ValueNotifier<bool> isVisibile = ValueNotifier<bool>(true);
 
-class ChangePassword extends StatefulWidget {
-  ChangePassword({Key? key});
+class DesktopChangePassword extends StatefulWidget {
+  DesktopChangePassword({Key? key});
 
   @override
-  State<ChangePassword> createState() => _ChangePasswordState();
+  State<DesktopChangePassword> createState() => _ChangePasswordState();
 }
 
-class _ChangePasswordState extends State<ChangePassword> {
+class _ChangePasswordState extends State<DesktopChangePassword> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passController = TextEditingController();
   TextEditingController newpassController = TextEditingController();
@@ -72,18 +74,17 @@ class _ChangePasswordState extends State<ChangePassword> {
                           color: Colors.grey.shade400),
                     ],
                   ),
-                  child:  ChangeNotifierProvider<UserproviderPassword>(
-                  create: (context) => UserproviderPassword(),
-                  builder: (context, child) {
-                    return CustomTextFormField(
-                      // desktopFormKey: desktopFormKey,
-                      nameController: nameController,
-                      passController: passController,
-                      newpassController: newpassController);
-                    
+                  child: ChangeNotifierProvider<UserproviderPassword>(
+                    create: (context) => UserproviderPassword(),
+                    builder: (context, child) {
+                      return CustomTextFormField(
+                          // desktopFormKey: desktopFormKey,
+                          nameController: nameController,
+                          passController: passController,
+                          newpassController: newpassController);
+                    },
+                  ),
                 ),
-                  },
-                    ),
               ),
             ],
           ),
