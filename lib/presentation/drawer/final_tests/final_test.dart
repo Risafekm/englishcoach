@@ -1,13 +1,12 @@
-// ignore_for_file: avoid_print
-
 import 'package:englishcoach/application/provider/user_provider_final_test.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/domain/model/final_test_model.dart';
 import 'package:englishcoach/presentation/drawer/final_tests/update_final_test/update_final_test.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class FinalTests extends StatefulWidget {
   const FinalTests({super.key});
@@ -33,14 +32,17 @@ class _FinalTestsState extends State<FinalTests> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: AppColors.accentColor1,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.secondaryColor,
+          ),
         ),
         title: Text(
           'Final Tests',
-          style: GoogleFonts.lora(fontWeight: FontWeight.w600),
+          style: AppStyles.appBarTitle,
         ),
         elevation: 3,
       ),
@@ -54,15 +56,15 @@ class _FinalTestsState extends State<FinalTests> {
           itemBuilder: (context, index) {
             var user = posts[index];
             return Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade200,
+                decoration: const BoxDecoration(
+                  color: AppColors.secondaryColor,
                 ),
                 child: Card(
                   child: Container(
                     height: 80,
                     width: MediaQuery.of(context).size.width * 6,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.secondaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
@@ -81,15 +83,13 @@ class _FinalTestsState extends State<FinalTests> {
                               Text(
                                 'Question : ${posts[index].finalQuestions}',
                                 overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.lora(
-                                    fontWeight: FontWeight.w600),
+                                style: AppStyles.bodyText,
                               ),
                               const SizedBox(height: 10),
                               Text(
                                 'Answer : ${posts[index].finalAnswers}',
                                 overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.lora(
-                                    fontWeight: FontWeight.w600),
+                                style: AppStyles.bodyText,
                               ),
                             ],
                           ),
@@ -109,7 +109,7 @@ class _FinalTestsState extends State<FinalTests> {
                           },
                           icon: const Icon(
                             Icons.edit,
-                            color: Colors.blue,
+                            color: AppColors.actionColor1,
                           ),
                         ),
                         IconButton(
@@ -119,7 +119,7 @@ class _FinalTestsState extends State<FinalTests> {
                           },
                           icon: const Icon(
                             Icons.delete,
-                            color: Colors.red,
+                            color: AppColors.actionColor2,
                           ),
                         ),
                       ],
@@ -130,11 +130,14 @@ class _FinalTestsState extends State<FinalTests> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: AppColors.secondaryColor,
         onPressed: () {
           modelSheet(context);
         },
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: AppColors.actionColor1,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -148,22 +151,20 @@ class _FinalTestsState extends State<FinalTests> {
           return AlertDialog(
             title: Text(
               'Delete Question ${posts[index].finalQuesNumber}',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
+              style: AppStyles.bodyText,
             ),
             content: Text(
               'Are you sure?',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 16),
+              style: AppStyles.bodyText,
             ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'Cancel',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
               const SizedBox(width: 10),
@@ -172,9 +173,9 @@ class _FinalTestsState extends State<FinalTests> {
                   controller.deleteData(user.finalQuesNumber, context);
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'yes',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
             ],
@@ -194,11 +195,11 @@ class _FinalTestsState extends State<FinalTests> {
         builder: (BuildContext context) {
           return Container(
               height: 450.0,
-              color: Colors.transparent,
+              color: AppColors.transColor,
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade200,
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  color: AppColors.secondaryColor,
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),
                   ),
@@ -210,10 +211,7 @@ class _FinalTestsState extends State<FinalTests> {
                       const SizedBox(height: 30),
                       Text(
                         'Add new question & answer',
-                        style: GoogleFonts.lora(
-                            fontSize: 22,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w500),
+                        style: AppStyles.bodyText,
                       ),
                       const SizedBox(height: 50),
                       questionTextArea(),
@@ -221,7 +219,7 @@ class _FinalTestsState extends State<FinalTests> {
                       answerTextArea(),
                       const SizedBox(height: 20),
                       CustomButton(
-                        text: 'Post',
+                        text: 'POST',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
                             Provider.of<UserproviderFinalTest>(context,
@@ -254,7 +252,7 @@ class _FinalTestsState extends State<FinalTests> {
       },
       suffixIcon: const Icon(
         Icons.abc,
-        color: Colors.transparent,
+        color: AppColors.transColor,
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_mark),
@@ -276,7 +274,7 @@ class _FinalTestsState extends State<FinalTests> {
       },
       suffixIcon: const Icon(
         Icons.abc,
-        color: Colors.transparent,
+        color: AppColors.transColor,
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_answer),

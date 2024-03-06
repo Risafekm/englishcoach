@@ -1,11 +1,12 @@
 // ignore_for_file: unused_local_variable, avoid_print
 
 import 'package:englishcoach/application/provider/userprovider_test2.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/domain/model/quizTest2model.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/editpage/edit_test2_page.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,12 +34,19 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: AppColors.accentColor1,
         elevation: 3,
         centerTitle: true,
         title: Text(
           'Test 2 Questions & Answers',
-          style: GoogleFonts.lora(fontWeight: FontWeight.w600),
+          style: AppStyles.appBarTitle,
+        ),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.secondaryColor,
+          ),
         ),
         actions: [
           Padding(
@@ -48,7 +56,10 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                   onPressed: () {
                     modelSheet(context);
                   },
-                  icon: const Icon(Icons.add)),
+                  icon: const Icon(
+                    Icons.add,
+                    color: AppColors.actionColor1,
+                  )),
             ),
           ),
         ],
@@ -63,15 +74,15 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
           itemBuilder: (context, index) {
             var user = posts[index];
             return Container(
-              decoration: BoxDecoration(
-                color: Colors.blue.shade200,
+              decoration: const BoxDecoration(
+                color: AppColors.secondaryColor,
               ),
               child: Card(
                 child: Container(
                   height: 80,
                   width: MediaQuery.of(context).size.width * 6,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -90,15 +101,13 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                             Text(
                               'Question : ${posts[index].prelimTransQuestion}',
                               overflow: TextOverflow.ellipsis,
-                              style:
-                                  GoogleFonts.lora(fontWeight: FontWeight.w600),
+                              style: AppStyles.bodyText,
                             ),
                             const SizedBox(height: 10),
                             Text(
                               'Answer : ${posts[index].prelimTransAnswer}',
                               overflow: TextOverflow.ellipsis,
-                              style:
-                                  GoogleFonts.lora(fontWeight: FontWeight.w500),
+                              style: AppStyles.bodyText,
                             ),
                           ],
                         ),
@@ -116,7 +125,7 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                         },
                         icon: const Icon(
                           Icons.edit,
-                          color: Colors.blue,
+                          color: AppColors.actionColor1,
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -127,7 +136,7 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                         },
                         icon: const Icon(
                           Icons.delete,
-                          color: Colors.red,
+                          color: AppColors.actionColor2,
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -150,22 +159,20 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
           return AlertDialog(
             title: Text(
               'Delete Question ${posts[index].prelimTransQuesNum}',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
+              style: AppStyles.bodyText,
             ),
             content: Text(
               'Are you sure?',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 16),
+              style: AppStyles.bodyText,
             ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'Cancel',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
               const SizedBox(width: 10),
@@ -175,9 +182,9 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                       user.prelimTransQuesNum.toString(), context);
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'yes',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
             ],
@@ -197,11 +204,11 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
         builder: (BuildContext context) {
           return Container(
               height: 450.0,
-              color: Colors.transparent,
+              color: AppColors.transColor,
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade200,
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  color: AppColors.secondaryColor,
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),
                   ),
@@ -213,10 +220,7 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                       const SizedBox(height: 30),
                       Text(
                         'Add new question & answer',
-                        style: GoogleFonts.lora(
-                            fontSize: 22,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w500),
+                        style: AppStyles.bodyText,
                       ),
                       const SizedBox(height: 50),
                       questionTextArea(),
@@ -224,7 +228,7 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                       answerTextArea(),
                       const SizedBox(height: 20),
                       CustomButton(
-                        text: 'Post',
+                        text: 'POST',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
                             Provider.of<UserProviderTest2>(context,
@@ -257,7 +261,7 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
       },
       suffixIcon: const Icon(
         Icons.abc,
-        color: Colors.transparent,
+        color: AppColors.transColor,
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_mark),
@@ -279,7 +283,7 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
       },
       suffixIcon: const Icon(
         Icons.abc,
-        color: Colors.transparent,
+        color: AppColors.transColor,
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_answer),

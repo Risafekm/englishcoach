@@ -1,8 +1,9 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/domain/model/modulesmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class DescriptionPage extends StatelessWidget {
   Modules data;
@@ -12,16 +13,19 @@ class DescriptionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.accentColor1,
         centerTitle: true,
         elevation: 0,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.secondaryColor,
+          ),
         ),
         title: Text(
           'Modules',
-          style: GoogleFonts.lora(
-              fontWeight: FontWeight.w600, color: Colors.black),
+          style: AppStyles.appBarTitle,
         ),
       ),
       body: SingleChildScrollView(
@@ -31,41 +35,34 @@ class DescriptionPage extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               data.modName.toString(),
-              style:
-                  GoogleFonts.lora(fontSize: 24, fontWeight: FontWeight.bold),
+              style: AppStyles.bodyText,
             ),
             const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 data.modDescription.toString(),
-                style:
-                    GoogleFonts.lora(fontSize: 16, fontWeight: FontWeight.w400),
+                style: AppStyles.bodyText,
               ),
             ),
             const SizedBox(height: 40),
             Text(
               data.modContent,
-              style:
-                  GoogleFonts.lora(fontSize: 20, fontWeight: FontWeight.bold),
+              style: AppStyles.bodyText,
             ),
             const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 data.modSpecialnote.toString(),
-                style: GoogleFonts.lora(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: AppStyles.bodyText,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 data.modExampleExplanation.toString(),
-                style:
-                    GoogleFonts.lora(fontSize: 18, fontWeight: FontWeight.w400),
+                style: AppStyles.bodyText,
               ),
             ),
           ],

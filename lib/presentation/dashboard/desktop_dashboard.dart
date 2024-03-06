@@ -1,5 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
-
+import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/presentation/dashboard/desktop_dash/desktop_dash_main.dart';
 import 'package:englishcoach/presentation/dashboard/widget/drawer_icon_text_desktop.dart';
 import 'package:englishcoach/presentation/drawer/final_tests/desktop_finaltests.dart';
@@ -52,7 +51,7 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
             Expanded(
               flex: 2,
               child: Container(
-                color: Colors.white54,
+                color: AppColors.accentColor1,
                 // color: Theme.of(context).colorScheme.onPrimary,
                 child: ListView(
                   children: [
@@ -156,7 +155,7 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
             Expanded(
               flex: 2,
               child: Container(
-                color: Colors.green,
+                color: AppColors.accentColor1,
                 height: MediaQuery.of(context).size.height,
                 // child: const ProfileDesktop(),
               ),

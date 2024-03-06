@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable, camel_case_types
-
 import 'dart:convert';
 import 'package:englishcoach/domain/Model/mod_user.dart';
 import 'package:englishcoach/domain/Model/mod_user_authentication.dart';

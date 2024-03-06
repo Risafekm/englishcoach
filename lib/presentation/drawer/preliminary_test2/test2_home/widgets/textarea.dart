@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, sized_box_for_whitespace
 // ignore_for_file: must_be_immutable
 
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:flutter/material.dart';
 
 class TextArea extends StatelessWidget {
@@ -34,44 +36,44 @@ class TextArea extends StatelessWidget {
         enabled: true,
         keyboardType: keyboardType,
         obscureText: obscureText,
-        style: const TextStyle(color: Colors.black, fontSize: 16),
+        style: AppStyles.bodyText,
         decoration: InputDecoration(
-          fillColor: Color.fromARGB(135, 235, 232, 232),
+          fillColor: AppColors.secondaryColor,
           filled: true,
           label: Text(
             name.toString(),
-            style: const TextStyle(color: Colors.black),
+            style: AppStyles.bodyText,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-              color: Colors.white.withOpacity(.8),
+            borderSide: const BorderSide(
+              color: AppColors.accentColor1,
               width: 2,
             ),
           ),
-          labelStyle: const TextStyle(color: Colors.black, fontSize: 16),
+          labelStyle: AppStyles.bodyText,
           prefixIcon: prefixIcon,
-          prefixIconColor: const Color.fromARGB(255, 69, 68, 68),
+          prefixIconColor: AppColors.actionColor1,
           suffixIcon: suffixIcon,
-          suffixIconColor: const Color.fromARGB(255, 69, 68, 68),
+          suffixIconColor: AppColors.transColor,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-              color: Colors.white.withOpacity(.2),
+            borderSide: const BorderSide(
+              color: AppColors.accentColor1,
               width: 2,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide(
-              color: Colors.white.withOpacity(.2),
+            borderSide: const BorderSide(
+              color: AppColors.accentColor2,
               width: 2,
             ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: Colors.red,
+              color: AppColors.actionColor2,
               width: 2,
             ),
           ),

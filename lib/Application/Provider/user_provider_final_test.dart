@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable, camel_case_types
-
 import 'dart:convert';
 import 'package:englishcoach/domain/model/final_test_model.dart';
 import 'package:http/http.dart' as http;

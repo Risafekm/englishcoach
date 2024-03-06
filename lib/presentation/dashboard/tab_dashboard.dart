@@ -1,5 +1,6 @@
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../drawer/drawer.dart';
 import 'widget/custom_card_widget.dart';
 
@@ -11,23 +12,18 @@ class TabViewDashBoard extends StatelessWidget {
     return Scaffold(
         drawer: const DrawerPage(),
         appBar: AppBar(
+          backgroundColor: AppColors.accentColor1,
           centerTitle: true,
           title: Text(
             'English Coach',
-            style: GoogleFonts.lato(
-              textStyle: const TextStyle(
-                  color: Color.fromARGB(255, 11, 66, 112),
-                  letterSpacing: .5,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold),
-            ),
+            style: AppStyles.appBarTitle,
           ),
           actions: [
             IconButton(
               onPressed: () {},
               icon: const Icon(
                 Icons.power_settings_new_rounded,
-                color: Color.fromARGB(255, 11, 66, 112),
+                color: AppColors.secondaryColor,
               ),
             ),
           ],

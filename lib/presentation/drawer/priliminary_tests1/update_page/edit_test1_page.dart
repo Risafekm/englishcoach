@@ -2,10 +2,11 @@
 
 import 'package:englishcoach/application/provider/userprovider_test1.dart';
 import 'package:englishcoach/domain/Model/quizTest1model.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class EditPageTest1 extends StatelessWidget {
@@ -18,13 +19,21 @@ class EditPageTest1 extends StatelessWidget {
     var controller = Provider.of<userprovidertest1>(context);
 
     return Scaffold(
-      backgroundColor: Colors.blue.shade200,
+      backgroundColor: AppColors.secondaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: AppColors.accentColor1,
         elevation: 3,
         title: Text(
           'Edit Test 2 Questions',
-          style: GoogleFonts.lora(fontWeight: FontWeight.w600),
+          style: AppStyles.appBarTitle,
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.secondaryColor,
+          ),
         ),
       ),
       body: Container(
@@ -33,8 +42,7 @@ class EditPageTest1 extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               'Question No ${user.topic_que_num}',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 22),
+              style: AppStyles.bodyText,
             ),
             const SizedBox(height: 50),
             TextArea(
@@ -46,7 +54,7 @@ class EditPageTest1 extends StatelessWidget {
               },
               suffixIcon: const Icon(
                 Icons.abc,
-                color: Colors.transparent,
+                color: AppColors.transColor,
               ),
               obscureText: false,
               prefixIcon: const Icon(Icons.question_mark),
@@ -61,14 +69,14 @@ class EditPageTest1 extends StatelessWidget {
               },
               suffixIcon: const Icon(
                 Icons.abc,
-                color: Colors.transparent,
+                color: AppColors.transColor,
               ),
               obscureText: false,
               prefixIcon: const Icon(Icons.question_answer),
             ),
             const SizedBox(height: 30),
             CustomButton(
-              text: 'Update',
+              text: 'UPDATE',
               ontap: () {
                 Provider.of<userprovidertest1>(context, listen: false)
                     .updateData(user.topic_que_num, context);

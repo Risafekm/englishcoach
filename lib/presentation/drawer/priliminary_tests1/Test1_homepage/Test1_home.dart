@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Test1Home extends StatefulWidget {
-  const Test1Home({super.key});
+class Test1 extends StatefulWidget {
+  const Test1({super.key});
 
   @override
-  State<Test1Home> createState() => _Test1State();
+  State<Test1> createState() => _Test1State();
 }
 
-class _Test1State extends State<Test1Home> {
+class _Test1State extends State<Test1> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

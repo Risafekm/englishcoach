@@ -1,6 +1,5 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable
-
 import 'dart:convert';
+import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/model/exercisesmodel.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -135,14 +134,14 @@ class UserProviderExercises extends ChangeNotifier {
   snackbar(context, {required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.accentColor2,
         content: Row(
           children: [
             Expanded(child: Text('Successfully $text')),
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color: Colors.green),
+            const Icon(Icons.done, color: AppColors.accentColor1),
           ],
         ),
       ),

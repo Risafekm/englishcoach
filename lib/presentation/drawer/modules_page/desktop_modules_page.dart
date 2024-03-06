@@ -1,13 +1,14 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:englishcoach/application/provider/userprovider_modules.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/domain/model/modulesmodel.dart';
 import 'package:englishcoach/presentation/drawer/modules_page/edit_page/edit_modules.dart';
 import 'package:englishcoach/presentation/drawer/modules_page/description_page/modules_description.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class DesktopModulesPage extends StatefulWidget {
@@ -31,15 +32,21 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
   Widget build(BuildContext context) {
     var controller = Provider.of<UserproviderModules>(context);
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.secondaryColor,
         appBar: AppBar(
           centerTitle: true,
-          backgroundColor: Colors.grey,
+          backgroundColor: AppColors.accentColor1,
           elevation: 0,
           title: Text(
             'Modules',
-            style: GoogleFonts.lora(
-                fontWeight: FontWeight.w600, color: Colors.black),
+            style: AppStyles.appBarTitle,
+          ),
+          leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: AppColors.secondaryColor,
+            ),
           ),
           actions: [
             Padding(
@@ -52,7 +59,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                   // radius: 15,
                   child: Icon(
                     Icons.add,
-                    color: Colors.black,
+                    color: AppColors.actionColor1,
                     size: 22,
                   ),
                 ),
@@ -71,7 +78,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                 height: 240,
                 width: MediaQuery.of(context).size.width * .98,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: AppColors.accentColor1,
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
@@ -83,7 +90,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                 height: 240,
                 width: MediaQuery.of(context).size.width * .98,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: AppColors.accentColor1,
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
@@ -134,20 +141,12 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                     width: 130,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.green.shade600,
-                          Colors.blue.shade300,
-                        ],
-                      ),
+                      color: AppColors.accentColor2,
                     ),
                     child: Center(
                       child: Text(
                         posts[index].modName,
-                        style:
-                            GoogleFonts.lora(fontSize: 18, color: Colors.white),
+                        style: AppStyles.bodyText,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -158,10 +157,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                   bottom: -12,
                   child: Text(
                     posts[index].modOrder,
-                    style: TextStyle(
-                        fontSize: 70,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.orange.shade400),
+                    style: AppStyles.numStyle,
                   ),
                 ),
                 Positioned(
@@ -188,12 +184,12 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                                   EditModules(user: posts[index])));
                     },
                     child: const CircleAvatar(
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppColors.secondaryColor,
                       radius: 12,
                       child: Icon(
                         Icons.edit,
                         size: 13,
-                        color: Colors.black87,
+                        color: AppColors.actionColor1,
                       ),
                     ),
                   ),
@@ -214,22 +210,20 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
           return AlertDialog(
             title: Text(
               'Delete Question ${posts[index].modOrder}',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
+              style: AppStyles.bodyText,
             ),
             content: Text(
               'Are you sure?',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 16),
+              style: AppStyles.bodyText,
             ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'Cancel',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
               const SizedBox(width: 10),
@@ -238,9 +232,9 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                   controller.deleteData(user.modNum.toString(), context);
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'yes',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
             ],
@@ -260,11 +254,11 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
         builder: (BuildContext context) {
           return Container(
               height: 550.0,
-              color: Colors.transparent,
+              color: AppColors.transColor,
               child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade200,
-                  borderRadius: const BorderRadius.only(
+                decoration: const BoxDecoration(
+                  color: AppColors.secondaryColor,
+                  borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30.0),
                     topRight: Radius.circular(30.0),
                   ),
@@ -277,10 +271,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                         const SizedBox(height: 30),
                         Text(
                           'Add new question & answer',
-                          style: GoogleFonts.lora(
-                              fontSize: 22,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w500),
+                          style: AppStyles.bodyText,
                         ),
                         const SizedBox(height: 50),
                         TextArea(
@@ -290,10 +281,8 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                           validator: (value) {
                             return null;
                           },
-                          suffixIcon: const Icon(
-                            Icons.abc,
-                            color: Colors.transparent,
-                          ),
+                          suffixIcon: const Icon(Icons.abc,
+                              color: AppColors.transColor),
                           obscureText: false,
                           prefixIcon: const Icon(Icons.flash_auto_outlined),
                         ),
@@ -305,10 +294,8 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                           validator: (value) {
                             return null;
                           },
-                          suffixIcon: const Icon(
-                            Icons.abc,
-                            color: Colors.transparent,
-                          ),
+                          suffixIcon: const Icon(Icons.abc,
+                              color: AppColors.transColor),
                           obscureText: false,
                           prefixIcon: const Icon(Icons.title),
                         ),
@@ -320,10 +307,8 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                           validator: (value) {
                             return null;
                           },
-                          suffixIcon: const Icon(
-                            Icons.abc,
-                            color: Colors.transparent,
-                          ),
+                          suffixIcon: const Icon(Icons.abc,
+                              color: AppColors.transColor),
                           obscureText: false,
                           prefixIcon: const Icon(Icons.comment),
                         ),
@@ -335,10 +320,8 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                           validator: (value) {
                             return null;
                           },
-                          suffixIcon: const Icon(
-                            Icons.abc,
-                            color: Colors.transparent,
-                          ),
+                          suffixIcon: const Icon(Icons.abc,
+                              color: AppColors.transColor),
                           obscureText: false,
                           prefixIcon: const Icon(Icons.comment),
                         ),
@@ -350,10 +333,8 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                           validator: (value) {
                             return null;
                           },
-                          suffixIcon: const Icon(
-                            Icons.abc,
-                            color: Colors.transparent,
-                          ),
+                          suffixIcon: const Icon(Icons.abc,
+                              color: AppColors.transColor),
                           obscureText: false,
                           prefixIcon: const Icon(Icons.comment),
                         ),
@@ -365,16 +346,14 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                           validator: (value) {
                             return null;
                           },
-                          suffixIcon: const Icon(
-                            Icons.abc,
-                            color: Colors.transparent,
-                          ),
+                          suffixIcon: const Icon(Icons.abc,
+                              color: AppColors.transColor),
                           obscureText: false,
                           prefixIcon: const Icon(Icons.comment),
                         ),
                         const SizedBox(height: 20),
                         CustomButton(
-                          text: 'Post',
+                          text: 'POST',
                           ontap: () {
                             if (formkey.currentState!.validate()) {
                               Provider.of<UserproviderModules>(context,

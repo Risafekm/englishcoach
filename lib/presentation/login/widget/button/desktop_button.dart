@@ -1,7 +1,8 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ButtonDesktop extends StatelessWidget {
   VoidCallback onpressed;
@@ -17,14 +18,15 @@ class ButtonDesktop extends StatelessWidget {
     return Center(
       child: Container(
         height: 45,
-        width: MediaQuery.of(context).size.width * .25,
+        width: MediaQuery.of(context).size.width * .17,
         decoration: BoxDecoration(
-            color: Colors.green.shade200,
+            color: AppColors.actionColor1,
             borderRadius: BorderRadius.circular(20)),
         child: ElevatedButton(
             onPressed: onpressed,
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
+              backgroundColor:
+                  MaterialStateProperty.all(AppColors.accentColor2),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
@@ -33,10 +35,7 @@ class ButtonDesktop extends StatelessWidget {
             ),
             child: Text(
               text,
-              style: GoogleFonts.lora(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold),
+              style: AppStyles.buttonText,
             )),
       ),
     );

@@ -1,7 +1,9 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../../../../../domain/const/const_styles.dart';
 
 class CustomButton extends StatelessWidget {
   String text;
@@ -20,17 +22,12 @@ class CustomButton extends StatelessWidget {
         height: 50,
         width: 250,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          gradient: LinearGradient(colors: [
-            Colors.white.withOpacity(0.5),
-            Colors.white.withOpacity(.5),
-          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-        ),
+            borderRadius: BorderRadius.circular(10),
+            color: AppColors.accentColor2),
         child: Center(
           child: Text(
             text,
-            style: GoogleFonts.crimsonText(
-                fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+            style: AppStyles.buttonText,
           ),
         ),
       ),

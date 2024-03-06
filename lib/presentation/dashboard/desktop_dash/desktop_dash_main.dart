@@ -1,8 +1,7 @@
-// ignore_for_file: sized_box_for_whitespace, must_be_immutable
-
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/dashboard/widget/custom_card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class DashBoardDesktop extends StatelessWidget {
   DashBoardDesktop({super.key});
@@ -19,8 +18,8 @@ class DashBoardDesktop extends StatelessWidget {
           centerArea(),
           Container(
             width: MediaQuery.of(context).size.width,
-            color: Colors.green,
-            child: Row(
+            color: AppColors.accentColor1,
+            child: const Row(
               children: [],
             ),
           ),
@@ -37,39 +36,30 @@ class DashBoardDesktop extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: Theme.of(context).colorScheme.primary,
+          color: AppColors.accentColor1,
         ),
         height: 45,
         child: TextField(
-          cursorColor: Theme.of(context).colorScheme.tertiary,
-          style: TextStyle(
-            fontSize: 20,
-            color: Theme.of(context).colorScheme.tertiary,
-            fontWeight: FontWeight.w400,
-          ),
+          cursorColor: AppColors.secondaryColor,
+          style: AppStyles.bodyText,
           showCursor: true,
           controller: searchText,
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.only(
-              top: 10,
-              bottom: 10,
-              left: 25,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none,
-            ),
-            filled: true,
-            fillColor: Colors.cyan,
-            hintText: 'Search',
-            prefixIcon: const Icon(Icons.search),
-            prefixIconColor: Theme.of(context).colorScheme.tertiary,
-            hintStyle: GoogleFonts.lora(
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              color: Theme.of(context).colorScheme.tertiary,
-            ),
-          ),
+              contentPadding: const EdgeInsets.only(
+                top: 10,
+                bottom: 10,
+                left: 25,
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: AppColors.accentColor1,
+              hintText: 'Search',
+              prefixIcon: const Icon(Icons.search),
+              prefixIconColor: AppColors.secondaryColor,
+              hintStyle: AppStyles.dashboardText),
         ),
       ),
     );

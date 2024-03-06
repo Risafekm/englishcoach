@@ -1,10 +1,11 @@
 import 'package:englishcoach/application/provider/userprovider_exercises.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/domain/model/exercisesmodel.dart';
 import 'package:englishcoach/presentation/drawer/modules_exercises_page/editpage/edit_exercises.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ExercisesPage extends StatefulWidget {
@@ -31,16 +32,19 @@ class _ExercisesPageState extends State<ExercisesPage> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: AppColors.accentColor1,
         centerTitle: true,
         elevation: 3,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back_ios),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: AppColors.secondaryColor,
+          ),
         ),
         title: Text(
           'Exercises',
-          style: GoogleFonts.lora(fontWeight: FontWeight.w600),
+          style: AppStyles.appBarTitle,
         ),
       ),
       body: Consumer<UserProviderExercises>(builder: (context, value, child) {
@@ -55,15 +59,15 @@ class _ExercisesPageState extends State<ExercisesPage> {
           itemBuilder: (context, index) {
             var user = posts[index];
             return Container(
-              decoration: BoxDecoration(
-                color: Colors.blue.shade200,
+              decoration: const BoxDecoration(
+                color: AppColors.secondaryColor,
               ),
               child: Card(
                 child: Container(
                   height: 80,
                   width: MediaQuery.of(context).size.width * 6,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -82,15 +86,13 @@ class _ExercisesPageState extends State<ExercisesPage> {
                             Text(
                               'Question :${user.exeQuestion}'.toString(),
                               overflow: TextOverflow.ellipsis,
-                              style:
-                                  GoogleFonts.lora(fontWeight: FontWeight.w600),
+                              style: AppStyles.bodyText,
                             ),
                             const SizedBox(height: 10),
                             Text(
                               'Answer :${user.exeAnswer}',
                               overflow: TextOverflow.ellipsis,
-                              style:
-                                  GoogleFonts.lora(fontWeight: FontWeight.w500),
+                              style: AppStyles.bodyText,
                             ),
                           ],
                         ),
@@ -112,7 +114,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         },
                         icon: const Icon(
                           Icons.edit,
-                          color: Colors.blue,
+                          color: AppColors.actionColor1,
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -123,7 +125,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                         },
                         icon: const Icon(
                           Icons.delete,
-                          color: Colors.red,
+                          color: AppColors.actionColor2,
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -136,11 +138,14 @@ class _ExercisesPageState extends State<ExercisesPage> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: AppColors.secondaryColor,
         onPressed: () {
           modelSheet(context);
         },
-        child: const Icon(Icons.add),
+        child: const Icon(
+          Icons.add,
+          color: AppColors.actionColor1,
+        ),
       ),
     );
   }
@@ -153,22 +158,20 @@ class _ExercisesPageState extends State<ExercisesPage> {
           return AlertDialog(
             title: Text(
               'Delete Question ${posts[index].exeNum}',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
+              style: AppStyles.bodyText,
             ),
             content: Text(
               'Are you sure?',
-              style:
-                  GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 16),
+              style: AppStyles.bodyText,
             ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'Cancel',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
               const SizedBox(width: 10),
@@ -177,9 +180,9 @@ class _ExercisesPageState extends State<ExercisesPage> {
                   controller.deleteData(user.exeNum.toString(), context);
                   Navigator.pop(context);
                 },
-                child: const Text(
+                child: Text(
                   'yes',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
+                  style: AppStyles.bodyText,
                 ),
               ),
             ],
@@ -190,6 +193,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
   Future<dynamic> modelSheet(BuildContext context) {
     return showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
@@ -197,11 +201,11 @@ class _ExercisesPageState extends State<ExercisesPage> {
         builder: (BuildContext context) {
           return Container(
             height: 450.0,
-            color: Colors.transparent,
+            color: AppColors.transColor,
             child: Container(
-              decoration: BoxDecoration(
-                color: Colors.blue.shade200,
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: AppColors.secondaryColor,
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(30.0),
                   topRight: Radius.circular(30.0),
                 ),
@@ -213,10 +217,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     const SizedBox(height: 30),
                     Text(
                       'Add new question & answer',
-                      style: GoogleFonts.lora(
-                          fontSize: 22,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w500),
+                      style: AppStyles.bodyText,
                     ),
                     const SizedBox(height: 50),
                     modnumTextArea(),
@@ -226,7 +227,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
                     answerTextArea(),
                     const SizedBox(height: 20),
                     CustomButton(
-                      text: 'Post',
+                      text: 'POST',
                       ontap: () {
                         if (formkey.currentState!.validate()) {
                           Provider.of<UserProviderExercises>(context,
@@ -259,10 +260,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
           return null;
         }
       },
-      suffixIcon: const Icon(
-        Icons.abc,
-        color: Colors.transparent,
-      ),
+      suffixIcon: const Icon(Icons.abc, color: AppColors.transColor),
       obscureText: false,
       prefixIcon: const Icon(Icons.comment),
     );
@@ -283,7 +281,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
       },
       suffixIcon: const Icon(
         Icons.abc,
-        color: Colors.transparent,
+        color: AppColors.transColor,
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_mark),
@@ -305,7 +303,7 @@ class _ExercisesPageState extends State<ExercisesPage> {
       },
       suffixIcon: const Icon(
         Icons.abc,
-        color: Colors.transparent,
+        color: AppColors.transColor,
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_answer),

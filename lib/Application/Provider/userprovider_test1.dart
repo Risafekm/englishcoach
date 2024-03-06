@@ -1,11 +1,11 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable, camel_case_types
+// ignore_for_file: unnecessary_null_comparison
 
 import 'dart:convert';
-
 import 'package:englishcoach/domain/Model/quizTest1model.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:flutter/material.dart';
+
+import '../../domain/const/const_colors.dart';
 
 class userprovidertest1 extends ChangeNotifier {
   List<QuizTest1> _posts = [];
@@ -124,14 +124,17 @@ class userprovidertest1 extends ChangeNotifier {
   snackbar(context, {required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.accentColor2,
         content: Row(
           children: [
             Expanded(child: Text('Successfully $text')),
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color: Colors.green),
+            const Icon(
+              Icons.done,
+              color: AppColors.accentColor1,
+            ),
           ],
         ),
       ),
