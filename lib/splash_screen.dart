@@ -1,7 +1,8 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/login/responsive_login/responsive_login.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -10,7 +11,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       nextScreen: const ResponsiveLogin(),
-      backgroundColor: Color.fromARGB(255, 1, 76, 82),
+      backgroundColor: AppColors.accentColor1,
       splashIconSize: 400,
       duration: 2000,
       animationDuration: const Duration(seconds: 2),
@@ -25,15 +26,11 @@ class SplashScreen extends StatelessWidget {
           // ),
           Text(
             "englishcoach",
-            style: GoogleFonts.poppins(
-                fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
+            style: AppStyles.splashText1,
           ),
           Text(
             "Your Personal English Coach",
-            style: GoogleFonts.poppins(
-                fontSize: 11,
-                color: Colors.white,
-                fontWeight: FontWeight.normal),
+            style: AppStyles.splashText2,
           ),
         ],
       ),

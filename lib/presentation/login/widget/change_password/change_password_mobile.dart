@@ -1,7 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/login/widget/change_password/widget/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class MobileChangePassword extends StatefulWidget {
@@ -20,7 +23,7 @@ class _MobileChangePasswordState extends State<MobileChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color.fromARGB(255, 184, 205, 221),
+      color: AppColors.secondaryColor,
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(
@@ -34,17 +37,11 @@ class _MobileChangePasswordState extends State<MobileChangePassword> {
                 ),
                 Text(
                   "englishcoach",
-                  style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                  style: AppStyles.loginText1,
                 ),
                 Text(
                   "Your Personal English Coach",
-                  style: GoogleFonts.poppins(
-                      fontSize: 13,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
+                  style: AppStyles.loginText2,
                 ),
                 const SizedBox(
                   height: 50,

@@ -3,14 +3,14 @@ import 'package:englishcoach/presentation/login/widget/button/FormField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CustomPovider extends StatefulWidget {
-  const CustomPovider({super.key});
+class CustomProvider extends StatefulWidget {
+  const CustomProvider({super.key});
 
   @override
-  State<CustomPovider> createState() => _CustomPoviderState();
+  State<CustomProvider> createState() => _CustomProviderState();
 }
 
-class _CustomPoviderState extends State<CustomPovider> {
+class _CustomProviderState extends State<CustomProvider> {
   @override
   Widget build(BuildContext context) {
     return ListenableProvider<UserproviderPassword>(

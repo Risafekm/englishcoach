@@ -4,7 +4,7 @@ import 'package:englishcoach/presentation/drawer/final_tests/final_test.dart';
 import 'package:englishcoach/presentation/drawer/modules_exercises_page/exercises_page.dart';
 import 'package:englishcoach/presentation/drawer/modules_page/modules_page.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/test2_home.dart';
-import 'package:englishcoach/presentation/drawer/priliminary_tests1/Test1_homepage/Test1_home.dart';
+import 'package:englishcoach/presentation/drawer/priliminary_tests1/Test1_homepage/test1_home.dart';
 import 'package:englishcoach/presentation/drawer/topic_tests/topic_tests.dart';
 import 'package:flutter/material.dart';
 

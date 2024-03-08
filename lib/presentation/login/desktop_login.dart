@@ -117,7 +117,7 @@ class DesktopViewLogin extends StatelessWidget {
                             ],
                           ),
                           child: const SingleChildScrollView(
-                            child: CustomPovider(),
+                            child: CustomProvider(),
                             // ChangeNotifierProvider<UserproviderPassword>(
                             //   create: (context) => UserproviderPassword(),
                             //   child: LoginForm(),

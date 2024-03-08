@@ -39,7 +39,7 @@ class _TabViewLoginState extends State<TabViewLogin> {
                       fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(height: 60),
-                const CustomPovider(), // Ensure this is directly under here
+                const CustomProvider(), // Ensure this is directly under here
               ],
             ),
           ),

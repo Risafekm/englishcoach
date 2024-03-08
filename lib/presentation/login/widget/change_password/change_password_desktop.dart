@@ -1,7 +1,8 @@
 import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/login/widget/change_password/widget/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 ValueNotifier<bool> isVisibile = ValueNotifier<bool>(true);
@@ -22,11 +23,11 @@ class _ChangePasswordState extends State<DesktopChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.secondaryColor,
       body: SingleChildScrollView(
         child: Container(
           height: MediaQuery.of(context).size.height,
-          color: const Color.fromARGB(255, 184, 205, 221),
+          color: AppColors.secondaryColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -38,19 +39,13 @@ class _ChangePasswordState extends State<DesktopChangePassword> {
                     Center(
                       child: Text(
                         "englishcoach",
-                        style: GoogleFonts.poppins(
-                            fontSize: 40,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
+                        style: AppStyles.loginText1,
                       ),
                     ),
                     Center(
                       child: Text(
                         "Your Personal English Coach",
-                        style: GoogleFonts.poppins(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400),
+                        style: AppStyles.loginText2,
                       ),
                     ),
                   ],
@@ -64,14 +59,14 @@ class _ChangePasswordState extends State<DesktopChangePassword> {
                   height: MediaQuery.of(context).size.height * .45,
                   width: MediaQuery.of(context).size.width * .35,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColors.secondaryColor,
                     borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
-                          offset: const Offset(3, 3),
+                          offset: Offset(3, 3),
                           spreadRadius: 1,
                           blurRadius: 8,
-                          color: Colors.grey.shade400),
+                          color: AppColors.shadowColor),
                     ],
                   ),
                   child: ChangeNotifierProvider<UserproviderPassword>(

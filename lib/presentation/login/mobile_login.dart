@@ -45,7 +45,7 @@ class _MobileViewLoginState extends State<MobileViewLogin> {
                   height: 60,
                 ),
 
-                const CustomPovider(),
+                const CustomProvider(),
                 // MobileTextFormFieldSection(),
               ],
             ),

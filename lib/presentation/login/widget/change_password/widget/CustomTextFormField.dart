@@ -1,11 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
 import 'package:englishcoach/domain/Model/mod_user.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:englishcoach/presentation/login/desktop_login.dart';
 import 'package:englishcoach/presentation/login/responsive_login/responsive_login.dart';
 import 'package:englishcoach/presentation/login/widget/button/desktop_button.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -36,10 +39,7 @@ class _textformfieldState extends State<CustomTextFormField> {
             const SizedBox(height: 10),
             Text(
               'Change Password',
-              style: GoogleFonts.lora(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green),
+              style: AppStyles.bodyText,
             ),
             const SizedBox(height: 30),
             Center(
@@ -51,7 +51,7 @@ class _textformfieldState extends State<CustomTextFormField> {
                 prefixIcon: const Icon(Icons.person),
                 suffixIcon: const Icon(
                   Icons.abc,
-                  color: Colors.transparent,
+                  color: AppColors.transColor,
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -80,11 +80,11 @@ class _textformfieldState extends State<CustomTextFormField> {
                         child: isVisibile.value
                             ? const Icon(
                                 Icons.visibility,
-                                color: Colors.black,
+                                color: AppColors.actionColor1,
                               )
                             : const Icon(
                                 Icons.visibility_off,
-                                color: Colors.black,
+                                color: AppColors.actionColor1,
                               ),
                       ),
                       validator: (value) {
@@ -117,11 +117,11 @@ class _textformfieldState extends State<CustomTextFormField> {
                         child: isVisibile.value
                             ? const Icon(
                                 Icons.visibility,
-                                color: Colors.black,
+                                color: AppColors.actionColor1,
                               )
                             : const Icon(
                                 Icons.visibility_off,
-                                color: Colors.black,
+                                color: AppColors.actionColor1,
                               ),
                       ),
                       validator: (value) {
@@ -138,7 +138,7 @@ class _textformfieldState extends State<CustomTextFormField> {
                 }),
             const SizedBox(height: 20),
             ButtonDesktop(
-              text: 'Change',
+              text: 'CHANGE',
               onpressed: () async {
                 if (globalChangePasswordKey.currentState!.validate()) {
                   // Initialize User object with the provided data
@@ -157,7 +157,7 @@ class _textformfieldState extends State<CustomTextFormField> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ResponsiveLogin(),
+                      builder: (context) => const ResponsiveLogin(),
                     ),
                   );
                 }
