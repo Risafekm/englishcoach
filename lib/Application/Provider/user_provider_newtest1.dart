@@ -1,17 +1,17 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable
+// ignore_for_file: unnecessary_null_comparison
 
 import 'dart:convert';
-
-import 'package:englishcoach/domain/Model/quizTest1model.dart';
+import 'package:englishcoach/domain/const/const_colors.dart';
+import 'package:englishcoach/domain/model/quizTest1model.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:flutter/material.dart';
 
-class UserProviderTest extends ChangeNotifier {
+class Test1Provider extends ChangeNotifier {
   List<QuizTest1> _posts = [];
   List<QuizTest1> get posts => _posts;
   bool isLoding = false;
-// post controller
+
+  // post controller
   TextEditingController questionController = TextEditingController();
   TextEditingController answersController = TextEditingController();
 
@@ -19,7 +19,7 @@ class UserProviderTest extends ChangeNotifier {
   TextEditingController updatequestionController = TextEditingController();
   TextEditingController updateanswersController = TextEditingController();
 
-// post
+  //post Data
 
   addData(context) async {
     String apiUrl = 'http://localhost/english_coach_php/test1/createtest1.php';
@@ -49,12 +49,12 @@ class UserProviderTest extends ChangeNotifier {
       print('Error ${e.toString()}');
     }
   }
+
 //get Data
 
   getData() async {
     isLoding = true;
     String getUrl = 'http://localhost/english_coach_php/test1/readtest1.php';
-
     try {
       var response = await http.get(Uri.parse(getUrl));
       if (response.statusCode == 200) {
@@ -72,11 +72,11 @@ class UserProviderTest extends ChangeNotifier {
     }
   }
 
-  //update
+  //update data
 
   updateData(int i, context) async {
     Uri updateUrl = Uri.parse(
-        'localhost/english_coach_php/test1/updatetest1.php?topic_que_num=$i');
+        'http://localhost/english_coach_php/test1/updatetest1.php?topic_que_num=$i');
     var data = QuizTest1(
       topic_que_num: i,
       topic_que_question: updatequestionController.text,
@@ -101,9 +101,11 @@ class UserProviderTest extends ChangeNotifier {
     notifyListeners();
   }
 
-  deleteData(int i, context) async {
+  //delete
+
+  deleteData(String i, context) async {
     Uri deleteUrl = Uri.parse(
-        'localhost/english_coach_php/test1/deletetest1.php?topic_que_num=$i');
+        'http://localhost/english_coach_php/test1/deletetest1.php?topic_que_num=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
@@ -124,21 +126,17 @@ class UserProviderTest extends ChangeNotifier {
   snackbar(context, {required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.accentColor2,
         content: Row(
           children: [
             Expanded(child: Text('Successfully $text')),
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color: Colors.green),
+            const Icon(Icons.done, color: AppColors.accentColor1),
           ],
         ),
       ),
     );
   }
 }
-
-
-
-//http://localhost/english_coach_php/test1/updatetest1.php?topic_que_num=

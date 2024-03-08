@@ -14,7 +14,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => userprovidertest1()),
+        ChangeNotifierProvider(create: (context) => UserProviderTest()),
         ChangeNotifierProvider(create: (context) => UserProviderTest2()),
         ChangeNotifierProvider(create: (context) => UserproviderModules()),
         ChangeNotifierProvider(create: (context) => UserProviderExercises()),
@@ -35,7 +35,6 @@ class RootScreen extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
-      // home: ResponsiveDashBoard(),
       // home: ResponsiveDashBoard(),
     );
   }

@@ -21,7 +21,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<userprovidertest1>(context, listen: false).getData();
+      Provider.of<UserProviderTest>(context, listen: false).getData();
     });
     super.initState();
   }
@@ -30,7 +30,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<userprovidertest1>(context);
+    var controller = Provider.of<UserProviderTest>(context);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
@@ -64,7 +64,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
           ),
         ],
       ),
-      body: Consumer<userprovidertest1>(builder: (context, value, child) {
+      body: Consumer<UserProviderTest>(builder: (context, value, child) {
         if (value.isLoding) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -153,7 +153,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   }
 
   Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest1> posts,
-      int index, userprovidertest1 controller, QuizTest1 user) {
+      int index, UserProviderTest controller, QuizTest1 user) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -229,7 +229,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
                         text: 'POST',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
-                            Provider.of<userprovidertest1>(context,
+                            Provider.of<UserProviderTest>(context,
                                     listen: false)
                                 .addData(context);
 
@@ -245,7 +245,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   }
 
   TextArea questionTextArea() {
-    var controller = Provider.of<userprovidertest1>(context, listen: false);
+    var controller = Provider.of<UserProviderTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Question',
@@ -264,7 +264,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   }
 
   TextArea answerTextArea() {
-    var controller = Provider.of<userprovidertest1>(context, listen: false);
+    var controller = Provider.of<UserProviderTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Answer',

@@ -16,7 +16,7 @@ class EditPageTest1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<userprovidertest1>(context);
+    var controller = Provider.of<UserProviderTest>(context);
 
     return Scaffold(
       backgroundColor: AppColors.secondaryColor,
@@ -78,7 +78,7 @@ class EditPageTest1 extends StatelessWidget {
             CustomButton(
               text: 'UPDATE',
               ontap: () {
-                Provider.of<userprovidertest1>(context, listen: false)
+                Provider.of<UserProviderTest>(context, listen: false)
                     .updateData(user.topic_que_num, context);
                 Navigator.pop(context);
               },
