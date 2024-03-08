@@ -1,9 +1,7 @@
 // ignore_for_file: avoid_print
-import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
-import 'package:englishcoach/presentation/login/widget/button/FormField.dart';
+import 'package:englishcoach/presentation/login/widget/button/custom_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class MobileViewLogin extends StatefulWidget {
   const MobileViewLogin({super.key});
@@ -46,7 +44,9 @@ class _MobileViewLoginState extends State<MobileViewLogin> {
                 const SizedBox(
                   height: 60,
                 ),
-                const MobileTextFormFieldSection(),
+
+                const CustomPovider(),
+                // MobileTextFormFieldSection(),
               ],
             ),
           ),
@@ -56,22 +56,22 @@ class _MobileViewLoginState extends State<MobileViewLogin> {
   }
 }
 
-class MobileTextFormFieldSection extends StatefulWidget {
-  const MobileTextFormFieldSection({super.key});
+// class MobileTextFormFieldSection extends StatefulWidget {
+//   const MobileTextFormFieldSection({super.key});
 
-  @override
-  State<MobileTextFormFieldSection> createState() =>
-      _TextFormFieldSectionState();
-}
+//   @override
+//   State<MobileTextFormFieldSection> createState() =>
+//       _TextFormFieldSectionState();
+// }
 
-class _TextFormFieldSectionState extends State<MobileTextFormFieldSection> {
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<UserproviderPassword>(
-      create: (context) => UserproviderPassword(),
-      builder: (context, child) {
-        return LoginForm();
-      },
-    );
-  }
-}
+// class _TextFormFieldSectionState extends State<MobileTextFormFieldSection> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return ChangeNotifierProvider<UserproviderPassword>(
+//       create: (context) => UserproviderPassword(),
+//       builder: (context, child) {
+//         return LoginForm();
+//       },
+//     );
+//   }
+// }
