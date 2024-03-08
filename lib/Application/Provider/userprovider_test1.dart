@@ -1,11 +1,11 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, unused_local_variable
 
 import 'dart:convert';
+
 import 'package:englishcoach/domain/Model/quizTest1model.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
-import '../../domain/const/const_colors.dart';
+import 'package:flutter/material.dart';
 
 class userprovidertest1 extends ChangeNotifier {
   List<QuizTest1> _posts = [];
@@ -76,7 +76,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   updateData(int i, context) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/english_coach_php/test1/updatetest1.php?topic_que_num=$i');
+        'localhost/english_coach_php/test1/updatetest1.php?topic_que_num=$i');
     var data = QuizTest1(
       topic_que_num: i,
       topic_que_question: updatequestionController.text,
@@ -103,7 +103,7 @@ class userprovidertest1 extends ChangeNotifier {
 
   deleteData(int i, context) async {
     Uri deleteUrl = Uri.parse(
-        'http://localhost/english_coach_php/test1/deletetest1.php?topic_que_num=$i');
+        'localhost/english_coach_php/test1/deletetest1.php?topic_que_num=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
@@ -124,20 +124,21 @@ class userprovidertest1 extends ChangeNotifier {
   snackbar(context, {required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: AppColors.accentColor2,
+        backgroundColor: Colors.blue,
         content: Row(
           children: [
             Expanded(child: Text('Successfully $text')),
             const SizedBox(
               width: 20,
             ),
-            const Icon(
-              Icons.done,
-              color: AppColors.accentColor1,
-            ),
+            const Icon(Icons.done, color: Colors.green),
           ],
         ),
       ),
     );
   }
 }
+
+
+
+//http://localhost/english_coach_php/test1/updatetest1.php?topic_que_num=

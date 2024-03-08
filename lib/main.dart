@@ -14,13 +14,13 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => userprovidertest1()),
         ChangeNotifierProvider(create: (context) => UserProviderTest2()),
         ChangeNotifierProvider(create: (context) => UserproviderModules()),
         ChangeNotifierProvider(create: (context) => UserProviderExercises()),
         ChangeNotifierProvider(create: (context) => UserproviderFinalTest()),
         ChangeNotifierProvider(create: (context) => UserproviderTopicTest()),
         ChangeNotifierProvider(create: (context) => UserproviderPassword()),
+        ChangeNotifierProvider(create: (_) => userprovidertest1()),
       ],
       child: const RootScreen(),
     ),
@@ -32,11 +32,13 @@ class RootScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
-      // home: ResponsiveDashBoard(),
-    );
+    return Builder(builder: (context) {
+      return const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+        // home: ResponsiveDashBoard(),
+      );
+    });
   }
 }
 
