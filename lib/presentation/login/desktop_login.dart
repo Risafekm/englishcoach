@@ -102,7 +102,7 @@ class DesktopViewLogin extends StatelessWidget {
                       ),
                       Center(
                         child: Container(
-                          padding: EdgeInsets.only(left: 20, right: 20),
+                          padding: const EdgeInsets.only(left: 20, right: 20),
                           height: MediaQuery.of(context).size.height * .45,
                           width: MediaQuery.of(context).size.width * .35,
                           decoration: BoxDecoration(
@@ -118,11 +118,6 @@ class DesktopViewLogin extends StatelessWidget {
                           ),
                           child: const SingleChildScrollView(
                             child: CustomProvider(),
-                            // ChangeNotifierProvider<UserproviderPassword>(
-                            //   create: (context) => UserproviderPassword(),
-                            //   child: LoginForm(),
-                            // ),
-                            // child: LoginForm(),
                           ),
                         ),
                       ),

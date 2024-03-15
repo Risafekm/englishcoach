@@ -10,63 +10,86 @@ class UserproviderModules extends ChangeNotifier {
   List<Modules> _posts = [];
   List<Modules> get posts => _posts;
   bool isLoding = false;
-  // Function to handle reordering
-  void reorderPosts(int oldIndex, int newIndex) {
-    if (oldIndex < newIndex) {
-      newIndex -= 1;
-    }
-    final postToReorder = posts.removeAt(oldIndex);
-    posts.insert(newIndex, postToReorder);
-    // Update the database via HTTP request to the PHP script
-    updateDatabase(posts);
-    // reorderModules(posts);
-    notifyListeners();
-  }
 
-  // Function to update the database with the new order
-  updateDatabase(List<Modules> updatedPosts) async {
-    String updateUrl =
-        'http://localhost/english_coach_php/modules/update_order.php';
-
+  void reorderModules(List<Modules> updatedModules) async {
     try {
+      String apiUrl =
+          'http://localhost/english_coach_php/modules/update_order.php';
+      var bodyy = jsonEncode(updatedModules);
       var response = await http.put(
-        Uri.parse(updateUrl),
-        body: {'modules': updatedPosts},
+        Uri.parse(apiUrl),
+        body: bodyy,
         headers: {'Content-Type': 'application/json'},
       );
-
       if (response.statusCode == 200) {
-        print('Database updated successfully');
-      } else {
-        print('Failed to update database. Status code: ${response.statusCode}');
+        print('Reordered successfully');
+        // Fetch updated data after reordering
+        await getData();
       }
     } catch (e) {
-      print('Error updating database: $e');
+      print('Error while reordering: ${e.toString()}');
     }
     notifyListeners();
   }
 
-  // Future<void> reorderModules(List<Modules> updatedModules) async {
-  //   final Uri uri = Uri.parse(
-  //       'http://localhost/english_coach_php/modules/update_order.php');
+  // Function to handle reordering
+  // void reorderPosts(int oldIndex, int newIndex) {
+  //   if (oldIndex < newIndex) {
+  //     newIndex -= 1;
+  //   }
+  //   final postToReorder = posts.removeAt(oldIndex);
+  //   posts.insert(newIndex, postToReorder);
+  //   // Update the database via HTTP request to the PHP script
+  //   updateDatabase(posts);
+  //   // reorderModules(posts);
+  //   notifyListeners();
+  // }
+
+  // // // Function to update the database with the new order
+  // updateDatabase(List<Modules> updatedPosts) async {
+  //   String updateUrl =
+  //       'http://localhost/english_coach_php/modules/update_order.php';
+
   //   try {
-  //     final response = await http.put(
-  //       uri,
-  //       body: {'modules': updatedModules},
+  //     var bodyy = jsonEncode(updatedPosts);
+  //     var response = await http.put(
+  //       Uri.parse(updateUrl),
+  //       body: bodyy,
   //       headers: {'Content-Type': 'application/json'},
   //     );
   //     if (response.statusCode == 200) {
-  //       print('Modules reordered successfully');
-  //       // You can add any additional logic here based on the response
+  //       print('Database updated successfully');
+  //       await getData();
   //     } else {
-  //       print('Failed to reorder modules. Status code: ${response.statusCode}');
-  //       // You can handle error scenarios here
+  //       print('Failed to update database. Status code: ${response.statusCode}');
   //     }
   //   } catch (e) {
-  //     print('Error: $e');
-  //     // Handle network errors or exceptions here
+  //     print('Error updating database: $e');
   //   }
   //   notifyListeners();
+  // }
+
+  // Future<void> updateDatabase(List<Modules> modules) async {
+  //   try {
+  //     for (int i = 0; i < modules.length; i++) {
+  //       final response = await http.put(
+  //         Uri.parse(
+  //           'http://localhost/english_coach_php/modules/update_order.php?mod_num=${modules[i].modNum}',
+  //         ),
+  //         body: jsonEncode(modules[i].toJson()),
+  //         headers: {'Content-Type': 'application/json'},
+  //       );
+
+  //       if (response.statusCode == 200) {
+  //         print('Database updated successfully');
+  //         await getData();
+  //       } else {
+  //         throw Exception('Failed to update module ${modules[i].modNum}');
+  //       }
+  //     }
+  //   } catch (e) {
+  //     print('Error updating database: $e');
+  //   }
   // }
 
 // post controller

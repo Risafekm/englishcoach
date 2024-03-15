@@ -77,8 +77,9 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
               Container(
                 height: 240,
                 width: MediaQuery.of(context).size.width * .98,
+                margin: const EdgeInsets.only(left: 5, right: 5),
                 decoration: BoxDecoration(
-                  color: AppColors.accentColor1,
+                  color: Colors.lightBlue.shade300,
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
@@ -89,8 +90,9 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
               Container(
                 height: 240,
                 width: MediaQuery.of(context).size.width * .98,
+                margin: const EdgeInsets.only(left: 5, right: 5),
                 decoration: BoxDecoration(
-                  color: AppColors.accentColor1,
+                  color: Colors.lightBlue.shade300,
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
@@ -112,9 +114,9 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
         scrollDirection: Axis.horizontal,
         itemCount: posts.length,
         onReorder: (oldIndex, newIndex) {
-          // Update the order of the posts in the local list
-          controller.reorderPosts(oldIndex, newIndex);
-          controller.updateDatabase(posts);
+          // // Update the order of the posts in the local list
+          // controller.reorderPosts(oldIndex, newIndex);
+          // controller.updateDatabase(posts);
         },
         itemBuilder: (context, index) {
           return GestureDetector(

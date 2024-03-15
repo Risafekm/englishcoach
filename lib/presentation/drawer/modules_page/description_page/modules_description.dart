@@ -35,7 +35,7 @@ class DescriptionPage extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               data.modName.toString(),
-              style: AppStyles.bodyText,
+              style: AppStyles.bodyTextHead,
             ),
             const SizedBox(height: 30),
             Padding(
@@ -48,7 +48,7 @@ class DescriptionPage extends StatelessWidget {
             const SizedBox(height: 40),
             Text(
               data.modContent,
-              style: AppStyles.bodyText,
+              style: AppStyles.bodyTextHead,
             ),
             const SizedBox(height: 30),
             Padding(

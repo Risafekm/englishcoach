@@ -109,10 +109,14 @@ class _ModulesPageState extends State<ModulesPage> {
       return ReorderableListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: posts.length,
-        onReorder: (oldIndex, newIndex) {
-          // Update the order of the posts in the local list
-          controller.reorderPosts(oldIndex, newIndex);
-          controller.updateDatabase(posts);
+        onReorder: (oldIndex, newIndex) async {
+          if (oldIndex < newIndex) {
+            newIndex -= 1;
+          }
+          final item = posts.removeAt(oldIndex);
+          posts.insert(newIndex, item);
+          // Notify provider to update UI
+          controller.reorderModules(posts);
         },
         itemBuilder: (context, index) {
           return GestureDetector(

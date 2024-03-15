@@ -11,53 +11,60 @@ class AppStyles {
   );
 
   static TextStyle drawerText = GoogleFonts.lato(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,  
-    color: AppColors.secondaryColor
-  );
+      fontSize: 16,
+      fontWeight: FontWeight.w500,
+      color: AppColors.secondaryColor);
 
-  static  TextStyle bodyText = GoogleFonts.actor(
-    fontSize: 15,
-    fontWeight: FontWeight.w300,
+  static TextStyle bodyTextHead = GoogleFonts.lato(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
   );
-   static  TextStyle buttonText = GoogleFonts.lato(
+
+  static TextStyle bodyText = GoogleFonts.actor(
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primaryColor,
+  );
+  static TextStyle buttonText = GoogleFonts.lato(
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: AppColors.secondaryColor,
   );
-
-   static TextStyle splashText1 = GoogleFonts.ubuntu(
-    fontSize: 40,
-    fontWeight: FontWeight.w500,  
-    color: AppColors.secondaryColor
-   
+  static TextStyle optionText = GoogleFonts.lato(
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    color: AppColors.primaryColor,
   );
-   static TextStyle splashText2= GoogleFonts.teko(
+
+  static TextStyle splashText1 = GoogleFonts.ubuntu(
+      fontSize: 40,
+      fontWeight: FontWeight.w500,
+      color: AppColors.secondaryColor);
+  static TextStyle splashText2 = GoogleFonts.teko(
     fontSize: 15,
-    fontWeight: FontWeight.w500,  
+    fontWeight: FontWeight.w500,
     color: AppColors.secondaryColor,
   );
-  static TextStyle loginText1= GoogleFonts.ubuntu(
+  static TextStyle loginText1 = GoogleFonts.ubuntu(
     fontSize: 30,
-    fontWeight: FontWeight.w500,  
+    fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
   );
-  static TextStyle loginText2= GoogleFonts.teko(
+  static TextStyle loginText2 = GoogleFonts.teko(
     fontSize: 14,
-    fontWeight: FontWeight.w500,  
+    fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
   );
-  static TextStyle dashboardText= GoogleFonts.lato(
+  static TextStyle dashboardText = GoogleFonts.lato(
     fontSize: 17,
-    fontWeight: FontWeight.w400,  
+    fontWeight: FontWeight.w400,
     color: AppColors.secondaryColor,
   );
 
-  static TextStyle numStyle= GoogleFonts.lato(
+  static TextStyle numStyle = GoogleFonts.lato(
     fontSize: 55,
-    fontWeight: FontWeight.w400,  
+    fontWeight: FontWeight.w400,
     color: AppColors.primaryColor,
   );
-
 }
