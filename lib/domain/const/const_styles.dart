@@ -20,7 +20,11 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
   );
-
+  static TextStyle alertText = GoogleFonts.lora(
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primaryColor,
+  );
   static TextStyle bodyText = GoogleFonts.actor(
     fontSize: 15,
     fontWeight: FontWeight.w500,

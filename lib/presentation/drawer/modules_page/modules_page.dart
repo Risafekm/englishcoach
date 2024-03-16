@@ -113,7 +113,7 @@ class _ModulesPageState extends State<ModulesPage> {
           if (oldIndex < newIndex) {
             newIndex -= 1;
           }
-          final item = posts.removeAt(oldIndex);
+          final Modules item = posts.removeAt(oldIndex);
           posts.insert(newIndex, item);
           // Notify provider to update UI
           controller.reorderModules(posts);
@@ -243,48 +243,6 @@ class _ModulesPageState extends State<ModulesPage> {
           );
         });
   }
-
-  // Future<dynamic> deleteMethod(BuildContext context, List<Modules> posts,
-  //     int index, UserproviderModules controller, Modules user) {
-  //   return showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return AlertDialog(
-  //           title: Text(
-  //             'Delete Module ${posts[index].modNum}',
-  //             style:
-  //                 GoogleFonts.lora(fontWeight: FontWeight.w700, fontSize: 18),
-  //           ),
-  //           content: Text(
-  //             'Are you sure?',
-  //             style:
-  //                 GoogleFonts.lora(fontWeight: FontWeight.w500, fontSize: 16),
-  //           ),
-  //           actions: [
-  //             TextButton(
-  //               onPressed: () {
-  //                 Navigator.pop(context);
-  //               },
-  //               child: const Text(
-  //                 'Cancel',
-  //                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-  //               ),
-  //             ),
-  //             const SizedBox(width: 10),
-  //             TextButton(
-  //               onPressed: () {
-  //                 controller.deleteData(user.modNum.toString(), context);
-  //                 Navigator.pop(context);
-  //               },
-  //               child: const Text(
-  //                 'yes',
-  //                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
-  //               ),
-  //             ),
-  //           ],
-  //         );
-  //       });
-  // }
 
   Future<dynamic> modelSheet(BuildContext context) {
     var controller = Provider.of<UserproviderModules>(context, listen: false);

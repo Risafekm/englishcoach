@@ -15,10 +15,9 @@ class UserproviderModules extends ChangeNotifier {
     try {
       String apiUrl =
           'http://localhost/english_coach_php/modules/update_order.php';
-      var bodyy = jsonEncode(updatedModules);
       var response = await http.put(
         Uri.parse(apiUrl),
-        body: bodyy,
+        body: jsonEncode(updatedModules),
         headers: {'Content-Type': 'application/json'},
       );
       if (response.statusCode == 200) {
