@@ -17,7 +17,9 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
   final option1Controller = TextEditingController();
   final option2Controller = TextEditingController();
   final option3Controller = TextEditingController();
-  final formkey = GlobalKey<FormState>();
+
+//post
+
   Future<void> addData(BuildContext context) async {
     String apiUrl = 'http://localhost/english_coach_php/mqc/createmqc.php';
 
@@ -50,6 +52,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
         print('Response body: $dataa');
         snackbar(context, text: "Added");
         await getData();
+        notifyListeners();
       } else {
         // Request failed
         print('Failed to post data. Status code: ${response.statusCode}');
@@ -88,9 +91,10 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
   }
 
   //delete
-  deleteData(int i, context) async {
+
+  deleteData(String i, context) async {
     Uri deleteUrl = Uri.parse(
-        'localhost/english_coach_php/test1/deletemcq.php?trail_mcq_num=$i');
+        'http://localhost/english_coach_php/mqc/deletemcq.php?question_id=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {

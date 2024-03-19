@@ -4,6 +4,7 @@ import 'package:englishcoach/application/provider/userprovider_mcq.dart';
 import 'package:englishcoach/application/provider/userprovider_test2.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';
+import 'package:englishcoach/domain/model/mcq_model.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
@@ -127,7 +128,46 @@ class _McqPageState extends State<McqPage> {
                       ),
                       const SizedBox(width: 10),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text(
+                                    'Delete Module ${posts[index].questionNo}',
+                                    style: AppStyles.alertText,
+                                  ),
+                                  content: Text(
+                                    'Are you sure?',
+                                    style: AppStyles.bodyText,
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        'Cancel',
+                                        style: AppStyles.bodyText,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    TextButton(
+                                      onPressed: () {
+                                        controller.deleteData(
+                                            user.questionNo.toString(),
+                                            context);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        'yes',
+                                        style: AppStyles.bodyText,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              });
+                        },
                         icon: const Icon(
                           Icons.delete,
                           color: AppColors.actionColor2,
@@ -153,6 +193,46 @@ class _McqPageState extends State<McqPage> {
       ),
     );
   }
+
+  // Future<dynamic> deleteAlertBox(BuildContext context, List<McqModel> posts,
+  //     int index, UserMcqQuestionsOptions controller, McqModel user) {
+  //   return showDialog(
+  //       context: context,
+  //       builder: (context) {
+  //         return AlertDialog(
+  //           title: Text(
+  //             'Delete Question ${posts[index].questionNo}',
+  //             style: AppStyles.bodyText,
+  //           ),
+  //           content: Text(
+  //             'Are you sure?',
+  //             style: AppStyles.bodyText,
+  //           ),
+  //           actions: [
+  //             TextButton(
+  //               onPressed: () {
+  //                 Navigator.pop(context);
+  //               },
+  //               child: Text(
+  //                 'Cancel',
+  //                 style: AppStyles.bodyText,
+  //               ),
+  //             ),
+  //             const SizedBox(width: 10),
+  //             TextButton(
+  //               onPressed: () {
+  //                 controller.deleteData(user.questionNo, context);
+  //                 Navigator.pop(context);
+  //               },
+  //               child: Text(
+  //                 'yes',
+  //                 style: AppStyles.bodyText,
+  //               ),
+  //             ),
+  //           ],
+  //         );
+  //       });
+  // }
 
 //floating action button function
 
