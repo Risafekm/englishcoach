@@ -117,6 +117,7 @@ class _ModulesPageState extends State<ModulesPage> {
           posts.insert(newIndex, item);
           // Notify provider to update UI
           controller.reorderModules(posts);
+          // controller.updateDataOrders(posts, context);
         },
         itemBuilder: (context, index) {
           return GestureDetector(

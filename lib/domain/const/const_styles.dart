@@ -26,8 +26,8 @@ class AppStyles {
     color: AppColors.primaryColor,
   );
   static TextStyle bodyText = GoogleFonts.actor(
-    fontSize: 15,
-    fontWeight: FontWeight.w500,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
     color: AppColors.primaryColor,
   );
   static TextStyle buttonText = GoogleFonts.lato(
@@ -36,8 +36,8 @@ class AppStyles {
     color: AppColors.secondaryColor,
   );
   static TextStyle optionText = GoogleFonts.lato(
-    fontSize: 13,
-    fontWeight: FontWeight.w400,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
   );
 

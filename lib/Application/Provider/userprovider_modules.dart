@@ -11,6 +11,27 @@ class UserproviderModules extends ChangeNotifier {
   List<Modules> get posts => _posts;
   bool isLoding = false;
 
+  // updateDataOrders(List<Modules> modules, context) async {
+  //   String apiUrl =
+  //       'http://localhost/english_coach_php/modules/update_orders.php';
+  //   try {
+  //     var response = await http.put(
+  //       Uri.parse(apiUrl),
+  //       body: jsonEncode(modules.map((module) => module.modOrder).toList()),
+  //       headers: {'Content-Type': 'application/json'},
+  //     );
+  //     if (response.statusCode == 200) {
+  //       print('Successfully updated orders');
+  //       getData();
+  //       snackbar(context, text: "orders updated");
+  //       print(" update success ${response.body}");
+  //     }
+  //   } catch (e) {
+  //     print('Error updating orders: ${e.toString()}');
+  //   }
+  //   notifyListeners();
+  // }
+
   void reorderModules(List<Modules> updatedModules) async {
     try {
       String apiUrl =

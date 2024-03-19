@@ -1,9 +1,9 @@
 import 'package:englishcoach/application/provider/user_provider_final_test.dart';
-import 'package:englishcoach/application/provider/user_provider_mcqquestion.dart';
 import 'package:englishcoach/application/provider/user_provider_password_update.dart';
 import 'package:englishcoach/application/provider/user_provider_topic_test.dart';
 import 'package:englishcoach/application/provider/user_provider_trail_modules.dart';
 import 'package:englishcoach/application/provider/userprovider_exercises.dart';
+import 'package:englishcoach/application/provider/userprovider_mcq.dart';
 import 'package:englishcoach/application/provider/userprovider_modules.dart';
 import 'package:englishcoach/application/provider/userprovider_test1.dart';
 import 'package:englishcoach/application/provider/userprovider_test2.dart';
@@ -17,6 +17,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (context) => UserMcqQuestionsOptions()),
         ChangeNotifierProvider(create: (context) => UserproviderPassword()),
         ChangeNotifierProvider(create: (context) => UserProviderTest()),
         ChangeNotifierProvider(create: (context) => UserProviderTest2()),
@@ -25,7 +26,6 @@ void main() {
         ChangeNotifierProvider(create: (context) => UserproviderFinalTest()),
         ChangeNotifierProvider(create: (context) => UserproviderTopicTest()),
         ChangeNotifierProvider(create: (context) => UserProviderTrail()),
-        ChangeNotifierProvider(create: (context) => UserProviderMcqQuestions()),
       ],
       child: const RootScreen(),
     ),
