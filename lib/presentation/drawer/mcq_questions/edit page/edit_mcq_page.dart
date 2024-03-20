@@ -120,9 +120,9 @@ class EditMcqPage extends StatelessWidget {
               CustomButton(
                 text: 'UPDATE',
                 ontap: () {
-                  // Provider.of<UserMcqQuestionsOptions>(context, listen: false)
-                  //     .updateData(user.modNum, context);
-                  // Navigator.pop(context);
+                  Provider.of<UserMcqQuestionsOptions>(context, listen: false)
+                      .updateData(user.questionNo, context);
+                  Navigator.pop(context);
                 },
               ),
               const SizedBox(height: 30),

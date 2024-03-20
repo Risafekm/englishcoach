@@ -77,6 +77,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
       // snackbar(context, text: "Catch error");
     }
   }
+
 //get Data
 
   getData() async {
@@ -98,6 +99,42 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
     } catch (e) {
       print('Error ${e.toString()}');
     }
+  }
+
+  //update data
+
+  updateData(String i, context) async {
+    Uri updateUrl = Uri.parse(
+        'http://localhost/english_coach_php/mqc/updatemcq.php?question_id=$i');
+    var data = {
+      "questionId": i,
+      "questionData": {
+        "trail_mcq_question": editquestionController.text,
+        "trail_mcq_answer": editanswersController.text,
+      },
+      "options": [
+        editoption1Controller.text.toString(),
+        editoption2Controller.text.toString(),
+        editoption3Controller.text.toString(),
+      ]
+    };
+
+    try {
+      var response = await http.put(
+        updateUrl,
+        body: jsonEncode(data),
+        headers: {'Content-Type': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        await getData();
+        snackbar(context, text: "updated");
+        print(" update success ${response.body}");
+      }
+    } catch (e) {
+      print('Error updated failed: ${e.toString()}');
+    }
+    notifyListeners();
   }
 
   //delete
