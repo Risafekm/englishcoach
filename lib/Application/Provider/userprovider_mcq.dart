@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, use_build_context_synchronously
 
 import 'dart:convert';
 import 'package:englishcoach/domain/const/const_colors.dart';
@@ -24,14 +24,26 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
     String apiUrl = 'http://localhost/english_coach_php/mqc/createmqc.php';
 
     // Construct the userdata object
+    // var userdata = {
+    //   "question": questionController.text,
+    //   "mcq_answer": answersController.text,
+    //   "options": [
+    // option1Controller.text.toString(),
+    // option2Controller.text.toString(),
+    // option3Controller.text.toString(),
+    //   ],
+    // };
+
     var userdata = {
-      "question": questionController.text,
+      "questionData": {
+        "trail_mcq_question": questionController.text,
+        "trail_mcq_answer": answersController.text
+      },
       "options": [
         option1Controller.text.toString(),
         option2Controller.text.toString(),
         option3Controller.text.toString(),
-      ],
-      "mcq_answer": answersController.text,
+      ]
     };
 
     try {
@@ -47,10 +59,12 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         // Request successful
+        await getData();
         print('Successfully posted');
+        snackbar(context, text: "Added");
         var dataa = jsonDecode(response.body);
         print('Response body: $dataa');
-        snackbar(context, text: "Added");
+
         await getData();
         notifyListeners();
       } else {
@@ -62,9 +76,8 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
       }
     } catch (e) {
       // Error occurred during the request
-      print('Error: $e');
-      snackbar(context, text: "Catch error");
-      notifyListeners();
+      // print('Error: $e');
+      // snackbar(context, text: "Catch error");
     }
   }
 //get Data

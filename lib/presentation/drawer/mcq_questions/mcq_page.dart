@@ -194,46 +194,6 @@ class _McqPageState extends State<McqPage> {
     );
   }
 
-  // Future<dynamic> deleteAlertBox(BuildContext context, List<McqModel> posts,
-  //     int index, UserMcqQuestionsOptions controller, McqModel user) {
-  //   return showDialog(
-  //       context: context,
-  //       builder: (context) {
-  //         return AlertDialog(
-  //           title: Text(
-  //             'Delete Question ${posts[index].questionNo}',
-  //             style: AppStyles.bodyText,
-  //           ),
-  //           content: Text(
-  //             'Are you sure?',
-  //             style: AppStyles.bodyText,
-  //           ),
-  //           actions: [
-  //             TextButton(
-  //               onPressed: () {
-  //                 Navigator.pop(context);
-  //               },
-  //               child: Text(
-  //                 'Cancel',
-  //                 style: AppStyles.bodyText,
-  //               ),
-  //             ),
-  //             const SizedBox(width: 10),
-  //             TextButton(
-  //               onPressed: () {
-  //                 controller.deleteData(user.questionNo, context);
-  //                 Navigator.pop(context);
-  //               },
-  //               child: Text(
-  //                 'yes',
-  //                 style: AppStyles.bodyText,
-  //               ),
-  //             ),
-  //           ],
-  //         );
-  //       });
-  // }
-
 //floating action button function
 
   Future<dynamic> modelSheet(BuildContext context) {
@@ -331,7 +291,7 @@ class _McqPageState extends State<McqPage> {
                         const SizedBox(height: 20),
                         TextArea(
                           keyboardType: TextInputType.text,
-                          name: 'Option 2',
+                          name: 'Option 3',
                           controller: controller.option3Controller,
                           validator: (value) {
                             return null;
