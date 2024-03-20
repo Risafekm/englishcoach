@@ -32,19 +32,13 @@ class _DesktopTopicTestsState extends State<DesktopTopicTests> {
     var controller = Provider.of<UserproviderTopicTest>(context);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        // centerTitle: true,
         backgroundColor: AppColors.accentColor1,
         title: Text(
           'Topic Tests',
           style: AppStyles.appBarTitle,
         ),
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.secondaryColor,
-          ),
-        ),
+
         elevation: 3,
         actions: [
           Padding(

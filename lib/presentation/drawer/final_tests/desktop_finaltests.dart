@@ -31,19 +31,13 @@ class _DesktopFinalTestsState extends State<DesktopFinalTests> {
     var controller = Provider.of<UserproviderFinalTest>(context);
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
+        // centerTitle: true,
         backgroundColor: AppColors.accentColor1,
         title: Text(
           'Final Tests',
           style: AppStyles.appBarTitle,
         ),
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.secondaryColor,
-          ),
-        ),
+
         elevation: 3,
         actions: [
           Padding(

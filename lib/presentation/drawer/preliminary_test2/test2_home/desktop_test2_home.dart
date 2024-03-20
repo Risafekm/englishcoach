@@ -36,18 +36,12 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
       appBar: AppBar(
         backgroundColor: AppColors.accentColor1,
         elevation: 3,
-        centerTitle: true,
+        // centerTitle: true,
         title: Text(
           'Test 2 Questions & Answers',
           style: AppStyles.appBarTitle,
         ),
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.secondaryColor,
-          ),
-        ),
+
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),

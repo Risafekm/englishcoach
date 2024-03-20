@@ -34,20 +34,14 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
     return Scaffold(
         backgroundColor: AppColors.secondaryColor,
         appBar: AppBar(
-          centerTitle: true,
+          // centerTitle: true,
           backgroundColor: AppColors.accentColor1,
           elevation: 0,
           title: Text(
             'Modules',
             style: AppStyles.appBarTitle,
           ),
-          leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(
-              Icons.arrow_back_ios,
-              color: AppColors.secondaryColor,
-            ),
-          ),
+
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 8.0),

@@ -33,19 +33,13 @@ class _DesktopExercisesPageState extends State<DesktopExercisesPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         backgroundColor: AppColors.accentColor1,
-        centerTitle: true,
+        // centerTitle: true,
         elevation: 3,
         title: Text(
           'Modules Exercises',
           style: AppStyles.appBarTitle,
         ),
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.secondaryColor,
-          ),
-        ),
+
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),

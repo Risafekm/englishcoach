@@ -2,11 +2,13 @@ import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/presentation/dashboard/desktop_dash/desktop_dash_main.dart';
 import 'package:englishcoach/presentation/dashboard/widget/drawer_icon_text_desktop.dart';
 import 'package:englishcoach/presentation/drawer/final_tests/desktop_finaltests.dart';
+import 'package:englishcoach/presentation/drawer/mcq_questions/desktop_mcq_questions.dart';
 import 'package:englishcoach/presentation/drawer/modules_exercises_page/desktop_modules_exercise.dart';
 import 'package:englishcoach/presentation/drawer/modules_page/desktop_modules_page.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/desktop_test2_home.dart';
 import 'package:englishcoach/presentation/drawer/priliminary_tests1/Test1_homepage/test1_desktop_home.dart';
 import 'package:englishcoach/presentation/drawer/topic_tests/desktop_topictests.dart';
+import 'package:englishcoach/presentation/drawer/trail_modules/desktop_trail_modules.dart';
 import 'package:flutter/material.dart';
 
 class DesktopViewDashBoard extends StatefulWidget {
@@ -27,6 +29,8 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
     const DesktopExercisesPage(),
     const DesktopTopicTests(),
     const DesktopFinalTests(),
+    const DesktopMcqQuestions(),
+    const DesktopTrailModules(),
     const Center(child: Text('Logout')),
   ];
 
@@ -131,12 +135,28 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                       selected: _selectedIndex == 6,
                     ),
                     DrawerIconTextDesktop(
-                      text: 'Logout',
+                      text: 'Mcq questions',
                       icon: Icons.logout,
                       onTap: () {
                         _onItemTapped(7);
                       },
                       selected: _selectedIndex == 7,
+                    ),
+                    DrawerIconTextDesktop(
+                      text: 'Trail modules',
+                      icon: Icons.logout,
+                      onTap: () {
+                        _onItemTapped(8);
+                      },
+                      selected: _selectedIndex == 8,
+                    ),
+                    DrawerIconTextDesktop(
+                      text: 'Logout',
+                      icon: Icons.logout,
+                      onTap: () {
+                        _onItemTapped(9);
+                      },
+                      selected: _selectedIndex == 9,
                     ),
                   ],
                 ),

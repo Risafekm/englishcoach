@@ -34,18 +34,11 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
-        centerTitle: true,
+        // centerTitle: true,
         backgroundColor: AppColors.accentColor1,
         title: Text(
           'Test 1 Questions & Answers',
           style: AppStyles.appBarTitle,
-        ),
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.secondaryColor,
-          ),
         ),
         elevation: 3,
         actions: [

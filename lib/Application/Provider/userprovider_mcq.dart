@@ -23,17 +23,6 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
   Future<void> addData(BuildContext context) async {
     String apiUrl = 'http://localhost/english_coach_php/mqc/createmqc.php';
 
-    // Construct the userdata object
-    // var userdata = {
-    //   "question": questionController.text,
-    //   "mcq_answer": answersController.text,
-    //   "options": [
-    // option1Controller.text.toString(),
-    // option2Controller.text.toString(),
-    // option3Controller.text.toString(),
-    //   ],
-    // };
-
     var userdata = {
       "questionData": {
         "trail_mcq_question": questionController.text,
