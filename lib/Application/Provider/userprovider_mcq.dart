@@ -18,6 +18,14 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
   final option2Controller = TextEditingController();
   final option3Controller = TextEditingController();
 
+//update
+
+  final editquestionController = TextEditingController();
+  final editanswersController = TextEditingController();
+  final editoption1Controller = TextEditingController();
+  final editoption2Controller = TextEditingController();
+  final editoption3Controller = TextEditingController();
+
 //post
 
   Future<void> addData(BuildContext context) async {

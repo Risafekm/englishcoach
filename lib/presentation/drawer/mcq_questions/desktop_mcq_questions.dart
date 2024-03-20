@@ -3,6 +3,7 @@
 import 'package:englishcoach/application/provider/userprovider_mcq.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';
+import 'package:englishcoach/presentation/drawer/mcq_questions/edit%20page/edit_mcq_page.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
@@ -67,123 +68,134 @@ class _DesktopMcqQuestionsState extends State<DesktopMcqQuestions> {
           itemCount: posts.length,
           itemBuilder: (context, index) {
             var user = posts[index];
-            return Container(
-              decoration: const BoxDecoration(
-                color: AppColors.secondaryColor,
-              ),
-              child: Card(
-                child: Container(
-                  height: 120,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.green.shade200,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(width: 10),
-                      CircleAvatar(
-                        child: Text(posts[index].questionNo.toString()),
-                      ),
-                      const SizedBox(width: 20),
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 5.0),
-                              child: Text(
-                                'Question : ${posts[index].question}',
+            return GestureDetector(
+              onTap: () {
+                controller.editquestionController.text = posts[index].question;
+                controller.editanswersController.text = posts[index].mcq_answer;
+                controller.editoption1Controller.text = posts[index].options[0];
+                controller.editoption2Controller.text = posts[index].options[1];
+                controller.editoption3Controller.text = posts[index].options[2];
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => EditMcqPage(user: user)));
+              },
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: AppColors.secondaryColor,
+                ),
+                child: Card(
+                  child: Container(
+                    height: 120,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      color: Colors.green.shade200,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const SizedBox(width: 10),
+                        CircleAvatar(
+                          child: Text(posts[index].questionNo.toString()),
+                        ),
+                        const SizedBox(width: 20),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 5.0),
+                                child: Text(
+                                  'Question : ${posts[index].question}',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: AppStyles.bodyText,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      'Option A: ${posts[index].options[0]}',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: AppStyles.optionText,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Expanded(
+                                    child: Text(
+                                      'Option B: ${posts[index].options[1]}',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: AppStyles.optionText,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 5),
+                                ],
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                'Option C: ${posts[index].options[2]}',
+                                overflow: TextOverflow.ellipsis,
+                                style: AppStyles.optionText,
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                'Answer : ${posts[index].mcq_answer}',
                                 overflow: TextOverflow.ellipsis,
                                 style: AppStyles.bodyText,
                               ),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    'Option A: ${posts[index].options[0]}',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: AppStyles.optionText,
-                                  ),
-                                ),
-                                const SizedBox(width: 5),
-                                Expanded(
-                                  child: Text(
-                                    'Option B: ${posts[index].options[1]}',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: AppStyles.optionText,
-                                  ),
-                                ),
-                                const SizedBox(width: 5),
-                              ],
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              'Option C: ${posts[index].options[2]}',
-                              overflow: TextOverflow.ellipsis,
-                              style: AppStyles.optionText,
-                            ),
-                            const SizedBox(height: 5),
-                            Text(
-                              'Answer : ${posts[index].mcq_answer}',
-                              overflow: TextOverflow.ellipsis,
-                              style: AppStyles.bodyText,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      IconButton(
-                        onPressed: () {
-                          showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text(
-                                    'Delete Module ${posts[index].questionNo}',
-                                    style: AppStyles.alertText,
-                                  ),
-                                  content: Text(
-                                    'Are you sure?',
-                                    style: AppStyles.bodyText,
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        'Cancel',
-                                        style: AppStyles.bodyText,
-                                      ),
+                        const SizedBox(width: 10),
+                        IconButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text(
+                                      'Delete Module ${posts[index].questionNo}',
+                                      style: AppStyles.alertText,
                                     ),
-                                    const SizedBox(width: 10),
-                                    TextButton(
-                                      onPressed: () {
-                                        controller.deleteData(
-                                            user.questionNo.toString(),
-                                            context);
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        'yes',
-                                        style: AppStyles.bodyText,
-                                      ),
+                                    content: Text(
+                                      'Are you sure?',
+                                      style: AppStyles.bodyText,
                                     ),
-                                  ],
-                                );
-                              });
-                        },
-                        icon: const Icon(
-                          Icons.delete,
-                          color: AppColors.actionColor2,
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Cancel',
+                                          style: AppStyles.bodyText,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      TextButton(
+                                        onPressed: () {
+                                          controller.deleteData(
+                                              user.questionNo.toString(),
+                                              context);
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'yes',
+                                          style: AppStyles.bodyText,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                });
+                          },
+                          icon: const Icon(
+                            Icons.delete,
+                            color: AppColors.actionColor2,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

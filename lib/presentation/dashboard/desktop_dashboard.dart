@@ -128,7 +128,7 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                     ),
                     DrawerIconTextDesktop(
                       text: 'Final tests',
-                      icon: Icons.logout,
+                      icon: Icons.comment,
                       onTap: () {
                         _onItemTapped(6);
                       },
@@ -136,7 +136,7 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                     ),
                     DrawerIconTextDesktop(
                       text: 'Mcq questions',
-                      icon: Icons.logout,
+                      icon: Icons.comment,
                       onTap: () {
                         _onItemTapped(7);
                       },
@@ -144,7 +144,7 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                     ),
                     DrawerIconTextDesktop(
                       text: 'Trail modules',
-                      icon: Icons.logout,
+                      icon: Icons.comment,
                       onTap: () {
                         _onItemTapped(8);
                       },
