@@ -34,14 +34,13 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
     return Scaffold(
         backgroundColor: AppColors.secondaryColor,
         appBar: AppBar(
-          // centerTitle: true,
+          centerTitle: true,
           backgroundColor: AppColors.accentColor1,
-          elevation: 0,
+          elevation: 2,
           title: Text(
             'Modules',
             style: AppStyles.appBarTitle,
           ),
-
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 8.0),
@@ -53,7 +52,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
                   // radius: 15,
                   child: Icon(
                     Icons.add,
-                    color: AppColors.actionColor1,
+                    color: AppColors.accentColor1,
                     size: 22,
                   ),
                 ),
@@ -61,38 +60,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
             )
           ],
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 180,
-                child: cards(),
-              ),
-              Container(
-                height: 240,
-                width: MediaQuery.of(context).size.width * .98,
-                margin: const EdgeInsets.only(left: 5, right: 5),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue.shade300,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              SizedBox(
-                height: 180,
-                child: cards(),
-              ),
-              Container(
-                height: 240,
-                width: MediaQuery.of(context).size.width * .98,
-                margin: const EdgeInsets.only(left: 5, right: 5),
-                decoration: BoxDecoration(
-                  color: Colors.lightBlue.shade300,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ],
-          ),
-        ));
+        body: SingleChildScrollView(child: cards()));
   }
 
   Consumer<UserproviderModules> cards() {
@@ -104,15 +72,10 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
       }
       final posts = value.posts;
 
-      return ReorderableListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: posts.length,
-        onReorder: (oldIndex, newIndex) {
-          // // Update the order of the posts in the local list
-          // controller.reorderPosts(oldIndex, newIndex);
-          // controller.updateDatabase(posts);
-        },
-        itemBuilder: (context, index) {
+      return Wrap(
+        spacing: 8.0,
+        runSpacing: 8.0,
+        children: List.generate(posts.length, (index) {
           return GestureDetector(
             key: ValueKey(posts[index]),
             onTap: () {
@@ -193,7 +156,7 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
               ],
             ),
           );
-        },
+        }),
       );
     }));
   }

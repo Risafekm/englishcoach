@@ -33,13 +33,12 @@ class _DesktopExercisesPageState extends State<DesktopExercisesPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         backgroundColor: AppColors.accentColor1,
-        // centerTitle: true,
+        centerTitle: true,
         elevation: 3,
         title: Text(
           'Modules Exercises',
           style: AppStyles.appBarTitle,
         ),
-
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
@@ -51,7 +50,7 @@ class _DesktopExercisesPageState extends State<DesktopExercisesPage> {
                 // radius: 15,
                 child: Icon(
                   Icons.add,
-                  color: AppColors.actionColor1,
+                  color: AppColors.accentColor1,
                   size: 22,
                 ),
               ),
@@ -87,7 +86,12 @@ class _DesktopExercisesPageState extends State<DesktopExercisesPage> {
                     children: [
                       const SizedBox(width: 10),
                       CircleAvatar(
-                        child: Text(user.exeNum.toString()),
+                        backgroundColor: AppColors.accentColor1,
+                        child: Text(
+                          user.exeNum.toString(),
+                          style:
+                              const TextStyle(color: AppColors.secondaryColor),
+                        ),
                       ),
                       const SizedBox(width: 20),
                       Expanded(
@@ -126,7 +130,7 @@ class _DesktopExercisesPageState extends State<DesktopExercisesPage> {
                         },
                         icon: const Icon(
                           Icons.edit,
-                          color: AppColors.actionColor1,
+                          color: AppColors.accentColor1,
                         ),
                       ),
                       const SizedBox(width: 10),

@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:englishcoach/presentation/login/widget/button/custom_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MobileViewLogin extends StatefulWidget {
   const MobileViewLogin({super.key});
@@ -25,24 +24,15 @@ class _MobileViewLoginState extends State<MobileViewLogin> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 120,
+                  height: 60,
                 ),
-                Text(
-                  "englishcoach",
-                  style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Your Personal English Coach",
-                  style: GoogleFonts.poppins(
-                      fontSize: 13,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
+                Image.asset(
+                  "splashicon.png",
+                  scale: 2.4,
+                  // fit: BoxFit.cover,
                 ),
                 const SizedBox(
-                  height: 60,
+                  height: 20,
                 ),
 
                 const CustomProvider(),

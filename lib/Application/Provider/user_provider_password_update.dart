@@ -1,8 +1,6 @@
-import 'dart:convert';
-import 'package:englishcoach/domain/Model/mod_user.dart';
 import 'package:englishcoach/domain/Model/mod_user_authentication.dart';
+import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
 class UserproviderPassword extends ChangeNotifier {
   List<User> _posts = [];

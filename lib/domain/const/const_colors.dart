@@ -9,7 +9,4 @@ class AppColors {
   static const actionColor2 = Color(0xFFBF0808);
   static const transColor = Colors.transparent;
   static const shadowColor = Color(0xFFBDBDBD);
-
-  
-  
 }

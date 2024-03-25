@@ -29,7 +29,7 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 50),
           TextArea(
             keyboardType: TextInputType.text,
-            name: 'Username',
+            name: 'User Name',
             controller: nameController,
             validator: (value) {
               if (value!.isEmpty) {
@@ -45,7 +45,7 @@ class LoginForm extends StatelessWidget {
             obscureText: false,
             prefixIcon: const Icon(
               Icons.person,
-              color: AppColors.actionColor1,
+              color: AppColors.accentColor1,
             ),
           ),
           const SizedBox(height: 20),
@@ -67,7 +67,7 @@ class LoginForm extends StatelessWidget {
             obscureText: false,
             prefixIcon: const Icon(
               Icons.lock,
-              color: AppColors.actionColor2,
+              color: AppColors.accentColor1,
             ),
           ),
           const SizedBox(height: 5),
@@ -86,7 +86,7 @@ class LoginForm extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 40.0),
                   child: Text(
-                    'new password?',
+                    'Change Password?',
                     style: AppStyles.bodyText,
                   ),
                 ),

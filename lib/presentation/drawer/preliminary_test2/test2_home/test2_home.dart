@@ -75,7 +75,13 @@ class _Test2HomeState extends State<Test2Home> {
                     children: [
                       const SizedBox(width: 10),
                       CircleAvatar(
-                        child: Text(posts[index].prelimTransQuesNum.toString()),
+                        backgroundColor: AppColors.accentColor1,
+                        child: Text(
+                          posts[index].prelimTransQuesNum.toString(),
+                          style: const TextStyle(
+                            color: AppColors.secondaryColor,
+                          ),
+                        ),
                       ),
                       const SizedBox(width: 20),
                       Expanded(
@@ -110,7 +116,7 @@ class _Test2HomeState extends State<Test2Home> {
                         },
                         icon: const Icon(
                           Icons.edit,
-                          color: AppColors.actionColor1,
+                          color: AppColors.accentColor1,
                         ),
                       ),
                       const SizedBox(width: 10),
@@ -134,13 +140,13 @@ class _Test2HomeState extends State<Test2Home> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.accentColor1,
         onPressed: () {
           modelSheet(context);
         },
         child: const Icon(
           Icons.add,
-          color: AppColors.actionColor1,
+          color: AppColors.secondaryColor,
         ),
       ),
     );

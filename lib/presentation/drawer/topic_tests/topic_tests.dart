@@ -131,13 +131,13 @@ class _TopicTestsState extends State<TopicTests> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.accentColor1,
         onPressed: () {
           modelSheet(context);
         },
         child: const Icon(
           Icons.add,
-          color: AppColors.actionColor1,
+          color: AppColors.secondaryColor,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

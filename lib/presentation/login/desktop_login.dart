@@ -1,8 +1,8 @@
 // ignore_for_file: sized_box_for_whitespace, must_be_immutable
 
+import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/presentation/login/widget/button/custom_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 ValueNotifier<bool> isVisibile = ValueNotifier<bool>(true);
 
@@ -28,29 +28,17 @@ class DesktopViewLogin extends StatelessWidget {
                   Container(
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/background.jpg'),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 65, 231, 73)
-                            .withOpacity(.5)),
+                    decoration:
+                        const BoxDecoration(color: AppColors.accentColor1),
                   ),
                   Positioned(
-                    bottom: 370,
-                    left: 160,
-                    child: Text(
-                      'Welcome Back',
-                      style: GoogleFonts.lora(
-                          fontSize: 42,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87),
+                    top: 50,
+                    right: 50,
+                    left: 50,
+                    bottom: 50,
+                    child: Image.asset(
+                      "splashicon.png",
+                      scale: 1.4,
                     ),
                   ),
                 ],
@@ -73,33 +61,7 @@ class DesktopViewLogin extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       const SizedBox(height: 100),
-                      Container(
-                        child: Column(
-                          children: [
-                            Center(
-                              child: Text(
-                                "englishcoach",
-                                style: GoogleFonts.poppins(
-                                    fontSize: 40,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Center(
-                              child: Text(
-                                "Your Personal English Coach",
-                                style: GoogleFonts.poppins(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
+                      const SizedBox(height: 120),
                       Center(
                         child: Container(
                           padding: const EdgeInsets.only(left: 20, right: 20),

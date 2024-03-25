@@ -1,17 +1,4 @@
-import 'package:englishcoach/application/provider/user_provider_final_test.dart';
-import 'package:englishcoach/application/provider/user_provider_password_update.dart';
-import 'package:englishcoach/application/provider/user_provider_topic_test.dart';
-import 'package:englishcoach/application/provider/user_provider_trail_modules.dart';
-import 'package:englishcoach/application/provider/userprovider_exercises.dart';
-import 'package:englishcoach/application/provider/userprovider_mcq.dart';
-import 'package:englishcoach/application/provider/userprovider_modules.dart';
-import 'package:englishcoach/application/provider/userprovider_test1.dart';
-import 'package:englishcoach/application/provider/userprovider_test2.dart';
-import 'package:englishcoach/presentation/dashboard/responsive_dash/responsive_dashboard.dart';
-import 'package:englishcoach/splash_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter/gestures.dart';
+import 'package:englishcoach/domain/export/export.dart';
 
 void main() {
   runApp(

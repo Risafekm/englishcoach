@@ -1,11 +1,7 @@
 // ignore_for_file: unnecessary_null_comparison, use_build_context_synchronously
 
-import 'dart:convert';
-import 'package:englishcoach/domain/const/const_colors.dart';
-import 'package:englishcoach/domain/model/mcq_model.dart';
+import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:flutter/material.dart';
 
 class UserMcqQuestionsOptions extends ChangeNotifier {
   List<McqModel> _posts = [];

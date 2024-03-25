@@ -25,8 +25,7 @@ class CustomCard extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 50,
-              backgroundImage: NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPFJC-r3YeVbBL0ydVAMARkzcEliCloXfLw&usqp=CAU'),
+              backgroundImage: AssetImage("icon.png"),
             ),
             Text(
               text,

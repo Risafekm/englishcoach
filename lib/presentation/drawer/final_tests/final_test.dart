@@ -72,7 +72,12 @@ class _FinalTestsState extends State<FinalTests> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].finalQuesNumber.toString()),
+                          backgroundColor: AppColors.accentColor1,
+                          child: Text(
+                            posts[index].finalQuesNumber.toString(),
+                            style: const TextStyle(
+                                color: AppColors.secondaryColor),
+                          ),
                         ),
                         const SizedBox(width: 20),
                         Expanded(
@@ -109,7 +114,7 @@ class _FinalTestsState extends State<FinalTests> {
                           },
                           icon: const Icon(
                             Icons.edit,
-                            color: AppColors.actionColor1,
+                            color: AppColors.accentColor1,
                           ),
                         ),
                         IconButton(
@@ -130,13 +135,13 @@ class _FinalTestsState extends State<FinalTests> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.accentColor1,
         onPressed: () {
           modelSheet(context);
         },
         child: const Icon(
           Icons.add,
-          color: AppColors.actionColor1,
+          color: AppColors.secondaryColor,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

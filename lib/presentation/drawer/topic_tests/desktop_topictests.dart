@@ -32,13 +32,12 @@ class _DesktopTopicTestsState extends State<DesktopTopicTests> {
     var controller = Provider.of<UserproviderTopicTest>(context);
     return Scaffold(
       appBar: AppBar(
-        // centerTitle: true,
+        centerTitle: true,
         backgroundColor: AppColors.accentColor1,
         title: Text(
           'Topic Tests',
           style: AppStyles.appBarTitle,
         ),
-
         elevation: 3,
         actions: [
           Padding(
@@ -51,7 +50,7 @@ class _DesktopTopicTestsState extends State<DesktopTopicTests> {
                 // radius: 15,
                 child: Icon(
                   Icons.add,
-                  color: AppColors.actionColor1,
+                  color: AppColors.accentColor1,
                   size: 22,
                 ),
               ),
@@ -85,7 +84,12 @@ class _DesktopTopicTestsState extends State<DesktopTopicTests> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].topicQueNum.toString()),
+                          backgroundColor: AppColors.accentColor1,
+                          child: Text(
+                            posts[index].topicQueNum.toString(),
+                            style: const TextStyle(
+                                color: AppColors.secondaryColor),
+                          ),
                         ),
                         const SizedBox(width: 20),
                         Expanded(
@@ -122,7 +126,7 @@ class _DesktopTopicTestsState extends State<DesktopTopicTests> {
                           },
                           icon: const Icon(
                             Icons.edit,
-                            color: AppColors.actionColor1,
+                            color: AppColors.accentColor1,
                           ),
                         ),
                         IconButton(

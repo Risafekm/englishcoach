@@ -2,7 +2,6 @@
 
 import 'package:englishcoach/presentation/login/widget/button/custom_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class TabViewLogin extends StatefulWidget {
   const TabViewLogin({super.key});
@@ -23,22 +22,18 @@ class _TabViewLoginState extends State<TabViewLogin> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: 120),
-                Text(
-                  "englishcoach",
-                  style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold),
+                const SizedBox(
+                  height: 80,
                 ),
-                Text(
-                  "Your Personal English Coach",
-                  style: GoogleFonts.poppins(
-                      fontSize: 13,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w400),
+                Image.asset(
+                  "splashicon.png",
+                  scale: 1.8,
+                  // fit: BoxFit.cover,
                 ),
-                const SizedBox(height: 60),
+                const SizedBox(
+                  height: 25,
+                ),
+
                 const CustomProvider(), // Ensure this is directly under here
               ],
             ),

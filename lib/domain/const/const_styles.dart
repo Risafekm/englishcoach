@@ -20,6 +20,11 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.primaryColor,
   );
+  static TextStyle trailmodulehead = GoogleFonts.lato(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.secondaryColor,
+  );
   static TextStyle alertText = GoogleFonts.lora(
     fontSize: 15,
     fontWeight: FontWeight.w500,
@@ -30,14 +35,24 @@ class AppStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.primaryColor,
   );
+  static TextStyle bodyTextwhite = GoogleFonts.actor(
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryColor,
+  );
+  static TextStyle bodyTextTrail = GoogleFonts.actor(
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: AppColors.secondaryColor,
+  );
   static TextStyle buttonText = GoogleFonts.lato(
     fontSize: 13,
     fontWeight: FontWeight.w600,
     color: AppColors.secondaryColor,
   );
   static TextStyle optionText = GoogleFonts.lato(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
     color: AppColors.primaryColor,
   );
 

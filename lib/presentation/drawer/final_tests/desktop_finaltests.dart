@@ -31,13 +31,12 @@ class _DesktopFinalTestsState extends State<DesktopFinalTests> {
     var controller = Provider.of<UserproviderFinalTest>(context);
     return Scaffold(
       appBar: AppBar(
-        // centerTitle: true,
+        centerTitle: true,
         backgroundColor: AppColors.accentColor1,
         title: Text(
           'Final Tests',
           style: AppStyles.appBarTitle,
         ),
-
         elevation: 3,
         actions: [
           Padding(
@@ -50,7 +49,7 @@ class _DesktopFinalTestsState extends State<DesktopFinalTests> {
                 // radius: 15,
                 child: Icon(
                   Icons.add,
-                  color: AppColors.actionColor1,
+                  color: AppColors.accentColor1,
                   size: 22,
                 ),
               ),
@@ -84,7 +83,12 @@ class _DesktopFinalTestsState extends State<DesktopFinalTests> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].finalQuesNumber.toString()),
+                          backgroundColor: AppColors.accentColor1,
+                          child: Text(
+                            posts[index].finalQuesNumber.toString(),
+                            style: const TextStyle(
+                                color: AppColors.secondaryColor),
+                          ),
                         ),
                         const SizedBox(width: 20),
                         Expanded(
@@ -121,7 +125,7 @@ class _DesktopFinalTestsState extends State<DesktopFinalTests> {
                           },
                           icon: const Icon(
                             Icons.edit,
-                            color: AppColors.actionColor1,
+                            color: AppColors.accentColor1,
                           ),
                         ),
                         IconButton(

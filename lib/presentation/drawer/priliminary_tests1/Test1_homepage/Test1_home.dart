@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_cast
+
 import 'package:englishcoach/application/provider/userprovider_test1.dart';
 import 'package:englishcoach/domain/Model/quizTest1model.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
@@ -32,6 +34,7 @@ class _Test1State extends State<Test1> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: AppColors.accentColor1,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
@@ -72,7 +75,12 @@ class _Test1State extends State<Test1> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].topic_que_num.toString()),
+                          backgroundColor: AppColors.accentColor1,
+                          child: Text(
+                            posts[index].topic_que_num.toString(),
+                            style: const TextStyle(
+                                color: AppColors.secondaryColor),
+                          ),
                         ),
                         const SizedBox(width: 20),
                         Expanded(
@@ -109,7 +117,7 @@ class _Test1State extends State<Test1> {
                           },
                           icon: const Icon(
                             Icons.edit,
-                            color: AppColors.actionColor1,
+                            color: AppColors.accentColor1,
                           ),
                         ),
                         IconButton(
@@ -130,13 +138,13 @@ class _Test1State extends State<Test1> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.accentColor1,
         onPressed: () {
           modelSheet(context);
         },
         child: const Icon(
           Icons.add,
-          color: AppColors.actionColor1,
+          color: AppColors.secondaryColor,
         ),
       ),
     );

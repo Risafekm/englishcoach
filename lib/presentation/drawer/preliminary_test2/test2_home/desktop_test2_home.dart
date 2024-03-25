@@ -35,13 +35,12 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         backgroundColor: AppColors.accentColor1,
-        elevation: 3,
-        // centerTitle: true,
+        elevation: 2,
+        centerTitle: true,
         title: Text(
-          'Test 2 Questions & Answers',
+          'Preliminary Test 2',
           style: AppStyles.appBarTitle,
         ),
-
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
@@ -52,7 +51,7 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                   },
                   icon: const Icon(
                     Icons.add,
-                    color: AppColors.actionColor1,
+                    color: AppColors.accentColor1,
                   )),
             ),
           ),
@@ -84,7 +83,12 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                     children: [
                       const SizedBox(width: 10),
                       CircleAvatar(
-                        child: Text(posts[index].prelimTransQuesNum.toString()),
+                        backgroundColor: AppColors.accentColor1,
+                        child: Text(
+                          posts[index].prelimTransQuesNum.toString(),
+                          style:
+                              const TextStyle(color: AppColors.secondaryColor),
+                        ),
                       ),
                       const SizedBox(width: 20),
                       Expanded(
@@ -119,10 +123,10 @@ class _DesktopTest2HomeState extends State<DesktopTest2Home> {
                         },
                         icon: const Icon(
                           Icons.edit,
-                          color: AppColors.actionColor1,
+                          color: AppColors.accentColor1,
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      const SizedBox(width: 20),
                       IconButton(
                         onPressed: () {
                           deleteAlertBox(

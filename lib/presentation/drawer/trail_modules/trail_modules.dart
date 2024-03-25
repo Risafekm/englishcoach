@@ -84,7 +84,12 @@ class _TrailModulesState extends State<TrailModules> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].modOrder.toString()),
+                          backgroundColor: AppColors.accentColor1,
+                          child: Text(
+                            posts[index].modOrder.toString(),
+                            style: const TextStyle(
+                                color: AppColors.secondaryColor),
+                          ),
                         ),
                         const SizedBox(width: 20),
                         Expanded(
@@ -95,13 +100,13 @@ class _TrailModulesState extends State<TrailModules> {
                               Text(
                                 'Name : ${posts[index].modName}',
                                 overflow: TextOverflow.ellipsis,
-                                style: AppStyles.bodyTextHead,
+                                style: AppStyles.trailmodulehead,
                               ),
                               const SizedBox(height: 10),
                               Text(
                                 'Special Note : ${posts[index].modContent}',
                                 overflow: TextOverflow.ellipsis,
-                                style: AppStyles.bodyText,
+                                style: AppStyles.bodyTextTrail,
                               ),
                             ],
                           ),
@@ -185,13 +190,13 @@ class _TrailModulesState extends State<TrailModules> {
         );
       }),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.secondaryColor,
+        backgroundColor: AppColors.accentColor1,
         onPressed: () {
           modelSheet(context);
         },
         child: const Icon(
           Icons.add,
-          color: AppColors.actionColor1,
+          color: AppColors.secondaryColor,
         ),
       ),
     );

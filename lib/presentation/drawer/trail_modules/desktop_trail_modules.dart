@@ -36,8 +36,7 @@ class _DesktopTrailModulesState extends State<DesktopTrailModules> {
       appBar: AppBar(
         backgroundColor: AppColors.accentColor1,
         elevation: 3,
-
-        // centerTitle: true,
+        centerTitle: true,
         title: Text(
           'Trail Modules',
           style: AppStyles.appBarTitle,
@@ -53,7 +52,7 @@ class _DesktopTrailModulesState extends State<DesktopTrailModules> {
                 // radius: 15,
                 child: Icon(
                   Icons.add,
-                  color: AppColors.actionColor1,
+                  color: AppColors.accentColor1,
                   size: 22,
                 ),
               ),
@@ -96,9 +95,14 @@ class _DesktopTrailModulesState extends State<DesktopTrailModules> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].modOrder.toString()),
+                          backgroundColor: AppColors.accentColor1,
+                          child: Text(
+                            posts[index].modOrder.toString(),
+                            style: const TextStyle(
+                                color: AppColors.secondaryColor),
+                          ),
                         ),
-                        const SizedBox(width: 20),
+                        const SizedBox(width: 70),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -107,13 +111,13 @@ class _DesktopTrailModulesState extends State<DesktopTrailModules> {
                               Text(
                                 'Name : ${posts[index].modName}',
                                 overflow: TextOverflow.ellipsis,
-                                style: AppStyles.bodyTextHead,
+                                style: AppStyles.trailmodulehead,
                               ),
                               const SizedBox(height: 10),
                               Text(
                                 'Special Note : ${posts[index].modContent}',
                                 overflow: TextOverflow.ellipsis,
-                                style: AppStyles.bodyText,
+                                style: AppStyles.bodyTextTrail,
                               ),
                             ],
                           ),
@@ -200,7 +204,6 @@ class _DesktopTrailModulesState extends State<DesktopTrailModules> {
   }
 
 //floating action button function
-
   Future<dynamic> modelSheet(BuildContext context) {
     var controller = Provider.of<UserProviderTrail>(context, listen: false);
 

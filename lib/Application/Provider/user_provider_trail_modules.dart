@@ -1,11 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison, unused_local_variable
-
-import 'dart:convert';
-import 'package:englishcoach/domain/const/const_colors.dart';
-import 'package:englishcoach/domain/model/trail_modules_model.dart';
+import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:flutter/material.dart';
 
 class UserProviderTrail extends ChangeNotifier {
   List<TrailModules> _posts = [];

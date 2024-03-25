@@ -58,7 +58,7 @@ class _ModulesPageState extends State<ModulesPage> {
                 radius: 15,
                 child: Icon(
                   Icons.add,
-                  color: AppColors.actionColor1,
+                  color: AppColors.accentColor1,
                   size: 22,
                 ),
               ),
@@ -71,26 +71,6 @@ class _ModulesPageState extends State<ModulesPage> {
               SizedBox(
                 height: 180,
                 child: cards(),
-              ),
-              Container(
-                height: 240,
-                width: MediaQuery.of(context).size.width * .98,
-                decoration: BoxDecoration(
-                  color: AppColors.accentColor1,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              SizedBox(
-                height: 180,
-                child: cards(),
-              ),
-              Container(
-                height: 240,
-                width: MediaQuery.of(context).size.width * .98,
-                decoration: BoxDecoration(
-                  color: AppColors.accentColor1,
-                  borderRadius: BorderRadius.circular(20),
-                ),
               ),
             ],
           ),
@@ -192,7 +172,7 @@ class _ModulesPageState extends State<ModulesPage> {
                       child: Icon(
                         Icons.edit,
                         size: 13,
-                        color: AppColors.actionColor1,
+                        color: AppColors.accentColor1,
                       ),
                     ),
                   ),
