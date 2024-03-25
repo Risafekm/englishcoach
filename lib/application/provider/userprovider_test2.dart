@@ -1,8 +1,11 @@
 // ignore_for_file: unnecessary_null_comparison, unused_local_variable
 
-import 'package:englishcoach/domain/export/export.dart';
+import 'dart:convert';
+import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/model/quizTest2model.dart';
 import 'package:http/http.dart' as http;
+
+import 'package:flutter/material.dart';
 
 class UserProviderTest2 extends ChangeNotifier {
   List<QuizTest2> _posts = [];
@@ -132,7 +135,6 @@ class UserProviderTest2 extends ChangeNotifier {
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color: AppColors.accentColor1),
           ],
         ),
       ),
