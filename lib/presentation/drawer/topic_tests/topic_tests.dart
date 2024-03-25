@@ -73,7 +73,12 @@ class _TopicTestsState extends State<TopicTests> {
                       children: [
                         const SizedBox(width: 10),
                         CircleAvatar(
-                          child: Text(posts[index].topicQueNum.toString()),
+                          backgroundColor: AppColors.accentColor1,
+                          child: Text(
+                            posts[index].topicQueNum.toString(),
+                            style: const TextStyle(
+                                color: AppColors.secondaryColor),
+                          ),
                         ),
                         const SizedBox(width: 20),
                         Expanded(
