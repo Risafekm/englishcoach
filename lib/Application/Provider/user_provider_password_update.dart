@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:englishcoach/domain/Model/mod_user_authentication.dart';
 import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;

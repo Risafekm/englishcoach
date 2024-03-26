@@ -60,19 +60,6 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                         right: 40.0,
                         top: 8,
                       ),
-                      // child: Container(
-                      //   height: 100,
-                      //   width: 100,
-                      //   decoration: const BoxDecoration(
-                      //     color: Colors.white,
-                      //     shape: BoxShape.circle,
-                      //     image: DecorationImage(
-                      //       fit: BoxFit.fitHeight,
-                      //       scale: 1,
-                      //       image: AssetImage("icon.png"),
-                      //     ),
-                      //   ),
-                      // ),
                       child: Container(
                         height: 100,
                         width: 100,
@@ -113,7 +100,7 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                     ),
                     DrawerIconTextDesktop(
                       text: 'Modules ',
-                      icon: Icons.view_module,
+                      icon: Icons.draw,
                       onTap: () {
                         _onItemTapped(3);
                       },
@@ -121,7 +108,7 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                     ),
                     DrawerIconTextDesktop(
                       text: 'Modules Exercises',
-                      icon: Icons.view_module_sharp,
+                      icon: Icons.draw,
                       onTap: () {
                         _onItemTapped(4);
                       },

@@ -1,15 +1,10 @@
-import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
-import 'package:englishcoach/Application/Provider/user_provider_trail_modules.dart';
-import 'package:englishcoach/Application/Provider/userprovider_modules.dart';
-import 'package:englishcoach/domain/const/const_colors.dart';
-import 'package:englishcoach/domain/const/const_styles.dart';
+import 'package:englishcoach/application/provider/user_count_provider.dart';
+import 'package:englishcoach/domain/export/export.dart';
 import 'package:englishcoach/presentation/dashboard/widget/custom_card_box.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../drawer/drawer.dart';
 
 class MobileViewDashBoard extends StatelessWidget {
-  const MobileViewDashBoard({Key? key});
+  const MobileViewDashBoard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +38,7 @@ class MobileViewDashBoard extends StatelessWidget {
                       .getCount(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
@@ -51,13 +46,15 @@ class MobileViewDashBoard extends StatelessWidget {
                       int count =
                           snapshot.data as int; // Assuming count is an integer
                       return CustomCardBox(
-                        title: 'Modules Trial',
+                        title: 'Trial Modules',
                         count: count,
+                        icons: Icons.draw,
                       );
                     }
                   },
                 ),
               ),
+              const SizedBox(width: 10),
               Expanded(
                 child: FutureBuilder(
                   future:
@@ -65,7 +62,7 @@ class MobileViewDashBoard extends StatelessWidget {
                           .getCount(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
@@ -75,19 +72,20 @@ class MobileViewDashBoard extends StatelessWidget {
                       return CustomCardBox(
                         title: 'Modules',
                         count: count,
+                        icons: Icons.draw,
                       );
                     }
                   },
                 ),
               ),
+              const SizedBox(width: 10),
               Expanded(
                 child: FutureBuilder(
-                  future:
-                      Provider.of<UserproviderPassword>(context, listen: false)
-                          .getCount(),
+                  future: Provider.of<UserCountProvider>(context, listen: false)
+                      .getCount(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     } else if (snapshot.hasError) {
                       return Text('Error: ${snapshot.error}');
                     } else {
@@ -95,8 +93,9 @@ class MobileViewDashBoard extends StatelessWidget {
                       int count =
                           snapshot.data as int; // Assuming count is an integer
                       return CustomCardBox(
-                        title: 'User',
+                        title: 'Users',
                         count: count,
+                        icons: Icons.account_circle,
                       );
                     }
                   },

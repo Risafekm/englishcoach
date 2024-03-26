@@ -1,3 +1,4 @@
+import 'package:englishcoach/application/provider/user_count_provider.dart';
 import 'package:englishcoach/domain/export/export.dart';
 
 void main() {
@@ -13,6 +14,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => UserproviderFinalTest()),
         ChangeNotifierProvider(create: (context) => UserproviderTopicTest()),
         ChangeNotifierProvider(create: (context) => UserProviderTrail()),
+        ChangeNotifierProvider(create: (context) => UserCountProvider()),
       ],
       child: const RootScreen(),
     ),
@@ -24,11 +26,13 @@ class RootScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      // home: SplashScreen(),
-      home: ResponsiveDashBoard(),
-    );
+    return Builder(builder: (context) {
+      return const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        // home: SplashScreen(),
+        home: ResponsiveDashBoard(),
+      );
+    });
   }
 }
 

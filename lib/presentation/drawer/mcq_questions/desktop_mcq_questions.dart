@@ -76,7 +76,7 @@ class _DesktopMcqQuestionsState extends State<DesktopMcqQuestions> {
                   height: 120,
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                    color: AppColors.accentColor2,
+                    color: AppColors.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(

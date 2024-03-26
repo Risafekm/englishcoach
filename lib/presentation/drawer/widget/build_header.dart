@@ -1,4 +1,3 @@
-import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:flutter/material.dart';
 
 class BuildHeader extends StatelessWidget {
@@ -10,16 +9,20 @@ class BuildHeader extends StatelessWidget {
       padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
       child: Column(
         children: [
-          const CircleAvatar(
-            radius: 60,
-            backgroundImage: NetworkImage(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaPFJC-r3YeVbBL0ydVAMARkzcEliCloXfLw&usqp=CAU'),
+          Container(
+            height: 100,
+            width: 100,
+            decoration: const BoxDecoration(
+              color: Colors.transparent,
+              shape: BoxShape.circle,
+              image: DecorationImage(
+                fit: BoxFit.fitHeight,
+                scale: 1,
+                image: AssetImage("LogoApp.jpg"),
+              ),
+            ),
           ),
           const SizedBox(height: 10),
-          Text(
-            'Hello ,Mariya John',
-            style: AppStyles.drawerText,
-          ),
         ],
       ),
     );

@@ -61,7 +61,7 @@ class UserProviderTrail extends ChangeNotifier {
   getCount() async {
     try {
       final response = await http.get(Uri.parse(
-          'http://localhost/php_practice/new_php/trail_mcq_question/module%20folder/trial_slect.php'));
+          'http://localhost/english_coach_php/trail_modules/count_trail_modules.php'));
       final jsonData = json.decode(response.body);
       print('Received JSON data: $jsonData');
 

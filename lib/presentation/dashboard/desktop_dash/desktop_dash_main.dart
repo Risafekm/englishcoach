@@ -1,7 +1,8 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:englishcoach/application/provider/user_count_provider.dart';
+import 'package:englishcoach/domain/export/export.dart';
 import 'package:englishcoach/presentation/dashboard/widget/custom_card_box.dart';
-import 'package:flutter/material.dart';
 
 class DashBoardDesktop extends StatelessWidget {
   DashBoardDesktop({super.key});
@@ -12,56 +13,76 @@ class DashBoardDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Row(
-          children: [
-            const SizedBox(width: 5),
-            CustomCardBox(
-              title: 'Modules',
-              count: '34',
-            ),
-            const SizedBox(width: 15),
-            CustomCardBox(
-              title: 'Trial Modules',
-              count: '12',
-            ),
-            const SizedBox(width: 15),
-            CustomCardBox(
-              title: 'Users',
-              count: '4',
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Row(
+            children: [
+              FutureBuilder(
+                future: Provider.of<UserProviderTrail>(context, listen: false)
+                    .getCount(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    // Provide appropriate API data here
+                    int count =
+                        snapshot.data as int; // Assuming count is an integer
+                    return CustomCardBox(
+                      title: 'Trial Modules',
+                      count: count,
+                      icons: Icons.draw,
+                    );
+                  }
+                },
+              ),
+              const SizedBox(width: 10),
+              FutureBuilder(
+                future: Provider.of<UserproviderModules>(context, listen: false)
+                    .getCount(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    // Provide appropriate API data here
+                    int count =
+                        snapshot.data as int; // Assuming count is an integer
+                    return CustomCardBox(
+                      title: 'Modules',
+                      count: count,
+                      icons: Icons.draw,
+                    );
+                  }
+                },
+              ),
+              const SizedBox(width: 10),
+              FutureBuilder(
+                future: Provider.of<UserCountProvider>(context, listen: false)
+                    .getCount(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  } else {
+                    // Provide appropriate API data here
+                    int count =
+                        snapshot.data as int; // Assuming count is an integer
+                    return CustomCardBox(
+                      title: 'Users',
+                      count: count,
+                      icons: Icons.account_circle,
+                    );
+                  }
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
-
-  // Widget centerArea() {
-  //   return Column(
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       const SizedBox(height: 10),
-  //       CustomCard(
-  //         text: 'No Of Questions',
-  //         icon: Icons.arrow_forward_ios,
-  //         ontap: () {},
-  //       ),
-  //       CustomCard(
-  //         text: 'No of Students',
-  //         icon: Icons.arrow_forward_ios,
-  //         ontap: () {},
-  //       ),
-  //       CustomCard(
-  //         text: 'No of Answers',
-  //         icon: Icons.arrow_forward_ios,
-  //         ontap: () {},
-  //       ),
-  //       CustomCard(
-  //         text: 'List toppers',
-  //         icon: Icons.arrow_forward_ios,
-  //         ontap: () {},
-  //       ),
-  //     ],
-  //   );
-  // }
 }

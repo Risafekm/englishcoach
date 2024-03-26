@@ -22,7 +22,7 @@ class BuildMenuItem extends StatelessWidget {
         children: [
           ListTile(
             trailing: const Icon(
-              Icons.home,
+              Icons.edit,
               color: AppColors.secondaryColor,
             ),
             title: Text(
@@ -36,7 +36,7 @@ class BuildMenuItem extends StatelessWidget {
           ),
           ListTile(
             trailing: const Icon(
-              Icons.person,
+              Icons.edit,
               color: AppColors.secondaryColor,
             ),
             title: Text(
@@ -50,7 +50,7 @@ class BuildMenuItem extends StatelessWidget {
           ),
           ListTile(
             trailing: const Icon(
-              Icons.settings,
+              Icons.draw,
               color: AppColors.secondaryColor,
             ),
             title: Text(
@@ -64,7 +64,7 @@ class BuildMenuItem extends StatelessWidget {
           ),
           ListTile(
             trailing: const Icon(
-              Icons.sports_gymnastics,
+              Icons.draw,
               color: AppColors.secondaryColor,
             ),
             title: Text(
@@ -80,7 +80,7 @@ class BuildMenuItem extends StatelessWidget {
           ),
           ListTile(
             trailing: const Icon(
-              Icons.history,
+              Icons.edit,
               color: AppColors.secondaryColor,
             ),
             title: Text(
@@ -94,7 +94,7 @@ class BuildMenuItem extends StatelessWidget {
           ),
           ListTile(
             trailing: const Icon(
-              Icons.assignment,
+              Icons.edit,
               color: AppColors.secondaryColor,
             ),
             title: Text(
@@ -112,7 +112,7 @@ class BuildMenuItem extends StatelessWidget {
               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Mcq questions',
+              'Mcq Questions',
               style: AppStyles.drawerText,
             ),
             onTap: () {
@@ -126,7 +126,7 @@ class BuildMenuItem extends StatelessWidget {
               color: AppColors.secondaryColor,
             ),
             title: Text(
-              'Trail modules',
+              'Trail Modules',
               style: AppStyles.drawerText,
             ),
             onTap: () {
