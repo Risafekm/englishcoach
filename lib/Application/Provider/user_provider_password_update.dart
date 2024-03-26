@@ -1,10 +1,6 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable, camel_case_types
-
-import 'dart:convert';
-import 'package:englishcoach/domain/Model/mod_user.dart';
 import 'package:englishcoach/domain/Model/mod_user_authentication.dart';
+import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
 class UserproviderPassword extends ChangeNotifier {
   List<User> _posts = [];
@@ -17,11 +13,30 @@ class UserproviderPassword extends ChangeNotifier {
   TextEditingController updatepasswordController = TextEditingController();
   // TextEditingController updateanswersController = TextEditingController();
 
+  getCount() async {
+    try {
+      final response = await http.get(Uri.parse(
+          'http://localhost/php_practice/new_php/trail_mcq_question/module%20folder/user_select.php'));
+      final jsonData = json.decode(response.body);
+      print('Received JSON data: $jsonData');
+
+      if (jsonData is int) {
+        return jsonData;
+      } else {
+        throw FormatException(
+            'Unexpected format of count data: Expected an integer.');
+      }
+    } catch (e) {
+      print('Error fetching count: $e');
+      rethrow;
+    }
+  }
+
   //update
 
   updateData(String i, context, String j) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/php_practice/english_coach_php/edu_user/update_admin_password.php?user_email=$i&user_pswd=$j');
+        'http://localhost/english_coach_php/auth/update_admin_password.php?user_email=$i&user_pswd=$j');
     var data = User(
       userEmail: i,
       userPassword: j,
@@ -57,7 +72,7 @@ class UserproviderPassword extends ChangeNotifier {
     }
 
     final apiUrl = Uri.parse(
-        'http://localhost/php_practice/english_coach_php/edu_user/user_authentication.php?user_email=$email&user_pswd=$password');
+        'http://localhost/english_coach_php/auth/user_authentication.php?user_email=$email&user_pswd=$password');
     final userData = Auth(
       userEmail: email,
       userPassword: password,
