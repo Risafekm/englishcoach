@@ -135,7 +135,6 @@ class UserProviderTest2 extends ChangeNotifier {
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color:AppColors.accentColor1),
           ],
         ),
       ),
