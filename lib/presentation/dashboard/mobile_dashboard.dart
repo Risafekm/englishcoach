@@ -1,11 +1,15 @@
+import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
+import 'package:englishcoach/Application/Provider/user_provider_trail_modules.dart';
+import 'package:englishcoach/Application/Provider/userprovider_modules.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/dashboard/widget/custom_card_box.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../drawer/drawer.dart';
 
 class MobileViewDashBoard extends StatelessWidget {
-  const MobileViewDashBoard({super.key});
+  const MobileViewDashBoard({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,31 +33,77 @@ class MobileViewDashBoard extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Row(
-          children: [
-            const SizedBox(width: 5),
-            Expanded(
-              child: CustomCardBox(
-                title: 'Modules',
-                count: '34',
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Row(
+            children: [
+              Expanded(
+                child: FutureBuilder(
+                  future: Provider.of<UserProviderTrail>(context, listen: false)
+                      .getCount(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      // Provide appropriate API data here
+                      int count =
+                          snapshot.data as int; // Assuming count is an integer
+                      return CustomCardBox(
+                        title: 'Modules Trial',
+                        count: count,
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
-            const SizedBox(width: 15),
-            Expanded(
-              child: CustomCardBox(
-                title: 'Trial Modules',
-                count: '12',
+              Expanded(
+                child: FutureBuilder(
+                  future:
+                      Provider.of<UserproviderModules>(context, listen: false)
+                          .getCount(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      // Provide appropriate API data here
+                      int count =
+                          snapshot.data as int; // Assuming count is an integer
+                      return CustomCardBox(
+                        title: 'Modules',
+                        count: count,
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
-            const SizedBox(width: 15),
-            Expanded(
-              child: CustomCardBox(
-                title: 'Users',
-                count: '4',
+              Expanded(
+                child: FutureBuilder(
+                  future:
+                      Provider.of<UserproviderPassword>(context, listen: false)
+                          .getCount(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      // Provide appropriate API data here
+                      int count =
+                          snapshot.data as int; // Assuming count is an integer
+                      return CustomCardBox(
+                        title: 'User',
+                        count: count,
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
-            const SizedBox(width: 10),
-          ],
+            ],
+          ),
         ),
       ),
     );

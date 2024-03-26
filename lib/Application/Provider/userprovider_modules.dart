@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: unnecessary_null_comparison, prefer_const_constructors
 
 import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;
@@ -161,6 +161,27 @@ class UserproviderModules extends ChangeNotifier {
       print('Error ${e.toString()}');
     }
   }
+
+//count data
+  getCount() async {
+    try {
+      final response = await http.get(Uri.parse(
+          'http://localhost/php_practice/new_php/trail_mcq_question/module%20folder/module_count_select.php'));
+      final jsonData = json.decode(response.body);
+      print('Received JSON data: $jsonData');
+
+      if (jsonData is int) {
+        return jsonData;
+      } else {
+        throw FormatException(
+            'Unexpected format of count data: Expected an integer.');
+      }
+    } catch (e) {
+      print('Error fetching count: $e');
+      rethrow;
+    }
+  }
+
 //get Data
 
   getData() async {
