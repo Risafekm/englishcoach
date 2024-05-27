@@ -1,9 +1,8 @@
-// ignore_for_file: unnecessary_null_comparison, unused_local_variable
-
-import 'package:http/http.dart' as http;
+// ignore_for_file: unnecessary_null_comparison
 import 'package:englishcoach/domain/export/export.dart';
+import 'package:http/http.dart' as http;
 
-class UserProviderTest extends ChangeNotifier {
+class UserproviderTest extends ChangeNotifier {
   List<QuizTest1> _posts = [];
   List<QuizTest1> get posts => _posts;
   bool isLoding = false;
@@ -18,11 +17,11 @@ class UserProviderTest extends ChangeNotifier {
 // post
 
   addData(context) async {
-    String apiUrl = 'http://localhost/english_coach_php/test1/createtest1.php';
+    String apiUrl = 'https://api.muhammedhafiz.com/risaf/test1/createtest1.php';
     var userdata = QuizTest1(
       topic_que_num: 0,
-      topic_que_question: questionController.text,
-      topic_ans_answer: answersController.text,
+      topic_que_question: questionController.text.trim(),
+      topic_ans_answer: answersController.text.trim(),
     );
     try {
       var bodyy = jsonEncode(userdata);
@@ -49,7 +48,7 @@ class UserProviderTest extends ChangeNotifier {
 
   getData() async {
     isLoding = true;
-    String getUrl = 'http://localhost/english_coach_php/test1/readtest1.php';
+    String getUrl = 'https://api.muhammedhafiz.com/risaf/test1/readtest1.php';
 
     try {
       var response = await http.get(Uri.parse(getUrl));
@@ -72,11 +71,11 @@ class UserProviderTest extends ChangeNotifier {
 
   updateData(int i, context) async {
     Uri updateUrl = Uri.parse(
-        'localhost/english_coach_php/test1/updatetest1.php?topic_que_num=$i');
+        'https://api.muhammedhafiz.com/risaf/test1/updatetest1.php?topic_que_num=$i');
     var data = QuizTest1(
       topic_que_num: i,
-      topic_que_question: updatequestionController.text,
-      topic_ans_answer: updateanswersController.text,
+      topic_que_question: updatequestionController.text.trim(),
+      topic_ans_answer: updateanswersController.text.trim(),
     );
 
     try {
@@ -97,9 +96,9 @@ class UserProviderTest extends ChangeNotifier {
     notifyListeners();
   }
 
-  deleteData(int i, context) async {
+  deleteData(String i, context) async {
     Uri deleteUrl = Uri.parse(
-        'localhost/english_coach_php/test1/deletetest1.php?topic_que_num=$i');
+        'https://api.muhammedhafiz.com/risaf/test1/deletetest1.php?topic_que_num=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
@@ -120,21 +119,17 @@ class UserProviderTest extends ChangeNotifier {
   snackbar(context, {required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: AppColors.accentColor2,
         content: Row(
           children: [
             Expanded(child: Text('Successfully $text')),
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color: Colors.green),
+            const Icon(Icons.done, color: AppColors.accentColor1),
           ],
         ),
       ),
     );
   }
 }
-
-
-
-//http://localhost/english_coach_php/test1/updatetest1.php?topic_que_num=

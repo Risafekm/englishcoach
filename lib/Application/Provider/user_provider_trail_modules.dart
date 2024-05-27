@@ -48,6 +48,7 @@ class UserProviderTrail extends ChangeNotifier {
         var dataa = jsonDecode(response.body);
         snackbar(context, text: "added");
         await getData();
+        clear();
         print('Response body: $dataa');
         notifyListeners();
       }
@@ -61,7 +62,7 @@ class UserProviderTrail extends ChangeNotifier {
   getCount() async {
     try {
       final response = await http.get(Uri.parse(
-          'http://localhost/english_coach_php/trail_modules/count_trail_modules.php'));
+          'https://api.muhammedhafiz.com/sana/trail_modules/count_trail_modules.php'));
       final jsonData = json.decode(response.body);
       print('Received JSON data: $jsonData');
 
@@ -92,6 +93,7 @@ class UserProviderTrail extends ChangeNotifier {
         if (data != null) {
           _posts = data;
           isLoding = false;
+
           notifyListeners();
         }
       }
@@ -166,5 +168,13 @@ class UserProviderTrail extends ChangeNotifier {
         ),
       ),
     );
+  }
+
+  clear() {
+    modorderController.clear();
+    modnameController.clear();
+    modcontentController.clear();
+    moddescriptionController.clear();
+    modspecialnoteController.clear();
   }
 }

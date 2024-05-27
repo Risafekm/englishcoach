@@ -33,24 +33,6 @@ class _ChangePasswordState extends State<DesktopChangePassword> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               const SizedBox(height: 100),
-              Container(
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text(
-                        "englishcoach",
-                        style: AppStyles.loginText1,
-                      ),
-                    ),
-                    Center(
-                      child: Text(
-                        "Your Personal English Coach",
-                        style: AppStyles.loginText2,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               const SizedBox(
                 height: 100,
               ),

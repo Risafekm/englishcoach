@@ -59,6 +59,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
         print('Response body: $dataa');
 
         await getData();
+        clear();
         notifyListeners();
       } else {
         // Request failed

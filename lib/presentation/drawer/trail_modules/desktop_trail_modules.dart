@@ -33,32 +33,43 @@ class _DesktopTrailModulesState extends State<DesktopTrailModules> {
     var controller = Provider.of<UserProviderTrail>(context);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        backgroundColor: AppColors.accentColor1,
-        elevation: 3,
-        centerTitle: true,
-        title: Text(
-          'Trail Modules',
-          style: AppStyles.appBarTitle,
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: GestureDetector(
-              onTap: () {
-                modelSheet(context);
-              },
-              child: const CircleAvatar(
-                // radius: 15,
-                child: Icon(
-                  Icons.add,
-                  color: AppColors.accentColor1,
-                  size: 22,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(55.0),
+        child: Container(
+          height: 100,
+          decoration: const BoxDecoration(
+              color: AppColors.accentColor1,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+              )),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.transparent,
+              ),
+              Text(
+                'Trail Modules',
+                style: AppStyles.appBarTitle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: CircleAvatar(
+                  child: IconButton(
+                      onPressed: () {
+                        modelSheet(context);
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: AppColors.accentColor1,
+                      )),
                 ),
               ),
-            ),
-          )
-        ],
+            ],
+          ),
+        ),
       ),
       body: Consumer<UserProviderTrail>(builder: (context, value, child) {
         if (value.isLoding) {
@@ -82,6 +93,7 @@ class _DesktopTrailModulesState extends State<DesktopTrailModules> {
                   color: AppColors.secondaryColor,
                 ),
                 child: Card(
+                  color: AppColors.accentColor2,
                   child: Container(
                     height: 120,
                     margin: const EdgeInsets.only(right: 10, left: 10, top: 5),

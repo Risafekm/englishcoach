@@ -2,7 +2,6 @@
 
 import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
-import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/login/widget/change_password/widget/CustomTextFormField.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,14 +33,6 @@ class _MobileChangePasswordState extends State<MobileChangePassword> {
               children: [
                 const SizedBox(
                   height: 120,
-                ),
-                Text(
-                  "englishcoach",
-                  style: AppStyles.loginText1,
-                ),
-                Text(
-                  "Your Personal English Coach",
-                  style: AppStyles.loginText2,
                 ),
                 const SizedBox(
                   height: 50,

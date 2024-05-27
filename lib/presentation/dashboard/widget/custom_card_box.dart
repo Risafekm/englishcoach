@@ -34,30 +34,42 @@ class CustomCardBox extends StatelessWidget {
             color: AppColors.accentColor1,
           ),
           const SizedBox(height: 10),
-          Text(
-            title,
-            style: GoogleFonts.ubuntu(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: AppColors.secondaryColor,
+          Padding(
+            padding: const EdgeInsets.only(left: 3.0, right: 3),
+            child: Text(
+              title,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.ubuntu(
+                fontSize: 20,
+                fontWeight: FontWeight.w500,
+                color: AppColors.secondaryColor,
+              ),
             ),
           ),
           const SizedBox(height: 15),
-          Text(
-            'Total Count',
-            style: GoogleFonts.ubuntu(
-              fontSize: 14,
-              fontWeight: FontWeight.w300,
-              color: AppColors.secondaryColor,
+          Padding(
+            padding: const EdgeInsets.only(left: 3.0, right: 3),
+            child: Text(
+              'Total Count',
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.ubuntu(
+                fontSize: 14,
+                fontWeight: FontWeight.w300,
+                color: AppColors.secondaryColor,
+              ),
             ),
           ),
           const SizedBox(height: 5),
-          Text(
-            '$count', // Display the count
-            style: GoogleFonts.lora(
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-              color: AppColors.secondaryColor,
+          Padding(
+            padding: const EdgeInsets.only(left: 3.0, right: 3),
+            child: Text(
+              '$count', // Display the count
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.lora(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: AppColors.secondaryColor,
+              ),
             ),
           ),
         ],

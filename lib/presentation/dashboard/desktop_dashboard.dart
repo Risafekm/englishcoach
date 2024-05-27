@@ -162,10 +162,13 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
             // center screen
             Expanded(
               flex: 7,
-              child: Container(
-                margin: const EdgeInsets.only(right: 10),
-                height: MediaQuery.of(context).size.height,
-                child: pages[_selectedIndex],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  height: MediaQuery.of(context).size.height,
+                  child: pages[_selectedIndex],
+                ),
               ),
             ),
           ],

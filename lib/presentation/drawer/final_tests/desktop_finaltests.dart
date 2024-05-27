@@ -30,32 +30,43 @@ class _DesktopFinalTestsState extends State<DesktopFinalTests> {
   Widget build(BuildContext context) {
     var controller = Provider.of<UserproviderFinalTest>(context);
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.accentColor1,
-        title: Text(
-          'Final Tests',
-          style: AppStyles.appBarTitle,
-        ),
-        elevation: 3,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: GestureDetector(
-              onTap: () {
-                modelSheet(context);
-              },
-              child: const CircleAvatar(
-                // radius: 15,
-                child: Icon(
-                  Icons.add,
-                  color: AppColors.accentColor1,
-                  size: 22,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(55.0),
+        child: Container(
+          height: 100,
+          decoration: const BoxDecoration(
+              color: AppColors.accentColor1,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+              )),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.transparent,
+              ),
+              Text(
+                'Final Tests',
+                style: AppStyles.appBarTitle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: CircleAvatar(
+                  child: IconButton(
+                      onPressed: () {
+                        modelSheet(context);
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: AppColors.accentColor1,
+                      )),
                 ),
               ),
-            ),
-          )
-        ],
+            ],
+          ),
+        ),
       ),
       body: Consumer<UserproviderFinalTest>(builder: (context, value, child) {
         if (value.isLoding) {

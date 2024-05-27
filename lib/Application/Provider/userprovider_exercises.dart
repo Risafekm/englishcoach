@@ -45,6 +45,7 @@ class UserProviderExercises extends ChangeNotifier {
         var dataa = jsonDecode(response.body);
         snackbar(context, text: "added");
         await getData();
+        clear();
         print('Response body: $dataa');
         notifyListeners();
       }

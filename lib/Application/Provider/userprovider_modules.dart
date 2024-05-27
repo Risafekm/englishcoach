@@ -3,32 +3,13 @@
 import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;
 import 'package:englishcoach/domain/model/modulesmodel.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 class UserproviderModules extends ChangeNotifier {
   List<Modules> _posts = [];
   List<Modules> get posts => _posts;
   bool isLoding = false;
-
-  // updateDataOrders(List<Modules> modules, context) async {
-  //   String apiUrl =
-  //       'http://localhost/english_coach_php/modules/update_orders.php';
-  //   try {
-  //     var response = await http.put(
-  //       Uri.parse(apiUrl),
-  //       body: jsonEncode(modules.map((module) => module.modOrder).toList()),
-  //       headers: {'Content-Type': 'application/json'},
-  //     );
-  //     if (response.statusCode == 200) {
-  //       print('Successfully updated orders');
-  //       getData();
-  //       snackbar(context, text: "orders updated");
-  //       print(" update success ${response.body}");
-  //     }
-  //   } catch (e) {
-  //     print('Error updating orders: ${e.toString()}');
-  //   }
-  //   notifyListeners();
-  // }
 
   void reorderModules(List<Modules> updatedModules) async {
     try {
@@ -49,66 +30,6 @@ class UserproviderModules extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-  // Function to handle reordering
-  // void reorderPosts(int oldIndex, int newIndex) {
-  //   if (oldIndex < newIndex) {
-  //     newIndex -= 1;
-  //   }
-  //   final postToReorder = posts.removeAt(oldIndex);
-  //   posts.insert(newIndex, postToReorder);
-  //   // Update the database via HTTP request to the PHP script
-  //   updateDatabase(posts);
-  //   // reorderModules(posts);
-  //   notifyListeners();
-  // }
-
-  // // // Function to update the database with the new order
-  // updateDatabase(List<Modules> updatedPosts) async {
-  //   String updateUrl =
-  //       'http://localhost/english_coach_php/modules/update_order.php';
-
-  //   try {
-  //     var bodyy = jsonEncode(updatedPosts);
-  //     var response = await http.put(
-  //       Uri.parse(updateUrl),
-  //       body: bodyy,
-  //       headers: {'Content-Type': 'application/json'},
-  //     );
-  //     if (response.statusCode == 200) {
-  //       print('Database updated successfully');
-  //       await getData();
-  //     } else {
-  //       print('Failed to update database. Status code: ${response.statusCode}');
-  //     }
-  //   } catch (e) {
-  //     print('Error updating database: $e');
-  //   }
-  //   notifyListeners();
-  // }
-
-  // Future<void> updateDatabase(List<Modules> modules) async {
-  //   try {
-  //     for (int i = 0; i < modules.length; i++) {
-  //       final response = await http.put(
-  //         Uri.parse(
-  //           'http://localhost/english_coach_php/modules/update_order.php?mod_num=${modules[i].modNum}',
-  //         ),
-  //         body: jsonEncode(modules[i].toJson()),
-  //         headers: {'Content-Type': 'application/json'},
-  //       );
-
-  //       if (response.statusCode == 200) {
-  //         print('Database updated successfully');
-  //         await getData();
-  //       } else {
-  //         throw Exception('Failed to update module ${modules[i].modNum}');
-  //       }
-  //     }
-  //   } catch (e) {
-  //     print('Error updating database: $e');
-  //   }
-  // }
 
 // post controller
   TextEditingController modorderController = TextEditingController();
@@ -166,7 +87,7 @@ class UserproviderModules extends ChangeNotifier {
   getCount() async {
     try {
       final response = await http.get(Uri.parse(
-          'http://localhost/english_coach_php/modules/module_count_select.php'));
+          'https://api.muhammedhafiz.com/shalima/modules/module_count_select.php'));
       final jsonData = json.decode(response.body);
       print('Received JSON data: $jsonData');
 
@@ -262,6 +183,13 @@ class UserproviderModules extends ChangeNotifier {
     modspecialnoteController.clear();
   }
 
+  alertnew(context) {
+    return QuickAlert.show(
+      context: context,
+      type: QuickAlertType.success,
+    ); // That's it to display an alert, use other properties to customize.
+  }
+
   //snackBar
 
   snackbar(context, {required String text}) {
@@ -283,3 +211,21 @@ class UserproviderModules extends ChangeNotifier {
 }
 
 // https://chat.openai.com/share/24bd9288-0e10-471f-ad7c-fec3f57d9d90
+
+class CustomSnackbar extends StatelessWidget {
+  final Widget content;
+
+  CustomSnackbar({required this.content});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.center,
+      child: Container(
+        color: Colors.blue,
+        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+        child: content,
+      ),
+    );
+  }
+}

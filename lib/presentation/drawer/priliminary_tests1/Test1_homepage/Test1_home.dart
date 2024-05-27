@@ -21,7 +21,7 @@ class _Test1State extends State<Test1> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<UserProviderTest>(context, listen: false).getData();
+      Provider.of<UserproviderTest>(context, listen: false).getData();
     });
     super.initState();
   }
@@ -30,7 +30,7 @@ class _Test1State extends State<Test1> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserProviderTest>(context);
+    var controller = Provider.of<UserproviderTest>(context);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
@@ -49,7 +49,7 @@ class _Test1State extends State<Test1> {
         ),
         elevation: 3,
       ),
-      body: Consumer<UserProviderTest>(builder: (context, value, child) {
+      body: Consumer<UserproviderTest>(builder: (context, value, child) {
         if (value.isLoding) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -123,7 +123,7 @@ class _Test1State extends State<Test1> {
                         IconButton(
                           onPressed: () {
                             deleteAlertBox(context, posts, index,
-                                controller as UserProviderTest, user);
+                                controller as UserproviderTest, user);
                           },
                           icon: const Icon(
                             Icons.delete,
@@ -151,7 +151,7 @@ class _Test1State extends State<Test1> {
   }
 
   Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest1> posts,
-      int index, UserProviderTest controller, QuizTest1 user) {
+      int index, UserproviderTest controller, QuizTest1 user) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -177,7 +177,7 @@ class _Test1State extends State<Test1> {
               const SizedBox(width: 10),
               TextButton(
                 onPressed: () {
-                  controller.deleteData(user.topic_que_num, context);
+                  controller.deleteData(user.topic_que_num.toString(), context);
                   Navigator.pop(context);
                 },
                 child: Text(
@@ -226,7 +226,7 @@ class _Test1State extends State<Test1> {
                         text: 'Post',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
-                            Provider.of<UserProviderTest>(context,
+                            Provider.of<UserproviderTest>(context,
                                     listen: false)
                                 .addData(context);
 
@@ -242,7 +242,7 @@ class _Test1State extends State<Test1> {
   }
 
   TextArea questionTextArea() {
-    var controller = Provider.of<UserProviderTest>(context, listen: false);
+    var controller = Provider.of<UserproviderTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Question',
@@ -264,7 +264,7 @@ class _Test1State extends State<Test1> {
   }
 
   TextArea answerTextArea() {
-    var controller = Provider.of<UserProviderTest>(context, listen: false);
+    var controller = Provider.of<UserproviderTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Answer',

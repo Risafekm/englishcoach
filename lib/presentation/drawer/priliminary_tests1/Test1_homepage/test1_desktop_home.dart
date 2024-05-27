@@ -10,6 +10,8 @@ import 'package:englishcoach/presentation/drawer/priliminary_tests1/update_page/
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
 class DesktopTest1Home extends StatefulWidget {
   const DesktopTest1Home({super.key});
 
@@ -21,7 +23,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<UserProviderTest>(context, listen: false).getData();
+      Provider.of<UserproviderTest>(context, listen: false).getData();
     });
     super.initState();
   }
@@ -30,34 +32,49 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserProviderTest>(context);
+    var controller = Provider.of<UserproviderTest>(context);
     return Scaffold(
+      key: _scaffoldKey,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.accentColor1,
-        title: Text(
-          'Preliminary Test 1',
-          style: AppStyles.appBarTitle,
-        ),
-        elevation: 2,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: CircleAvatar(
-              child: IconButton(
-                  onPressed: () {
-                    modelSheet(context);
-                  },
-                  icon: const Icon(
-                    Icons.add,
-                    color: AppColors.accentColor1,
-                  )),
-            ),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(55.0),
+        child: Container(
+          height: 100,
+          decoration: const BoxDecoration(
+              color: AppColors.accentColor1,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+              )),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.transparent,
+              ),
+              Text(
+                'Preliminary Test 1',
+                style: AppStyles.appBarTitle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: CircleAvatar(
+                  child: IconButton(
+                      onPressed: () {
+                        modelSheet(context);
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: AppColors.accentColor1,
+                      )),
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
-      body: Consumer<UserProviderTest>(builder: (context, value, child) {
+      body: Consumer<UserproviderTest>(builder: (context, value, child) {
         if (value.isLoding) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -133,7 +150,6 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
                           onPressed: () {
                             deleteAlertBox(
                                 context, posts, index, controller, user);
-                            controller.deleteData(user.topic_que_num, context);
                             print('Delete button tapped');
                           },
                           icon: const Icon(
@@ -152,7 +168,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   }
 
   Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest1> posts,
-      int index, UserProviderTest controller, QuizTest1 user) {
+      int index, UserproviderTest controller, QuizTest1 user) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -178,7 +194,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
               const SizedBox(width: 10),
               TextButton(
                 onPressed: () {
-                  controller.deleteData(user.topic_que_num, context);
+                  controller.deleteData(user.topic_que_num.toString(), context);
                   Navigator.pop(context);
                 },
                 child: Text(
@@ -228,7 +244,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
                         text: 'POST',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
-                            Provider.of<UserProviderTest>(context,
+                            Provider.of<UserproviderTest>(context,
                                     listen: false)
                                 .addData(context);
 
@@ -244,7 +260,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   }
 
   TextArea questionTextArea() {
-    var controller = Provider.of<UserProviderTest>(context, listen: false);
+    var controller = Provider.of<UserproviderTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Question',
@@ -263,7 +279,7 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   }
 
   TextArea answerTextArea() {
-    var controller = Provider.of<UserProviderTest>(context, listen: false);
+    var controller = Provider.of<UserproviderTest>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
       name: 'Answer',

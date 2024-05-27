@@ -33,32 +33,43 @@ class _DesktopModulesPageState extends State<DesktopModulesPage> {
     var controller = Provider.of<UserproviderModules>(context);
     return Scaffold(
         backgroundColor: AppColors.secondaryColor,
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: AppColors.accentColor1,
-          elevation: 2,
-          title: Text(
-            'Modules',
-            style: AppStyles.appBarTitle,
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: GestureDetector(
-                onTap: () {
-                  modelSheet(context);
-                },
-                child: const CircleAvatar(
-                  // radius: 15,
-                  child: Icon(
-                    Icons.add,
-                    color: AppColors.accentColor1,
-                    size: 22,
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(55.0),
+          child: Container(
+            height: 100,
+            decoration: const BoxDecoration(
+                color: AppColors.accentColor1,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                )),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.transparent,
+                ),
+                Text(
+                  'Modules',
+                  style: AppStyles.appBarTitle,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: CircleAvatar(
+                    child: IconButton(
+                        onPressed: () {
+                          modelSheet(context);
+                        },
+                        icon: const Icon(
+                          Icons.add,
+                          color: AppColors.accentColor1,
+                        )),
                   ),
                 ),
-              ),
-            )
-          ],
+              ],
+            ),
+          ),
         ),
         body: SingleChildScrollView(child: cards()));
   }

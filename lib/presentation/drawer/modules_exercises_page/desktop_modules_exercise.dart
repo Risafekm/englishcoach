@@ -31,33 +31,71 @@ class _DesktopExercisesPageState extends State<DesktopExercisesPage> {
     var controller = Provider.of<UserProviderExercises>(context);
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        backgroundColor: AppColors.accentColor1,
-        centerTitle: true,
-        elevation: 3,
-        title: Text(
-          'Modules Exercises',
-          style: AppStyles.appBarTitle,
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: GestureDetector(
-              onTap: () {
-                modelSheet(context);
-              },
-              child: const CircleAvatar(
-                // radius: 15,
-                child: Icon(
-                  Icons.add,
-                  color: AppColors.accentColor1,
-                  size: 22,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(55.0),
+        child: Container(
+          height: 100,
+          decoration: const BoxDecoration(
+              color: AppColors.accentColor1,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+              )),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.transparent,
+              ),
+              Text(
+                'Modules Exercises',
+                style: AppStyles.appBarTitle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: CircleAvatar(
+                  child: IconButton(
+                      onPressed: () {
+                        modelSheet(context);
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: AppColors.accentColor1,
+                      )),
                 ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
+      //  AppBar(
+      //   backgroundColor: AppColors.accentColor1,
+      //   centerTitle: true,
+      //   elevation: 3,
+      //   title: Text(
+      //     'Modules Exercises',
+      //     style: AppStyles.appBarTitle,
+      //   ),
+      //   actions: [
+      //     Padding(
+      //       padding: const EdgeInsets.only(right: 8.0),
+      //       child: GestureDetector(
+      //         onTap: () {
+      //           modelSheet(context);
+      //         },
+      //         child: const CircleAvatar(
+      //           // radius: 15,
+      //           child: Icon(
+      //             Icons.add,
+      //             color: AppColors.accentColor1,
+      //             size: 22,
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ],
+      // ),
       body: Consumer<UserProviderExercises>(builder: (context, value, child) {
         if (value.isLoding) {
           return const Center(

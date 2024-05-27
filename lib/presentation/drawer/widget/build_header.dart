@@ -18,7 +18,7 @@ class BuildHeader extends StatelessWidget {
               image: DecorationImage(
                 fit: BoxFit.fitHeight,
                 scale: 1,
-                image: AssetImage("LogoApp.jpg"),
+                image: AssetImage("assets/LogoApp.jpg"),
               ),
             ),
           ),

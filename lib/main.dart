@@ -1,4 +1,5 @@
 import 'package:englishcoach/application/provider/user_count_provider.dart';
+
 import 'package:englishcoach/domain/export/export.dart';
 
 void main() {
@@ -7,7 +8,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => UserMcqQuestionsOptions()),
         ChangeNotifierProvider(create: (context) => UserproviderPassword()),
-        ChangeNotifierProvider(create: (context) => UserProviderTest()),
+        ChangeNotifierProvider(create: (context) => UserproviderTest()),
         ChangeNotifierProvider(create: (context) => UserProviderTest2()),
         ChangeNotifierProvider(create: (context) => UserproviderModules()),
         ChangeNotifierProvider(create: (context) => UserProviderExercises()),
