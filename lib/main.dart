@@ -1,6 +1,9 @@
-import 'package:englishcoach/application/provider/user_count_provider.dart';
+// ignore_for_file: use_build_context_synchronously
 
+import 'package:englishcoach/application/provider/user_count_provider.dart';
+import 'package:englishcoach/application/provider/user_provider_payment_coupon.dart';
 import 'package:englishcoach/domain/export/export.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(
@@ -15,9 +18,11 @@ void main() {
         ChangeNotifierProvider(create: (context) => UserproviderFinalTest()),
         ChangeNotifierProvider(create: (context) => UserproviderTopicTest()),
         ChangeNotifierProvider(create: (context) => UserProviderTrail()),
+        ChangeNotifierProvider(create: (context) => UserproviderCoupon()),
         ChangeNotifierProvider(create: (context) => UserCountProvider()),
       ],
-      child: const RootScreen(),
+      child: const MaterialApp(
+          debugShowCheckedModeBanner: false, home: RootScreen()),
     ),
   );
 }
@@ -25,17 +30,36 @@ void main() {
 class RootScreen extends StatelessWidget {
   const RootScreen({super.key});
 
+  Future<bool> _checkIfLoggedIn() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('isLoggedIn') ?? false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
-      return const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        // home: SplashScreen(),
-        home: ResponsiveDashBoard(),
-      );
-    });
+    return FutureBuilder(
+      future: _checkIfLoggedIn(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasData && snapshot.data == true) {
+          return const SplashScreen();
+        } else {
+          return const SplashScreen();
+        }
+      },
+    );
   }
 }
+
+// class RootScreen extends StatelessWidget {
+//   const RootScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SplashScreen();
+//   }
+// }
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   // Override behavior methods and getters like dragDevices

@@ -81,7 +81,25 @@ class EditText2Page extends StatelessWidget {
                 Provider.of<UserProviderTest2>(context, listen: false)
                     .updateData(user.prelimTransQuesNum, context);
                 Navigator.pop(context);
+                snackbar(context, text: "updated");
               },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  //snackBar
+
+  snackbar(context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.accentColor2,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
             ),
           ],
         ),

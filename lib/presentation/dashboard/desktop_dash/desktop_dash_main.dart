@@ -3,6 +3,7 @@
 import 'package:englishcoach/application/provider/user_count_provider.dart';
 import 'package:englishcoach/domain/export/export.dart';
 import 'package:englishcoach/presentation/dashboard/widget/custom_card_box.dart';
+import 'package:englishcoach/presentation/dashboard/widget/loading_card_box.dart';
 
 class DashBoardDesktop extends StatelessWidget {
   DashBoardDesktop({super.key});
@@ -22,7 +23,7 @@ class DashBoardDesktop extends StatelessWidget {
                     .getCount(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const LoadingCardBox();
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
@@ -43,7 +44,7 @@ class DashBoardDesktop extends StatelessWidget {
                     .getCount(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const LoadingCardBox();
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
@@ -64,7 +65,7 @@ class DashBoardDesktop extends StatelessWidget {
                     .getCount(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const LoadingCardBox();
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {

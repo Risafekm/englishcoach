@@ -142,11 +142,31 @@ class EditModules extends StatelessWidget {
                   Provider.of<UserproviderModules>(context, listen: false)
                       .updateData(user.modNum, context);
                   Navigator.pop(context);
+                  snackbar(context, text: "updated");
                 },
               ),
               const SizedBox(height: 30),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  //snackBar
+
+  snackbar(context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.accentColor2,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+            const Icon(Icons.done, color: AppColors.accentColor1),
+          ],
         ),
       ),
     );

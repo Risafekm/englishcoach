@@ -1,7 +1,5 @@
-// ignore_for_file: avoid_print
-
+// ignore_for_file: avoid_print, use_build_context_synchronously
 import 'package:englishcoach/application/provider/userprovider_test1.dart';
-import 'package:englishcoach/domain/Model/quizTest1model.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
@@ -9,8 +7,6 @@ import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/wi
 import 'package:englishcoach/presentation/drawer/priliminary_tests1/update_page/edit_test1_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
 class DesktopTest1Home extends StatefulWidget {
   const DesktopTest1Home({super.key});
@@ -34,7 +30,6 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
   Widget build(BuildContext context) {
     var controller = Provider.of<UserproviderTest>(context);
     return Scaffold(
-      key: _scaffoldKey,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(55.0),
@@ -62,7 +57,64 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
                 child: CircleAvatar(
                   child: IconButton(
                       onPressed: () {
-                        modelSheet(context);
+                        showModalBottomSheet(
+                            context: context,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(40.0),
+                                  topRight: Radius.circular(40.0)),
+                            ),
+                            builder: (BuildContext context) {
+                              return Container(
+                                  height: 450.0,
+                                  color: AppColors.transColor,
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      color: AppColors.secondaryColor,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(30.0),
+                                        topRight: Radius.circular(30.0),
+                                      ),
+                                    ),
+                                    child: Form(
+                                      key: formkey,
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(height: 30),
+                                          Text(
+                                            'Add new question & answer',
+                                            style: AppStyles.bodyText,
+                                          ),
+                                          const SizedBox(height: 50),
+                                          questionTextArea(),
+                                          const SizedBox(height: 20),
+                                          answerTextArea(),
+                                          const SizedBox(height: 20),
+                                          CustomButton(
+                                            text: 'POST',
+                                            ontap: () async {
+                                              if (formkey.currentState!
+                                                  .validate()) {
+                                                await Provider.of<
+                                                            UserproviderTest>(
+                                                        context,
+                                                        listen: false)
+                                                    .addData();
+                                                // Provider.of<UserproviderTest>(
+                                                //         context,
+                                                //         listen: false)
+                                                //     .getData();
+                                                Navigator.pop(context);
+                                              }
+
+                                              snackbar(context, text: 'added');
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ));
+                            });
                       },
                       icon: const Icon(
                         Icons.add,
@@ -137,8 +189,6 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
                                     EditPageTest1(user: user)));
-
-                            print('Edit button tapped');
                           },
                           icon: const Icon(
                             Icons.edit,
@@ -148,9 +198,47 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
                         const SizedBox(width: 20),
                         IconButton(
                           onPressed: () {
-                            deleteAlertBox(
-                                context, posts, index, controller, user);
-                            print('Delete button tapped');
+                            showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text(
+                                      'Delete Question ${posts[index].topic_que_num}',
+                                      style: AppStyles.bodyText,
+                                    ),
+                                    content: Text(
+                                      'Are you sure?',
+                                      style: AppStyles.bodyText,
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Cancel',
+                                          style: AppStyles.bodyText,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      TextButton(
+                                        onPressed: () {
+                                          controller.deleteData(
+                                              user.topic_que_num.toString(),
+                                              context);
+
+                                          print('deleted successfull ui');
+                                          Navigator.pop(context);
+                                          snackbar(context, text: 'deleted');
+                                        },
+                                        child: Text(
+                                          'Yes',
+                                          style: AppStyles.bodyText,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                });
                           },
                           icon: const Icon(
                             Icons.delete,
@@ -165,98 +253,6 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
         );
       }),
     );
-  }
-
-  Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest1> posts,
-      int index, UserproviderTest controller, QuizTest1 user) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text(
-              'Delete Question ${posts[index].topic_que_num}',
-              style: AppStyles.bodyText,
-            ),
-            content: Text(
-              'Are you sure?',
-              style: AppStyles.bodyText,
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'Cancel',
-                  style: AppStyles.bodyText,
-                ),
-              ),
-              const SizedBox(width: 10),
-              TextButton(
-                onPressed: () {
-                  controller.deleteData(user.topic_que_num.toString(), context);
-                  Navigator.pop(context);
-                },
-                child: Text(
-                  'yes',
-                  style: AppStyles.bodyText,
-                ),
-              ),
-            ],
-          );
-        });
-  }
-
-  Future<dynamic> modelSheet(BuildContext context) {
-    return showModalBottomSheet(
-        context: context,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0)),
-        ),
-        builder: (BuildContext context) {
-          return Container(
-              height: 450.0,
-              color: AppColors.transColor,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: AppColors.secondaryColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                  ),
-                ),
-                child: Form(
-                  key: formkey,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 30),
-                      Text(
-                        'Add new question & answer',
-                        style: AppStyles.bodyText,
-                      ),
-                      const SizedBox(height: 50),
-                      questionTextArea(),
-                      const SizedBox(height: 20),
-                      answerTextArea(),
-                      const SizedBox(height: 20),
-                      CustomButton(
-                        text: 'POST',
-                        ontap: () {
-                          if (formkey.currentState!.validate()) {
-                            Provider.of<UserproviderTest>(context,
-                                    listen: false)
-                                .addData(context);
-
-                            Navigator.pop(context);
-                          }
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              ));
-        });
   }
 
   TextArea questionTextArea() {
@@ -294,6 +290,25 @@ class _DesktopTest1HomeState extends State<DesktopTest1Home> {
       suffixIcon: const Icon(Icons.abc, color: AppColors.transColor),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_answer),
+    );
+  }
+
+//snackbar
+
+  snackbar(BuildContext context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.accentColor2,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+            const Icon(Icons.done, color: AppColors.accentColor1),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';
+import 'package:englishcoach/presentation/drawer/coupon/coupon.dart';
 import 'package:englishcoach/presentation/drawer/final_tests/final_test.dart';
+import 'package:englishcoach/presentation/drawer/logout/logoutpage.dart';
 import 'package:englishcoach/presentation/drawer/mcq_questions/mcq_page.dart';
 import 'package:englishcoach/presentation/drawer/modules_exercises_page/exercises_page.dart';
 import 'package:englishcoach/presentation/drawer/modules_page/modules_page.dart';
@@ -138,6 +140,20 @@ class BuildMenuItem extends StatelessWidget {
           ),
           ListTile(
             trailing: const Icon(
+              Icons.local_offer_rounded,
+              color: AppColors.secondaryColor,
+            ),
+            title: Text(
+              'Coupon Code',
+              style: AppStyles.drawerText,
+            ),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const CouponMob()));
+            },
+          ),
+          ListTile(
+            trailing: const Icon(
               Icons.power_settings_new_rounded,
               color: AppColors.secondaryColor,
             ),
@@ -145,7 +161,10 @@ class BuildMenuItem extends StatelessWidget {
               'Logout',
               style: AppStyles.drawerText,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LogoutPage()));
+            },
           ),
         ],
       ),

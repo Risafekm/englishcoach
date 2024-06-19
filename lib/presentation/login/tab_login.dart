@@ -26,7 +26,7 @@ class _TabViewLoginState extends State<TabViewLogin> {
                   height: 80,
                 ),
                 Image.asset(
-                  "splashicon.png",
+                  "assets/splashicon.png",
                   scale: 1.8,
                   // fit: BoxFit.cover,
                 ),

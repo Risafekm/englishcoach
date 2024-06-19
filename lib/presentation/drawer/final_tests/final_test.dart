@@ -177,6 +177,7 @@ class _FinalTestsState extends State<FinalTests> {
                 onPressed: () {
                   controller.deleteData(user.finalQuesNumber, context);
                   Navigator.pop(context);
+                  snackbar(context, text: "deleted");
                 },
                 child: Text(
                   'yes',
@@ -232,6 +233,7 @@ class _FinalTestsState extends State<FinalTests> {
                                 .addData(context);
 
                             Navigator.pop(context);
+                            snackbar(context, text: "added");
                           }
                         },
                       ),
@@ -283,6 +285,25 @@ class _FinalTestsState extends State<FinalTests> {
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_answer),
+    );
+  }
+
+  //snackBar
+
+  snackbar(context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.blue,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+            const Icon(Icons.done, color: Colors.green),
+          ],
+        ),
+      ),
     );
   }
 }

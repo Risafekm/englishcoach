@@ -205,6 +205,7 @@ class _DesktopMcqQuestionsState extends State<DesktopMcqQuestions> {
                                             user.questionNo.toString(),
                                             context);
                                         Navigator.pop(context);
+                                        snackbar(context, text: "deleted");
                                       },
                                       child: Text(
                                         'yes',
@@ -349,6 +350,7 @@ class _DesktopMcqQuestionsState extends State<DesktopMcqQuestions> {
                                       listen: false)
                                   .addData(context);
                               Navigator.pop(context);
+                              snackbar(context, text: "added");
                             }
                           },
                         ),
@@ -359,5 +361,24 @@ class _DesktopMcqQuestionsState extends State<DesktopMcqQuestions> {
                 ),
               ));
         });
+  }
+
+  //snackBar
+
+  snackbar(context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.accentColor2,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+            const Icon(Icons.done, color: AppColors.accentColor1),
+          ],
+        ),
+      ),
+    );
   }
 }

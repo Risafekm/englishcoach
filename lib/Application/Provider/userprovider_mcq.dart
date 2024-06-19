@@ -25,7 +25,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
 //post
 
   Future<void> addData(BuildContext context) async {
-    String apiUrl = 'http://localhost/english_coach_php/mqc/createmqc.php';
+    String apiUrl = 'https://api.muhammedhafiz.com/shalima/mqc/createmqc.php';
 
     var userdata = {
       "questionData": {
@@ -54,7 +54,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
         // Request successful
         await getData();
         print('Successfully posted');
-        snackbar(context, text: "Added");
+        // snackbar(context, text: "added");
         var dataa = jsonDecode(response.body);
         print('Response body: $dataa');
 
@@ -65,7 +65,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
         // Request failed
         print('Failed to post data. Status code: ${response.statusCode}');
         print('Response body: ${response.body}');
-        snackbar(context, text: "Failed");
+        // snackbar(context, text: "Failed");
         notifyListeners();
       }
     } catch (e) {
@@ -79,7 +79,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
 
   getData() async {
     isLoding = true;
-    String getUrl = 'http://localhost/english_coach_php/mqc/readmcq.php';
+    String getUrl = 'https://api.muhammedhafiz.com/shalima/mqc/readmcq.php';
 
     try {
       var response = await http.get(Uri.parse(getUrl));
@@ -102,7 +102,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
 
   updateData(String i, context) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/english_coach_php/mqc/updatemcq.php?question_id=$i');
+        'https://api.muhammedhafiz.com/shalima/mqc/updatemcq.php?question_id=$i');
     var data = {
       "questionId": i,
       "questionData": {
@@ -125,7 +125,7 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         await getData();
-        snackbar(context, text: "updated");
+        // snackbar(context, text: "updated");
         print(" update success ${response.body}");
       }
     } catch (e) {
@@ -138,11 +138,11 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
 
   deleteData(String i, context) async {
     Uri deleteUrl = Uri.parse(
-        'http://localhost/english_coach_php/mqc/deletemcq.php?question_id=$i');
+        'https://api.muhammedhafiz.com/shalima/mqc/deletemcq.php?question_id=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
-      snackbar(context, text: "deleted");
+      // snackbar(context, text: "deleted");
       getData();
 
       print('Successfully deleted');
@@ -155,24 +155,5 @@ class UserMcqQuestionsOptions extends ChangeNotifier {
     option1Controller.clear();
     option2Controller.clear();
     option3Controller.clear();
-  }
-
-  //snackBar
-
-  snackbar(context, {required String text}) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: AppColors.accentColor2,
-        content: Row(
-          children: [
-            Expanded(child: Text('Successfully $text')),
-            const SizedBox(
-              width: 20,
-            ),
-            const Icon(Icons.done, color: AppColors.accentColor1),
-          ],
-        ),
-      ),
-    );
   }
 }

@@ -1,27 +1,27 @@
-// ignore_for_file: unnecessary_cast
+// ignore_for_file: non_constant_identifier_names
 
-import 'package:englishcoach/application/provider/userprovider_test1.dart';
-import 'package:englishcoach/domain/Model/quizTest1model.dart';
+import 'package:englishcoach/application/provider/user_provider_payment_coupon.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';
+import 'package:englishcoach/domain/model/coupon_model.dart';
+import 'package:englishcoach/presentation/drawer/coupon/update_coupon/edit_coupon.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
-import 'package:englishcoach/presentation/drawer/priliminary_tests1/update_page/edit_test1_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Test1 extends StatefulWidget {
-  const Test1({super.key});
+class CouponMob extends StatefulWidget {
+  const CouponMob({super.key});
 
   @override
-  State<Test1> createState() => _Test1State();
+  State<CouponMob> createState() => _CouponMobState();
 }
 
-class _Test1State extends State<Test1> {
+class _CouponMobState extends State<CouponMob> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<UserproviderTest>(context, listen: false).getData();
+      Provider.of<UserproviderCoupon>(context, listen: false).getData();
     });
     super.initState();
   }
@@ -30,26 +30,47 @@ class _Test1State extends State<Test1> {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserproviderTest>(context);
+    var controller = Provider.of<UserproviderCoupon>(context);
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.accentColor1,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: AppColors.secondaryColor,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(55.0),
+        child: Container(
+          height: 100,
+          decoration: const BoxDecoration(
+              color: AppColors.accentColor1,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(15),
+              )),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.transparent,
+              ),
+              Text(
+                'Final Tests',
+                style: AppStyles.appBarTitle,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: CircleAvatar(
+                  child: IconButton(
+                      onPressed: () {
+                        modelSheet(context);
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: AppColors.accentColor1,
+                      )),
+                ),
+              ),
+            ],
           ),
         ),
-        title: Text(
-          'Test 1 Questions & Answers',
-          style: AppStyles.appBarTitle,
-        ),
-        elevation: 3,
       ),
-      body: Consumer<UserproviderTest>(builder: (context, value, child) {
+      body: Consumer<UserproviderCoupon>(builder: (context, value, child) {
         if (value.isLoding) {
           return const Center(child: CircularProgressIndicator());
         }
@@ -77,7 +98,7 @@ class _Test1State extends State<Test1> {
                         CircleAvatar(
                           backgroundColor: AppColors.accentColor1,
                           child: Text(
-                            posts[index].topic_que_num.toString(),
+                            posts[index].couponId.toString(),
                             style: const TextStyle(
                                 color: AppColors.secondaryColor),
                           ),
@@ -89,13 +110,19 @@ class _Test1State extends State<Test1> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Question : ${posts[index].topic_que_question}',
+                                'Coupon Name : ${posts[index].couponName}',
                                 overflow: TextOverflow.ellipsis,
                                 style: AppStyles.bodyText,
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                'Answer : ${posts[index].topic_ans_answer}',
+                                'Reduction : ${posts[index].couponReduction}',
+                                overflow: TextOverflow.ellipsis,
+                                style: AppStyles.bodyText,
+                              ),
+                              const SizedBox(height: 5),
+                              Text(
+                                'Count : ${posts[index].couponCount}',
                                 overflow: TextOverflow.ellipsis,
                                 style: AppStyles.bodyText,
                               ),
@@ -104,14 +131,16 @@ class _Test1State extends State<Test1> {
                         ),
                         IconButton(
                           onPressed: () async {
-                            controller.updatequestionController.text =
-                                user.topic_que_question;
-                            controller.updateanswersController.text =
-                                user.topic_ans_answer;
+                            controller.updateCouponNameController.text =
+                                user.couponName;
+                            controller.updateCouponReductionController.text =
+                                user.couponReduction;
+                            controller.updateCouponCountController.text =
+                                user.couponCount;
 
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) =>
-                                    EditPageTest1(user: user)));
+                                    UpdateCoupon(user: user)));
 
                             print('Edit button tapped');
                           },
@@ -122,8 +151,8 @@ class _Test1State extends State<Test1> {
                         ),
                         IconButton(
                           onPressed: () {
-                            deleteAlertBox(context, posts, index,
-                                controller as UserproviderTest, user);
+                            deleteAlertBox(
+                                context, posts, index, controller, user);
                           },
                           icon: const Icon(
                             Icons.delete,
@@ -137,27 +166,18 @@ class _Test1State extends State<Test1> {
           },
         );
       }),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.accentColor1,
-        onPressed: () {
-          modelSheet(context);
-        },
-        child: const Icon(
-          Icons.add,
-          color: AppColors.secondaryColor,
-        ),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  Future<dynamic> deleteAlertBox(BuildContext context, List<QuizTest1> posts,
-      int index, UserproviderTest controller, QuizTest1 user) {
+  Future<dynamic> deleteAlertBox(BuildContext context, List<Coupon> posts,
+      int index, UserproviderCoupon controller, Coupon user) {
     return showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
             title: Text(
-              'Delete Question ${posts[index].topic_que_num}',
+              'Delete Question ${posts[index].couponId}',
               style: AppStyles.bodyText,
             ),
             content: Text(
@@ -177,9 +197,9 @@ class _Test1State extends State<Test1> {
               const SizedBox(width: 10),
               TextButton(
                 onPressed: () {
-                  controller.deleteData(user.topic_que_num.toString(), context);
+                  controller.deleteData(user.couponId, context);
                   Navigator.pop(context);
-                  snackbar(context, text: 'deleted');
+                  snackbar(context, text: "deleted");
                 },
                 child: Text(
                   'yes',
@@ -190,6 +210,7 @@ class _Test1State extends State<Test1> {
           );
         });
   }
+
 //floating action button function
 
   Future<dynamic> modelSheet(BuildContext context) {
@@ -216,23 +237,27 @@ class _Test1State extends State<Test1> {
                   child: Column(
                     children: [
                       const SizedBox(height: 30),
-                      Text('Add new question & answer',
-                          style: AppStyles.bodyText),
+                      Text(
+                        'Add new question & answer',
+                        style: AppStyles.bodyText,
+                      ),
                       const SizedBox(height: 50),
-                      questionTextArea(),
+                      CouponNameTextArea(),
                       const SizedBox(height: 20),
-                      answerTextArea(),
+                      reductionTextArea(),
+                      const SizedBox(height: 20),
+                      countTextArea(),
                       const SizedBox(height: 20),
                       CustomButton(
-                        text: 'Post',
+                        text: 'POST',
                         ontap: () {
                           if (formkey.currentState!.validate()) {
-                            Provider.of<UserproviderTest>(context,
+                            Provider.of<UserproviderCoupon>(context,
                                     listen: false)
                                 .addData();
 
                             Navigator.pop(context);
-                            snackbar(context, text: 'added');
+                            snackbar(context, text: "added");
                           }
                         },
                       ),
@@ -243,15 +268,15 @@ class _Test1State extends State<Test1> {
         });
   }
 
-  TextArea questionTextArea() {
-    var controller = Provider.of<UserproviderTest>(context, listen: false);
+  TextArea CouponNameTextArea() {
+    var controller = Provider.of<UserproviderCoupon>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
-      name: 'Question',
-      controller: controller.questionController,
+      name: 'Coupon Name',
+      controller: controller.couponNameController,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'please enter question';
+          return 'please enter Name';
         } else {
           return null;
         }
@@ -265,15 +290,15 @@ class _Test1State extends State<Test1> {
     );
   }
 
-  TextArea answerTextArea() {
-    var controller = Provider.of<UserproviderTest>(context, listen: false);
+  TextArea reductionTextArea() {
+    var controller = Provider.of<UserproviderCoupon>(context, listen: false);
     return TextArea(
       keyboardType: TextInputType.text,
-      name: 'Answer',
-      controller: controller.answersController,
+      name: 'Reduction',
+      controller: controller.couponReductionController,
       validator: (value) {
         if (value!.isEmpty) {
-          return 'please enter answer';
+          return 'please enter Reduction';
         } else {
           return null;
         }
@@ -287,19 +312,41 @@ class _Test1State extends State<Test1> {
     );
   }
 
-//snackbar
+  TextArea countTextArea() {
+    var controller = Provider.of<UserproviderCoupon>(context, listen: false);
+    return TextArea(
+      keyboardType: TextInputType.text,
+      name: 'Count',
+      controller: controller.couponCountController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'please enter count';
+        } else {
+          return null;
+        }
+      },
+      suffixIcon: const Icon(
+        Icons.abc,
+        color: AppColors.transColor,
+      ),
+      obscureText: false,
+      prefixIcon: const Icon(Icons.question_answer),
+    );
+  }
 
-  snackbar(BuildContext context, {required String text}) {
+  //snackBar
+
+  snackbar(context, {required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: AppColors.accentColor2,
+        backgroundColor: Colors.blue,
         content: Row(
           children: [
             Expanded(child: Text('Successfully $text')),
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color: AppColors.accentColor1),
+            const Icon(Icons.done, color: Colors.green),
           ],
         ),
       ),

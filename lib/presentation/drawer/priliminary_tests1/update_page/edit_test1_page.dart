@@ -80,9 +80,30 @@ class EditPageTest1 extends StatelessWidget {
               ontap: () {
                 Provider.of<UserproviderTest>(context, listen: false)
                     .updateData(user.topic_que_num, context);
+                print('ui updated successful');
                 Navigator.pop(context);
+                snackbar(context, text: 'updated');
               },
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+//snackbar
+
+  snackbar(BuildContext context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.accentColor2,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+            const Icon(Icons.done, color: AppColors.accentColor1),
           ],
         ),
       ),

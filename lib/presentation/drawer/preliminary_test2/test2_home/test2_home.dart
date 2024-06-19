@@ -182,6 +182,7 @@ class _Test2HomeState extends State<Test2Home> {
                   controller.deleteData(
                       user.prelimTransQuesNum.toString(), context);
                   Navigator.pop(context);
+                  snackbar(context, text: "deleted");
                 },
                 child: Text(
                   'yes',
@@ -235,6 +236,7 @@ class _Test2HomeState extends State<Test2Home> {
                                 .addData(context);
 
                             Navigator.pop(context);
+                            snackbar(context, text: "added");
                           }
                         },
                       ),
@@ -286,6 +288,24 @@ class _Test2HomeState extends State<Test2Home> {
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_answer),
+    );
+  }
+
+  //snackBar
+
+  snackbar(context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.accentColor2,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

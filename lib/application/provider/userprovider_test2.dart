@@ -1,7 +1,6 @@
 // ignore_for_file: unnecessary_null_comparison, unused_local_variable
 
 import 'dart:convert';
-import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/model/quizTest2model.dart';
 import 'package:http/http.dart' as http;
 
@@ -41,7 +40,7 @@ class UserProviderTest2 extends ChangeNotifier {
       if (response.statusCode == 201) {
         print('successfully posted');
         var dataa = jsonDecode(response.body);
-        snackbar(context, text: "added");
+        // snackbar(context, text: "added");
         await getData();
         print('Response body: $dataa');
         notifyListeners();
@@ -94,7 +93,7 @@ class UserProviderTest2 extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         await getData();
-        snackbar(context, text: "updated");
+        // snackbar(context, text: "updated");
         print(" update success ${response.body}");
       }
     } catch (e) {
@@ -111,7 +110,7 @@ class UserProviderTest2 extends ChangeNotifier {
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
-      snackbar(context, text: "deleted");
+      // snackbar(context, text: "deleted");
       getData();
 
       print('Successfully deleted');
@@ -123,21 +122,21 @@ class UserProviderTest2 extends ChangeNotifier {
     ansController.clear();
   }
 
-  //snackBar
+  // //snackBar
 
-  snackbar(context, {required String text}) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: AppColors.accentColor2,
-        content: Row(
-          children: [
-            Expanded(child: Text('Successfully $text')),
-            const SizedBox(
-              width: 20,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // snackbar(context, {required String text}) {
+  //   ScaffoldMessenger.of(context).showSnackBar(
+  //     SnackBar(
+  //       backgroundColor: AppColors.accentColor2,
+  //       content: Row(
+  //         children: [
+  //           Expanded(child: Text('Successfully $text')),
+  //           const SizedBox(
+  //             width: 20,
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }

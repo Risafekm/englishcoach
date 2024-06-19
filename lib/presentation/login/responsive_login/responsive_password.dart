@@ -7,9 +7,6 @@ import 'package:englishcoach/presentation/login/widget/change_password/change_pa
 import 'package:englishcoach/presentation/login/widget/change_password/change_password_tablet.dart';
 
 class ResponsivePassword extends StatelessWidget {
-  // Define the GlobalKey<FormState> outside the build method
-  // final GlobalKey<FormState> globalChangePasswordKey = GlobalKey<FormState>();
-
   ResponsivePassword({Key? key}) : super(key: key);
 
   @override

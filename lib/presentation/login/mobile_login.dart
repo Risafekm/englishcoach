@@ -27,7 +27,7 @@ class _MobileViewLoginState extends State<MobileViewLogin> {
                   height: 60,
                 ),
                 Image.asset(
-                  "splashicon.png",
+                  "assets/splashicon.png",
                   scale: 2.4,
                   // fit: BoxFit.cover,
                 ),

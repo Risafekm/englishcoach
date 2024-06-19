@@ -1,4 +1,6 @@
 import 'package:englishcoach/domain/export/export.dart';
+import 'package:englishcoach/presentation/drawer/coupon/desktop_coupon.dart';
+import 'package:englishcoach/presentation/drawer/logout/logoutpage.dart';
 
 class DesktopViewDashBoard extends StatefulWidget {
   const DesktopViewDashBoard({super.key});
@@ -20,7 +22,8 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
     const DesktopFinalTests(),
     const DesktopMcqQuestions(),
     const DesktopTrailModules(),
-    const Center(child: Text('Logout')),
+    const DesktopCoupon(),
+    const LogoutPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -147,12 +150,20 @@ class _DesktopViewDashBoardState extends State<DesktopViewDashBoard> {
                       selected: _selectedIndex == 8,
                     ),
                     DrawerIconTextDesktop(
-                      text: 'Logout',
-                      icon: Icons.logout,
+                      text: 'Coupon Code',
+                      icon: Icons.local_offer_rounded,
                       onTap: () {
                         _onItemTapped(9);
                       },
                       selected: _selectedIndex == 9,
+                    ),
+                    DrawerIconTextDesktop(
+                      text: 'Logout',
+                      icon: Icons.logout,
+                      onTap: () {
+                        _onItemTapped(10);
+                      },
+                      selected: _selectedIndex == 10,
                     ),
                   ],
                 ),

@@ -178,6 +178,7 @@ class _TopicTestsState extends State<TopicTests> {
                 onPressed: () {
                   controller.deleteData(user.topicQueNum, context);
                   Navigator.pop(context);
+                  snackbar(context, text: "deleted");
                 },
                 child: Text(
                   'yes',
@@ -233,6 +234,7 @@ class _TopicTestsState extends State<TopicTests> {
                                 .addData(context);
 
                             Navigator.pop(context);
+                            snackbar(context, text: "added");
                           }
                         },
                       ),
@@ -284,6 +286,25 @@ class _TopicTestsState extends State<TopicTests> {
       ),
       obscureText: false,
       prefixIcon: const Icon(Icons.question_answer),
+    );
+  }
+
+  //snackBar
+
+  snackbar(context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: AppColors.accentColor2,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+            const Icon(Icons.done, color: AppColors.accentColor1),
+          ],
+        ),
+      ),
     );
   }
 }

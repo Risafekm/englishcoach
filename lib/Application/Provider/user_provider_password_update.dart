@@ -1,8 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_build_context_synchronously
 
 import 'package:englishcoach/domain/Model/mod_user_authentication.dart';
 import 'package:englishcoach/domain/export/export.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserproviderPassword extends ChangeNotifier {
   List<User> _posts = [];
@@ -19,7 +20,7 @@ class UserproviderPassword extends ChangeNotifier {
 
   updateData(String i, context, String j) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/english_coach_php/auth/update_admin_password.php?user_email=$i&user_pswd=$j');
+        'https://api.muhammedhafiz.com/sana/auth/update_admin_password.php?user_email=$i&user_pswd=$j');
     var data = User(
       userEmail: i,
       userPassword: j,
@@ -55,7 +56,7 @@ class UserproviderPassword extends ChangeNotifier {
     }
 
     final apiUrl = Uri.parse(
-        'http://localhost/english_coach_php/auth/user_authentication.php?user_email=$email&user_pswd=$password');
+        'https://api.muhammedhafiz.com/sana/auth/user_authentication.php?user_email=$email&user_pswd=$password');
     final userData = Auth(
       userEmail: email,
       userPassword: password,
@@ -76,6 +77,10 @@ class UserproviderPassword extends ChangeNotifier {
             if (data['status'] == 'success') {
               _isAuthenticated = true;
               snackbar(context, text: 'Logged In');
+
+              // Save login state in SharedPreferences
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setBool('isLoggedIn', true);
             } else {
               print('Authentication failed: ${data['message']}');
             }
@@ -92,6 +97,19 @@ class UserproviderPassword extends ChangeNotifier {
       print('Error adding data: $e');
     }
     notifyListeners();
+  }
+
+  // logout
+
+  Future<void> logout(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', false);
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ResponsiveLogin(),
+      ),
+    );
   }
 
   //snackBar

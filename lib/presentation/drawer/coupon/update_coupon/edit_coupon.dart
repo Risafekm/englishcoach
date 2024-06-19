@@ -1,22 +1,23 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, avoid_unnecessary_containers
 
-import 'package:englishcoach/application/provider/userprovider_exercises.dart';
+import 'package:englishcoach/application/provider/user_provider_payment_coupon.dart';
 import 'package:englishcoach/domain/const/const_colors.dart';
 import 'package:englishcoach/domain/const/const_styles.dart';
-import 'package:englishcoach/domain/model/exercisesmodel.dart';
+import 'package:englishcoach/domain/model/coupon_model.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/buttonsmall.dart';
 import 'package:englishcoach/presentation/drawer/preliminary_test2/test2_home/widgets/textarea.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-class EditExercises extends StatelessWidget {
-  Exercises user;
-  EditExercises({super.key, required this.user});
+class UpdateCoupon extends StatelessWidget {
+  UpdateCoupon({super.key, required this.user});
+
+  Coupon user;
 
   @override
   Widget build(BuildContext context) {
-    var controller = Provider.of<UserProviderExercises>(context);
+    var controller = Provider.of<UserproviderCoupon>(context);
 
     return Scaffold(
       backgroundColor: AppColors.secondaryColor,
@@ -25,7 +26,7 @@ class EditExercises extends StatelessWidget {
         elevation: 3,
         centerTitle: true,
         title: Text(
-          'Edit Test 2 Questions',
+          'Edit Coupon',
           style: AppStyles.appBarTitle,
         ),
         leading: IconButton(
@@ -41,29 +42,14 @@ class EditExercises extends StatelessWidget {
           children: [
             const SizedBox(height: 40),
             Text(
-              'Question No ${user.exeNum}',
+              'Coupon No ${user.couponId}',
               style: AppStyles.bodyText,
             ),
             const SizedBox(height: 50),
             TextArea(
               keyboardType: TextInputType.text,
-              name: 'modNum',
-              controller: controller.editModnumController,
-              validator: (value) {
-                return null;
-              },
-              suffixIcon: const Icon(
-                Icons.abc,
-                color: AppColors.transColor,
-              ),
-              obscureText: false,
-              prefixIcon: const Icon(Icons.comment),
-            ),
-            const SizedBox(height: 20),
-            TextArea(
-              keyboardType: TextInputType.text,
-              name: 'Question',
-              controller: controller.editQuesController,
+              name: 'Coupon Name',
+              controller: controller.updateCouponNameController,
               validator: (value) {
                 return null;
               },
@@ -77,8 +63,23 @@ class EditExercises extends StatelessWidget {
             const SizedBox(height: 20),
             TextArea(
               keyboardType: TextInputType.text,
-              name: 'Answer',
-              controller: controller.editAnsController,
+              name: 'Reduction',
+              controller: controller.updateCouponReductionController,
+              validator: (value) {
+                return null;
+              },
+              suffixIcon: const Icon(
+                Icons.abc,
+                color: AppColors.transColor,
+              ),
+              obscureText: false,
+              prefixIcon: const Icon(Icons.question_answer),
+            ),
+            const SizedBox(height: 20),
+            TextArea(
+              keyboardType: TextInputType.text,
+              name: 'Count',
+              controller: controller.updateCouponCountController,
               validator: (value) {
                 return null;
               },
@@ -93,8 +94,8 @@ class EditExercises extends StatelessWidget {
             CustomButton(
               text: 'UPDATE',
               ontap: () {
-                Provider.of<UserProviderExercises>(context, listen: false)
-                    .updateData(user.exeNum, context);
+                Provider.of<UserproviderCoupon>(context, listen: false)
+                    .updateData(user.couponId, context);
                 Navigator.pop(context);
                 snackbar(context, text: "updated");
               },
@@ -105,19 +106,17 @@ class EditExercises extends StatelessWidget {
     );
   }
 
-  //snackBar
-
   snackbar(context, {required String text}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: AppColors.accentColor2,
+        backgroundColor: Colors.blue,
         content: Row(
           children: [
             Expanded(child: Text('Successfully $text')),
             const SizedBox(
               width: 20,
             ),
-            const Icon(Icons.done, color: AppColors.accentColor1),
+            const Icon(Icons.done, color: Colors.green),
           ],
         ),
       ),

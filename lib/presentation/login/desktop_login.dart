@@ -37,7 +37,7 @@ class DesktopViewLogin extends StatelessWidget {
                     left: 50,
                     bottom: 50,
                     child: Image.asset(
-                      "splashicon.png",
+                      "assets/splashicon.png",
                       scale: 1.4,
                     ),
                   ),

@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable, use_build_context_synchronously
 
 import 'package:englishcoach/Application/Provider/user_provider_password_update.dart';
 import 'package:englishcoach/domain/Model/mod_user_authentication.dart';
@@ -122,13 +122,11 @@ class LoginForm extends StatelessWidget {
               ).addData(user.userEmail, user.userPassword, context);
 
               // Check if authentication was successful
-              // ignore: use_build_context_synchronously
               if (Provider.of<UserproviderPassword>(
                 context,
                 listen: false,
               ).isAuthenticated) {
                 // Navigate to the Dashboard page
-                // ignore: use_build_context_synchronously
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -137,7 +135,6 @@ class LoginForm extends StatelessWidget {
                 );
               } else {
                 // Show error message for incorrect credentials
-                // ignore: use_build_context_synchronously
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     backgroundColor: AppColors.actionColor2,

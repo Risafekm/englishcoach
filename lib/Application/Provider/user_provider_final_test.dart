@@ -21,7 +21,7 @@ class UserproviderFinalTest extends ChangeNotifier {
 
   addData(context) async {
     String apiUrl =
-        'http://localhost/english_coach_php/final_test/create_final_test.php';
+        'https://api.muhammedhafiz.com/sana/final_test/create_final_test.php';
     var userdata = FinalTest(
         finalQuestions: questionController.text,
         finalQuesNumber: '',
@@ -37,7 +37,7 @@ class UserproviderFinalTest extends ChangeNotifier {
       if (response.statusCode == 201) {
         print('successfully posted');
         var dataa = jsonDecode(response.body);
-        snackbar(context, text: "added");
+        // snackbar(context, text: "added");
         await getData();
         print('Response body: $dataa');
         notifyListeners();
@@ -52,7 +52,7 @@ class UserproviderFinalTest extends ChangeNotifier {
   getData() async {
     isLoding = true;
     String getUrl =
-        'http://localhost/english_coach_php/final_test/read_final_test.php';
+        'https://api.muhammedhafiz.com/sana/final_test/read_final_test.php';
 
     try {
       var response = await http.get(Uri.parse(getUrl));
@@ -75,7 +75,7 @@ class UserproviderFinalTest extends ChangeNotifier {
 
   updateData(String i, context) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/english_coach_php/final_test/update_final_test.php?final_ques_number=$i');
+        'https://api.muhammedhafiz.com/sana/final_test/update_final_test.php?final_ques_number=$i');
     var data = FinalTest(
       finalQuesNumber: i,
       finalAnswers: updateanswersController.text,
@@ -91,7 +91,7 @@ class UserproviderFinalTest extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         await getData();
-        snackbar(context, text: "updated");
+        // snackbar(context, text: "updated");
         print(" update success ${response.body}");
       }
     } catch (e) {
@@ -102,11 +102,11 @@ class UserproviderFinalTest extends ChangeNotifier {
 
   deleteData(String i, context) async {
     Uri deleteUrl = Uri.parse(
-        'http://localhost/english_coach_php/final_test/delete_final_test.php?final_ques_number=$i');
+        'https://api.muhammedhafiz.com/sana/final_test/delete_final_test.php?final_ques_number=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
-      snackbar(context, text: "deleted");
+      // snackbar(context, text: "deleted");
       getData();
 
       print('Successfully deleted');
@@ -116,24 +116,5 @@ class UserproviderFinalTest extends ChangeNotifier {
   clear() {
     questionController.clear();
     answersController.clear();
-  }
-
-  //snackBar
-
-  snackbar(context, {required String text}) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: Colors.blue,
-        content: Row(
-          children: [
-            Expanded(child: Text('Successfully $text')),
-            const SizedBox(
-              width: 20,
-            ),
-            const Icon(Icons.done, color: Colors.green),
-          ],
-        ),
-      ),
-    );
   }
 }

@@ -82,8 +82,26 @@ class UpdateFinalTest extends StatelessWidget {
                 Provider.of<UserproviderFinalTest>(context, listen: false)
                     .updateData(user.finalQuesNumber, context);
                 Navigator.pop(context);
+                snackbar(context, text: "updated");
               },
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  snackbar(context, {required String text}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.blue,
+        content: Row(
+          children: [
+            Expanded(child: Text('Successfully $text')),
+            const SizedBox(
+              width: 20,
+            ),
+            const Icon(Icons.done, color: Colors.green),
           ],
         ),
       ),
