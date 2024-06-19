@@ -24,7 +24,7 @@ class UserProviderExercises extends ChangeNotifier {
 
   addData(context) async {
     String apiUrl =
-        'http://localhost/english_coach_php/module_Exercises/create_exercises.php';
+        'https://api.muhammedhafiz.com/risaf/module_Exercises/create_exercises.php';
     var userdata = Exercises(
       exeNum: '',
       modNum: modnumController.text,
@@ -43,7 +43,7 @@ class UserProviderExercises extends ChangeNotifier {
       if (response.statusCode == 201) {
         print('successfully posted');
         var dataa = jsonDecode(response.body);
-        snackbar(context, text: "added");
+        // snackbar(context, text: "added");
         await getData();
         clear();
         print('Response body: $dataa');
@@ -60,7 +60,7 @@ class UserProviderExercises extends ChangeNotifier {
   getData() async {
     isLoding = true;
     String getUrl =
-        'http://localhost/english_coach_php/module_Exercises/read_exercises.php';
+        'https://api.muhammedhafiz.com/risaf/module_Exercises/read_exercises.php';
     try {
       var response = await http.get(Uri.parse(getUrl));
       if (response.statusCode == 200) {
@@ -82,9 +82,9 @@ class UserProviderExercises extends ChangeNotifier {
 
   updateData(String i, context) async {
     Uri updateUrl = Uri.parse(
-        'http://localhost/english_coach_php/module_Exercises/update_exercises.php?exe_num=$i');
+        'https://api.muhammedhafiz.com/risaf/module_Exercises/update_exercises.php?exe_num=$i');
     var data = Exercises(
-      exeNum: editExeNumController.text,
+      exeNum: i,
       modNum: editModnumController.text,
       exeQuestion: editQuesController.text,
       exeAnswer: editAnsController.text,
@@ -100,7 +100,7 @@ class UserProviderExercises extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         await getData();
-        snackbar(context, text: "updated");
+        // snackbar(context, text: "updated");
         print(" update success ${response.body}");
       }
     } catch (e) {
@@ -113,11 +113,11 @@ class UserProviderExercises extends ChangeNotifier {
 
   deleteData(String i, context) async {
     Uri deleteUrl = Uri.parse(
-        'http://localhost/english_coach_php/module_Exercises/delete_exercises.php?exe_num=$i');
+        'https://api.muhammedhafiz.com/risaf/module_Exercises/delete_exercises.php?exe_num=$i');
 
     var response = await http.delete(deleteUrl);
     if (response.statusCode == 200) {
-      snackbar(context, text: "deleted");
+      // snackbar(context, text: "deleted");
       getData();
 
       print('Successfully deleted');
@@ -127,24 +127,5 @@ class UserProviderExercises extends ChangeNotifier {
   clear() {
     quesController.clear();
     ansController.clear();
-  }
-
-  //snackBar
-
-  snackbar(context, {required String text}) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: AppColors.accentColor2,
-        content: Row(
-          children: [
-            Expanded(child: Text('Successfully $text')),
-            const SizedBox(
-              width: 20,
-            ),
-            const Icon(Icons.done, color: AppColors.accentColor1),
-          ],
-        ),
-      ),
-    );
   }
 }
